@@ -16,6 +16,9 @@ alias qm='qmake ; make -j -l 1.5'
 
 alias pull='git pull --rebase origin master'
 
+# other..
+alias histstat="history | awk '{a[\$2]++ } END{for(i in a){print a[i] \" \" i}}'|sort -rn|head -n 12"
+
 # Source global definitions
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
