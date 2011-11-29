@@ -18,6 +18,7 @@ alias pull='git pull --rebase origin master'
 
 # other..
 alias histstat="history | awk '{a[\$2]++ } END{for(i in a){print a[i] \" \" i}}'|sort -rn|head -n 12"
+alias simplehttp='python -mSimpleHTTPServer'
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
