@@ -28,7 +28,7 @@ fi
 export HISTCONTROL=erasedups
 export HISTSIZE=5000
 
-PS1="\[\e[0m\][\[\e[0;33m\]\u\[\e[0m\]@\[\e[0;33m\]\h\[\e[0m\]-\t-\j] [\[\w\]]\$ "
+PS1='\[\e[0m\][\[\e[0;33m\]\u\[\e[0m\]@\[\e[0;33m\]\h\[\e[0m\]-\t-\j] [\[\w\]]\$ '
 
 #test -s ~/.alias && . ~/.alias || true
 
