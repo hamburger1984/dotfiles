@@ -11,8 +11,8 @@ alias l='ls -lah'
 alias reinstall='make uninstall; make -j -l 2.0 install'
 alias rpmsizes='rpm -qa --qf "%12{SIZE} %-32{NAME} %-15{VERSION} %20{RELEASE}\n" | sort -nr | less'
 
-alias bluetooth_off='echo "0" > /sys/devices/platform/thinkpad_acpi/bluetooth_enable'
-alias bluetooth_on='echo "1" > /sys/devices/platform/thinkpad_acpi/bluetooth_enable'
+alias btoff='echo "0" > /sys/devices/platform/thinkpad_acpi/bluetooth_enable'
+alias bton='echo "1" > /sys/devices/platform/thinkpad_acpi/bluetooth_enable'
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
