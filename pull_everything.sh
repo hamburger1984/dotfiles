@@ -1,10 +1,22 @@
 #!/bin/sh
 for dir in $(find -L . -maxdepth 4 -xtype d -type d -iname .git | sort); do
-  echo ${dir%/.git}
-	cd ${dir%/.git}
-#	git pull --rebase origin master
-  git pull origin master
-	cd - > /dev/null
+	echo ${dir%/.git}
+	pushd ${dir%/.git} >/dev/null
+	otxt=$(git pull origin master)
+	ocode=$?
+	echo "$otxt"
+	if [ $ocode -eq 0 ] && [[ ! "$otxt" == *"up-to-date"* ]] && [ -d "./build" ]; then
+		pushd "./build" >/dev/null
+
+		if [ -e "./build.sh" ]; then
+			sh ./build.sh
+		else
+			cmake -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix` ..; make -j -l 1.5
+		fi
+
+		popd >/dev/null
+	fi
+	popd >/dev/null
 	echo 
 done
 
