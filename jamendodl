@@ -1,0 +1,10 @@
+#!/bin/sh
+
+for albumid in $*
+do
+	if [[ "$albumid" == +([0-9]) ]]
+	then
+		echo "Fetching Album $albumid"
+		wget "http://www.jamendo.com/get/album/id/album/archiverestricted/redirect/$albumid/?are=ogg3"
+	fi
+done
