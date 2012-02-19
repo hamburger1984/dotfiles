@@ -22,7 +22,22 @@ done
 
 for dir in $(find -L . -maxdepth 2 -xtype d -type d -iname .svn | cut -d / -f 2 | sort); do
 	echo $dir
-	svn up $dir
+	pushd $dir >/dev/null
+	otxt=$(svn up .)
+	ocode=$?
+	echo "$otxt"
+	if [ $ocode -eq 0 ] && [[ "$otxt" == *"Aktualisiert"* ]] && [ -d "./build" ]; then
+		pushd "./build" >/dev/null
+
+		if [ -e "./build.sh" ]; then
+			sh ./build.sh
+		else
+			cmake -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix` ..; make -j -l 1.5
+		fi
+
+		popd >/dev/null
+	fi
+	popd >/dev/null
 	echo
 done
 
