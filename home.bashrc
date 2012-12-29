@@ -29,7 +29,8 @@ alias autogen64='./autogen.sh --prefix=/usr --libdir=/usr/lib64'
 
 
 alias pull='git pull --rebase origin master'
-alias rpull='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && pwd && git pull origin master" \;'
+alias rpull='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && pwd && git fetch && git pull origin master" \;'
+alias rlast='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && pwd && git log -1 --pretty=format:\"%ad %h %an\"" \;'
 
 # other..
 alias histstat="history | awk '{a[\$2]++ } END{for(i in a){print a[i] \" \" i}}'|sort -rn|head -n 12"
