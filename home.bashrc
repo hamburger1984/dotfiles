@@ -77,3 +77,4 @@ touch -t $(echo $DATE | sed 's/\(..$\)/\.\1/') "$PIC"
 done < <(find . -iname '*.jpg' -print0)
 }
 
+export PS1='\[\e[0m\][\[\e[0;33m\]\u\[\e[0m\]@\[\e[0;33m\]\h\[\e[0m\]-\t-\j] [\[\w\]]\$ '
