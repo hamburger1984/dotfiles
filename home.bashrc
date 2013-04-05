@@ -18,14 +18,11 @@ alias resetcolors='konsoleprofile colors=Solarized'
 alias su='konsoleprofile colors=WhiteOnBlack; /usr/bin/su; resetcolors'
 
 # cmake & make
-alias cm='cmake ..; make -j -l 1.75'
-alias cm64='cmake -DLIB_SUFFIX=64 ..; make -j -l 1.75'
+alias cm='cmake ..; make -j -l 4'
 # cmake (for kde) & make
-alias km='cmake -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix` ..; make -j -l 1.75'
+alias km='cmake -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix` ..; make -j -l 4'
 # qmake & make
-alias qm='qmake ; make -j -l 1.75'
-# autogen -> 64bit & prefix
-alias autogen64='./autogen.sh --prefix=/usr --libdir=/usr/lib64'
+alias qm='qmake ; make -j -l 4'
 
 alias pull='git pull --rebase origin master'
 alias rpull='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && pwd && git fetch && git pull origin master" \;'
