@@ -7,7 +7,7 @@ fi
 
 # User specific aliases and functions
 
-alias backup2usb='cd ~; obnam backup /home/andreas/.ssh/ /home/andreas/haw/ /home/andreas/Pictures/ /home/andreas/Silpion/ /etc/yum.repos.d/'
+#alias backup2usb='cd ~; obnam backup /home/andreas/.ssh/ /home/andreas/haw/ /home/andreas/Pictures/ /home/andreas/Silpion/ /etc/yum.repos.d/'
 
 alias rm='rm -i'
 alias cp='cp -i'
@@ -24,7 +24,7 @@ alias km='cmake -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix` ..; make -j -l 4'
 # qmake & make
 alias qm='qmake ; make -j -l 4'
 
-alias pull='git pull --rebase origin master'
+alias pull='git pull origin master'
 alias rpull='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && pwd && git fetch && git pull origin master" \;'
 alias rlast='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && pwd && git log -1 --pretty=format:\"%ad %h %an\"" \;'
 
@@ -75,3 +75,4 @@ done < <(find . -iname '*.jpg' -print0)
 }
 
 export PS1='\[\e[0m\][\[\e[0;33m\]\u\[\e[0m\]@\[\e[0;33m\]\h\[\e[0m\]-\t-\j] [\[\w\]]\$ '
+
