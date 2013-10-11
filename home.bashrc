@@ -24,8 +24,7 @@ alias km='cmake -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix` ..; make -j -l 4'
 # qmake & make
 alias qm='qmake ; make -j -l 4'
 
-alias pull='git pull origin master'
-alias rpull='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && pwd && git fetch && git pull" \;'
+alias rpull='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && pwd && git pull" \;'
 alias rfetch='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && pwd && git fetch" \;'
 alias rlast='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && pwd && git log -1 --pretty=format:\"%ad %h %an\"" \;'
 
