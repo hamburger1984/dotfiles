@@ -38,6 +38,9 @@ alias mobi1='ssh krohn@mobi1.cpt.haw-hamburg.de'
 alias histstat="history | awk '{a[\$2]++ } END{for(i in a){print a[i] \" \" i}}'|sort -rn|head -n 12"
 alias simplehttp='python -mSimpleHTTPServer'
 
+alias clementine-check="pushd ~/.config/Clementine/ > /dev/null; sqlite3 clementine.db 'select count(*) from songs where unavailable=1;'; popd > /dev/null"
+alias clementine-fix="killall clementine; pushd ~/.config/Clementine/ > /dev/null; sqlite3 clementine.db 'update songs set unavailable=0;'; popd > /dev/null; clementine&"
+
 function remindme(){
 # remind me, its important!
 # adapted from: http://usalug.org/phpBB2/viewtopic.php?t=13209&sid=a641eb81eff1925e714a2fc6576e8a13
