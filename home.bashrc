@@ -28,7 +28,7 @@ alias rpull='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && pwd && git 
 alias rfetch='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && pwd && git fetch" \;'
 alias rlast='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && pwd && git log -1 --pretty=format:\"%ad %h %an\"" \;'
 
-alias playFolder='find . -type f -iname "*.mp3" -o -iname "*.ogg" -o -iname "*.m4a" | sort -R | while read FILE; do echo "$FILE"; cvlc --play-and-exit "$FILE" &> /dev/null; sleep 1s; done'
+alias playFolder='find . -type f -iname "*.mp3" -o -iname "*.ogg" -o -iname "*.m4a" | sort -R | while read FILE; do echo "$FILE"; cvlc --play-and-exit "$FILE" &> /dev/null; sleep 0.5s; done'
 
 alias htpc='ssh root@192.168.1.71'
 
