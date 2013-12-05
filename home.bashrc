@@ -33,6 +33,7 @@ alias playFolder='find . -type f -iname "*.mp3" -o -iname "*.ogg" -o -iname "*.m
 alias htpc='ssh root@192.168.1.71'
 
 alias mobi1='ssh krohn@mobi1.cpt.haw-hamburg.de'
+alias llab='ssh krohn@212.45.111.154'
 
 # other..
 alias histstat="history | awk '{a[\$2]++ } END{for(i in a){print a[i] \" \" i}}'|sort -rn|head -n 12"
