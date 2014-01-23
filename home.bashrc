@@ -33,7 +33,8 @@ alias playFolder='find . -type f -iname "*.mp3" -o -iname "*.ogg" -o -iname "*.m
 alias htpc='ssh root@192.168.1.71'
 
 alias mobi1='ssh krohn@mobi1.cpt.haw-hamburg.de'
-alias llab='ssh krohn@212.45.111.154'
+alias linklab='ssh krohn@212.45.111.154'
+alias centos='ssh root@192.168.122.206'
 
 # other..
 alias histstat="history | awk '{a[\$2]++ } END{for(i in a){print a[i] \" \" i}}'|sort -rn|head -n 12"
@@ -80,5 +81,5 @@ touch -t $(echo $DATE | sed 's/\(..$\)/\.\1/') "$PIC"
 done < <(find . -iname '*.jpg' -print0)
 }
 
-export PS1='\[\e[0m\][\[\e[0;33m\]\u\[\e[0m\]@\[\e[0;33m\]\h\[\e[0m\]-\t-\j] [\[\w\]]\$ '
+export PS1='\[\e[0m\][\[\e[0;33m\]\u\[\e[0m\]@\[\e[0;33m\]\h\[\e[0m\]-\t-\j] [\[\w\]]\[\e[0;34m\]$(git branch 2>/dev/null|cut -f2 -d\* -s| xargs echo)\[\e[0m\]\$ '
 
