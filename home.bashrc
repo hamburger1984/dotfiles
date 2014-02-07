@@ -14,7 +14,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias l='ls -lah'
 
-alias resetcolors='konsoleprofile colors=Solarized'
+alias resetcolors='konsoleprofile colors=DarkPastels'
 alias su='konsoleprofile colors=WhiteOnBlack; /usr/bin/su; resetcolors'
 
 # cmake & make
