@@ -66,7 +66,9 @@ syntax on
 " Show line numbers and length
 set number
 set tw=79
-set nowrap
+set wrap
+set linebreak
+set nolist
 set fo-=t
 set colorcolumn=80
 highlight ColorColumn ctermbg=233
