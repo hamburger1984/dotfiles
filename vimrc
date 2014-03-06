@@ -115,6 +115,14 @@ call pathogen#infect()
 " Settings for vim-powerline
 " cd ~/.vim/bundle
 " git clone git://github.com/Lokaltog/vim-powerline.git
+" set laststatus=2 " always display statusline
+
+" Settings for vim-airline
+" cd ~/.vim/bundle
+" git clone git://github.com/bling/vim-airline.git
+let g:airline#extensions#tabline#enabled = 1
+" once powerline fonts are installed use this:
+let g:airline_powerline_fonts = 1
 set laststatus=2
 
 
