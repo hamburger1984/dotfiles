@@ -24,9 +24,9 @@ alias km='cmake -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix` ..; make -j -l 4'
 # qmake & make
 alias qm='qmake ; make -j -l 4'
 
-alias rpull='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && pwd && git pull" \;'
-alias rfetch='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && pwd && git fetch" \;'
-alias rlast='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && pwd && git log -1 --pretty=format:\"%ad %h %an\"" \;'
+alias rpull='find . -type d -name .git -exec sh -c "echo ----- && cd \"{}\"/../ && pwd && git pull" \;'
+alias rfetch='find . -type d -name .git -exec sh -c "echo ----- && cd \"{}\"/../ && pwd && git fetch --prune" \;'
+alias rlast='find . -type d -name .git -exec sh -c "echo ----- && cd \"{}\"/../ && pwd && git log -1 --pretty=format:\"%ad %h %an\"" \;'
 
 function playFolder(){
 ## use with youtube-dl, grab a few (mrsuicidesheep?) tracks, cd to folder, win!
