@@ -11,7 +11,7 @@ for medium in data1 bay ; do
         echo "Backing up to: /run/media/andreas/${medium}/Backups"
         CONF="$HOME/.obnam-${medium}.conf"
         obnam --config=$CONF force-lock
-        echo " << Generations >>"; obnam --config=$CONF generations; echo " << Backup >>"; obnam --config=$CONF backup; echo " << Forgetting >>"; obnam --config=$CONF forget; echo " << Generations >>"; obnam --config=$CONF generations
+        echo " << Generations >>"; obnam --config=$CONF generations && echo " << Backup >>"; obnam --config=$CONF backup && echo " << Forgetting >>"; obnam --config=$CONF forget && echo " << Generations >>"; obnam --config=$CONF generations
         echo "-----------"
     fi
 
