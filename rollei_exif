@@ -1,0 +1,4 @@
+#!/bin/sh
+
+exiftool "-FileName<CreateDate" -ext JPG -d "rollei_%Y%m%d_%H%M%S.%%e" .
+exiftool "-FileName<CreateDate" -ext MOV -d "rollei_%Y%m%d_%H%M%S.%%e" .

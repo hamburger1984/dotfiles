@@ -112,11 +112,6 @@ call pathogen#infect()
 " Python IDE Setup
 " ============================================================================
 
-" Settings for vim-powerline
-" cd ~/.vim/bundle
-" git clone git://github.com/Lokaltog/vim-powerline.git
-" set laststatus=2 " always display statusline
-
 " Settings for vim-airline
 " cd ~/.vim/bundle
 " git clone git://github.com/bling/vim-airline.git
@@ -164,6 +159,13 @@ map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 " mkdir -p ~/.vim/ftplugin
 " wget -O ~/.vim/ftplugin/python_editing.vim http://www.vim.org/scripts/download_script.php?src_id=5492
 set nofoldenable
+
+" Settings for neocomplete
+" cd ~/.vim/bundle
+" git clone git://github.com/Shougo/neocomplete.vim.git
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
 
 " Settings for vim-flake8
 " cd ~/.vim/bundle

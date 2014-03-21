@@ -17,7 +17,9 @@ for medium in data1 bay ; do
 
     if [ -d "/run/media/andreas/${medium}/Archive" ]; then
         echo "Archiving to: /run/media/andreas/${medium}/Archive"
-        echo " << Pictures >>"; rsync -a -h --info=progress2 --stats /home/andreas/Pictures/ /run/media/andreas/${medium}/Archive/Pictures && echo " << pwsafe >>"; rsync -a -h --info=progress2 --stats /home/andreas/.pwsafe.dat /run/media/andreas/${medium}/Archive
+        echo " << Pictures >>"; rsync -a -h --info=progress2 --stats /home/andreas/Pictures/ /run/media/andreas/${medium}/Archive/Pictures
+        echo " << pwsafe >>"; rsync -a -h --info=progress2 --stats /home/andreas/.pwsafe.dat /run/media/andreas/${medium}/Archive
         echo "-----------"
     fi
 done
+
