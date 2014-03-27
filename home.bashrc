@@ -42,13 +42,14 @@ function playFolder(){
 alias htpc='ssh root@192.168.1.71'
 
 alias mobi1='ssh krohn@mobi1.cpt.haw-hamburg.de'
-alias mobi5='ssh krohn@mobi5.cpt.haw-hamburg.de'
+alias mobi5='ssh krohn@141.22.213.44'
+#alias mobi5='ssh krohn@mobi5.cpt.haw-hamburg.de'
 alias linklab='ssh krohn@212.45.111.154'
 alias centos='ssh andreas@192.168.122.60'
 alias centos_root='ssh root@192.168.122.60'
 
 ## Python stuff
-alias pip-up='pip-python3 freeze | cut -d = -f 1 | xargs pip-python3 install -U'
+## alias pip-up='pip3 freeze | cut -d = -f 1 | xargs pip3 install -U'
 
 # other..
 alias histstat="history | awk '{a[\$2]++ } END{for(i in a){print a[i] \" \" i}}'|sort -rn|head -n 12"
