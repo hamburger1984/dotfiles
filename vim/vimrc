@@ -120,15 +120,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 set laststatus=2
 
-
-" Settings for ctrlp
-" cd ~/.vim/bundle
-" git clone https://github.com/kien/ctrlp.vim.git
-"" let g:ctrlp_max_height = 30
-"" set wildignore+=*.pyc
-"" set wildignore+=*_build/*
-"" set wildignore+=*/coverage/*
-
 " Settings for jedi-vim
 " cd ~/.vim/bundle
 " git clone git://github.com/davidhalter/jedi-vim.git
@@ -147,3 +138,11 @@ set nofoldenable
 " git clone git://github.com/nvie/vim-flake8.git
 "" use F3 to run flake8
 autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
+
+" Distraction free writing goyo.vim
+" cd ~/.vim/bundle
+" git clone https://github.com/junegunn/goyo.vim.git
+" toogle with <Leader><Space>
+nnoremap <Leader><Space> :Goyo<CR>
+let g:goyo_width = 100
+let g:goyo_linenr = 0
