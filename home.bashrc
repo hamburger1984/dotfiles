@@ -26,7 +26,7 @@ alias qm='qmake ; make -j -l 4'
 
 alias rpull='find . -type d -name .git -exec sh -c "echo ----- && cd \"{}\"/../ && pwd && git pull" \;'
 alias rfetch='find . -type d -name .git -exec sh -c "echo ----- && cd \"{}\"/../ && pwd && git fetch --prune" \;'
-alias rlast='find . -type d -name .git -exec sh -c "echo ----- && cd \"{}\"/../ && pwd && git log -1 --pretty=format:\"%ad %h %an\"" \;'
+alias rst='find . -type d -name .git -exec sh -c "echo ----- && cd \"{}\"/../ && pwd && git status" \;'
 
 function playFolder(){
 ## use with youtube-dl, grab a few (mrsuicidesheep?) tracks, cd to folder, win!

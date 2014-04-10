@@ -1,5 +1,4 @@
 
-
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
 
@@ -112,6 +111,8 @@ call pathogen#infect()
 " Python IDE Setup
 " ============================================================================
 
+set guifont=Source\ Code\ Pro\ for\ Powerline
+
 " Settings for vim-airline
 " cd ~/.vim/bundle
 " git clone git://github.com/bling/vim-airline.git
@@ -123,15 +124,9 @@ set laststatus=2
 " Settings for jedi-vim
 " cd ~/.vim/bundle
 " git clone git://github.com/davidhalter/jedi-vim.git
-let g:jedi#usages_command = "<leader>z"
-let g:jedi#popup_on_dot = 0
-let g:jedi#popup_select_first = 0
-"map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
-
-" Python folding
-" mkdir -p ~/.vim/ftplugin
-" wget -O ~/.vim/ftplugin/python_editing.vim http://www.vim.org/scripts/download_script.php?src_id=5492
-set nofoldenable
+"let g:jedi#usages_command = "<leader>z"
+"let g:jedi#popup_on_dot = 0
+"let g:jedi#popup_select_first = 0
 
 " Settings for vim-flake8
 " cd ~/.vim/bundle
@@ -146,3 +141,9 @@ autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
 nnoremap <Leader><Space> :Goyo<CR>
 let g:goyo_width = 100
 let g:goyo_linenr = 0
+
+" Folding..
+nnoremap <Leader>f za
+vnoremap <Leader>f zf
+
+autocmd FileType python setl fen foldmethod=indent foldnestmax=2

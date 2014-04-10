@@ -1,0 +1,11 @@
+#!/bin/sh
+
+pwd
+
+for FILE in *.MOV
+do
+    DEST=$(echo $FILE | sed 's/\.MOV/\.mp4/')
+    echo "----- $FILE -> $DEST -----"
+
+    ffmpeg -i "$FILE" -vcodec libx264 -crf 26 -strict -2 "$DEST" || break
+done
