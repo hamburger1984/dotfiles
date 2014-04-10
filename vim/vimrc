@@ -38,6 +38,10 @@ map <C-h> <C-w>h
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
 
+" move tabs
+map <Leader>N <esc>:tabm -1<CR>
+map <Leader>M <esc>:tabm +1<CR>
+
 " map sort to a key
 vnoremap <Leader>s :sort<CR>
 
