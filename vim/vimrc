@@ -42,6 +42,9 @@ map <Leader>m <esc>:tabnext<CR>
 map <Leader>N <esc>:tabm -1<CR>
 map <Leader>M <esc>:tabm +1<CR>
 
+" moar tabs
+set tabpagemax=50
+
 " map sort to a key
 vnoremap <Leader>s :sort<CR>
 
