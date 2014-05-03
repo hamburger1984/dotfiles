@@ -128,13 +128,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 set laststatus=2
 
-" Settings for jedi-vim
-" cd ~/.vim/bundle
-" git clone git://github.com/davidhalter/jedi-vim.git
-"let g:jedi#usages_command = "<leader>z"
-"let g:jedi#popup_on_dot = 0
-"let g:jedi#popup_select_first = 0
-
 " Settings for vim-flake8
 " cd ~/.vim/bundle
 " git clone git://github.com/nvie/vim-flake8.git
@@ -153,4 +146,4 @@ let g:goyo_linenr = 0
 nnoremap <Leader>f za
 vnoremap <Leader>f zf
 
-autocmd FileType python setl fen foldmethod=indent foldnestmax=2
+autocmd FileType python setl fen foldmethod=indent foldlevelstart=0 foldnestmax=2
