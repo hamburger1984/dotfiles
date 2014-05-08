@@ -24,5 +24,5 @@ fi
 export HISTCONTROL=erasedups
 export HISTSIZE=5000
 
-PS1='\[\e[0;31m\]\u\[\e[0m\]@\[\e[0;33m\]\h \[\e[0m\]\t \j [\[\w\]]\[\e[0;34m\]$(git branch 2>/dev/null|cut -f2 -d\* -s| xargs echo)\[\e[0m\]\$ '
+PS1='\[\e[0m\]\t \j \[\e[0;31m\]\u\[\e[0m\]@\[\e[0;33m\]\h\[\e[0m\] [\[\w\]]\[\e[0;34m\]$(git branch 2>/dev/null|cut -f2 -d\* -s| xargs echo)\[\e[0m\]\$ '
 #PS1='\[\e[0m\][\[\e[0;31m\]\u\[\e[0m\]@\[\e[0;31m\]\h\[\e[0m\]-\t-\j] [\[\w\]]\$ '
