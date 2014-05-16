@@ -111,10 +111,6 @@ set noswapfile
 " Now you can install any plugin into a .vim/bundle/plugin-name/ folder
 call pathogen#infect()
 
-
-
-" ============================================================================
-" Python IDE Setup
 " ============================================================================
 
 set guifont=Source\ Code\ Pro\ for\ Powerline
@@ -144,5 +140,5 @@ let g:goyo_linenr = 0
 " Folding..
 nnoremap <Leader>f za
 vnoremap <Leader>f zf
-
 autocmd FileType python setl fen foldmethod=indent foldlevelstart=0 foldnestmax=2
+
