@@ -42,7 +42,7 @@ function playFolder(){
 alias htpc='ssh root@192.168.1.71'
 
 alias mobi1='ssh krohn@mobi1.cpt.haw-hamburg.de'
-alias mobi5='ssh krohn@141.22.213.44'
+alias mobi5='konsoleprofile colors=Solarized; ssh krohn@141.22.213.44; resetcolors'
 #alias mobi5='ssh krohn@mobi5.cpt.haw-hamburg.de'
 alias linklab='ssh krohn@212.45.111.154'
 alias centos='ssh andreas@192.168.122.60'
