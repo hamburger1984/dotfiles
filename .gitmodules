@@ -22,3 +22,12 @@
 [submodule "vim/bundle/blockdiag.vim"]
 	path = vim/bundle/blockdiag.vim
 	url = https://github.com/aohta/blockdiag.vim.git
+[submodule "vim/bundle/molokai"]
+	path = vim/bundle/molokai
+	url = https://github.com/tomasr/molokai.git
+[submodule "vim/bundle/wombat256.vim"]
+	path = vim/bundle/wombat256.vim
+	url = https://github.com/vim-scripts/wombat256.vim.git
+[submodule "vim/bundle/AutoFenc"]
+	path = vim/bundle/AutoFenc
+	url = https://github.com/s3rvac/AutoFenc.git
