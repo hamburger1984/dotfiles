@@ -12,6 +12,9 @@ set clipboard=unnamed
 set mouse=a
 set bs=2
 
+set sm   " Shortly jump to matching bracket
+set so=4 " scrolloff (lines of context during scrolling)
+
 " Rebind <Leader> key
 let mapleader=","
 
@@ -44,6 +47,9 @@ map <Leader>M <esc>:tabm +1<CR>
 
 " moar tabs
 set tabpagemax=50
+
+" ,cd Change directory to that of current file
+map <Leader>cd :cd %:p:h<CR>
 
 " map sort to a key
 vnoremap <Leader>s :sort<CR>
