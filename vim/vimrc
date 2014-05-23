@@ -76,7 +76,7 @@ set linebreak
 set nolist
 set fo-=t
 set colorcolumn=80
-highlight ColorColumn ctermbg=233
+highlight ColorColumn ctermbg=236
 
 " easier formatting of paragraphs
 "" vmap Q gq
@@ -113,7 +113,7 @@ call pathogen#infect()
 
 " ============================================================================
 
-set guifont=Source\ Code\ Pro\ for\ Powerline
+" set guifont=Source\ Code\ Pro\ for\ Powerline
 
 " Settings for vim-airline
 " cd ~/.vim/bundle
