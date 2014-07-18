@@ -53,7 +53,8 @@ alias centos_root='ssh root@192.168.122.60'
 
 # other..
 alias histstat="history | awk '{a[\$2]++ } END{for(i in a){print a[i] \" \" i}}'|sort -rn|head -n 12"
-alias simplehttp='python -mSimpleHTTPServer'
+
+alias simplehttp='python -m SimpleHTTPServer'
 
 alias clementine-check="pushd ~/.config/Clementine/ > /dev/null; sqlite3 clementine.db 'select count(*) from songs where unavailable=1;'; popd > /dev/null"
 alias clementine-fix="killall clementine; pushd ~/.config/Clementine/ > /dev/null; sqlite3 clementine.db 'update songs set unavailable=0;'; popd > /dev/null; clementine&"
