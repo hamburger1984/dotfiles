@@ -1,0 +1,5 @@
+
+set lines=44 columns=120
+set ve=all
+
+set guifont=Source\ Code\ Pro\ 9

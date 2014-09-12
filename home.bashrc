@@ -6,9 +6,6 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # User specific aliases and functions
-
-#alias backup2usb='cd ~; obnam backup /home/andreas/.ssh/ /home/andreas/haw/ /home/andreas/Pictures/ /home/andreas/Silpion/ /etc/yum.repos.d/'
-
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
@@ -40,24 +37,15 @@ function playFolder(){
 }
 
 alias htpc='ssh root@192.168.1.71'
-
 alias mobi1='ssh krohn@mobi1.cpt.haw-hamburg.de'
 alias mobi5='konsoleprofile colors=Solarized; ssh krohn@141.22.213.44; resetcolors'
 #alias mobi5='ssh krohn@mobi5.cpt.haw-hamburg.de'
 alias linklab='ssh krohn@212.45.111.154'
-alias centos='ssh andreas@192.168.122.60'
-alias centos_root='ssh root@192.168.122.60'
-
-## Python stuff
-## alias pip-up='pip3 freeze | cut -d = -f 1 | xargs pip3 install -U'
 
 # other..
 alias histstat="history | awk '{a[\$2]++ } END{for(i in a){print a[i] \" \" i}}'|sort -rn|head -n 12"
 
 alias simplehttp='python -m SimpleHTTPServer'
-
-alias clementine-check="pushd ~/.config/Clementine/ > /dev/null; sqlite3 clementine.db 'select count(*) from songs where unavailable=1;'; popd > /dev/null"
-alias clementine-fix="killall clementine; pushd ~/.config/Clementine/ > /dev/null; sqlite3 clementine.db 'update songs set unavailable=0;'; popd > /dev/null; clementine&"
 
 function adjustExif(){
 while IFS= read -d $'\0' -r PIC; do
@@ -67,6 +55,14 @@ touch -t $(echo $DATE | sed 's/\(..$\)/\.\1/') "$PIC"
 done < <(find . -iname '*.jpg' -print0)
 }
 
+# history..
+export HISTCONTROL=ignoredups
+export HISTSIZE=
+export HISTFILESIZE=
+export HISTFILE=~/.bash4_history
+shopt -s histappend
+export PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"
+
+# prompt
 export PS1='\[\e[0m\]\t \[\e[0;33m\]\u\[\e[0m\]@\[\e[0;33m\]\h\[\e[0m\] \[\w\] \[\e[0;34m\]$(git branch 2>/dev/null|cut -f2 -d\* -s| xargs echo)\[\e[0m\]\$ '
-#export PS1='\[\e[0m\][\[\e[0;33m\]\u\[\e[0m\]@\[\e[0;33m\]\h\[\e[0m\]-\t-\j] [\[\w\]]\[\e[0;34m\]$(git branch 2>/dev/null|cut -f2 -d\* -s| xargs echo)\[\e[0m\]\$ '
 
