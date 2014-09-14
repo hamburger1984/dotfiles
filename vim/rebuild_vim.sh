@@ -1,15 +1,11 @@
 #!/bin/sh
 
-## copy into root directory of cloned vim repository
-## $ git clone https://github.com/b4winckler/vim.git
-## $ cd vim
-## $ sh rebuild_vim.sh
-
 echo "----- PULL"
 git pull
 
 echo "----- CONFIGURE"
-./configure --with-features=huge --enable-python3interp --enable-luainterp --enable-multibyte --prefix=$HOME/opt
+# ./configure --with-features=huge --enable-python3interp --enable-luainterp --enable-multibyte --prefix=$HOME/opt
+./configure --with-features=huge --enable-python3interp --enable-luainterp --enable-multibyte --enable-gui=gtk2 --prefix=/home/andreas/opt
 
 echo "----- COMPILE, INSTALL"
 make && make install
