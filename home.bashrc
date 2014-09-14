@@ -63,6 +63,11 @@ export HISTFILE=~/.bash4_history
 shopt -s histappend
 export PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"
 
+# tty font
+if [ $TERM = linux ]; then
+    setfont /lib/kbd/consolefonts/Lat2-Terminus16.psfu.gz
+fi
+
 # prompt
 export PS1='\[\e[0m\]\t \[\e[0;33m\]\u\[\e[0m\]@\[\e[0;33m\]\h\[\e[0m\] \[\w\] \[\e[0;34m\]$(git branch 2>/dev/null|cut -f2 -d\* -s| xargs echo)\[\e[0m\]\$ '
 
