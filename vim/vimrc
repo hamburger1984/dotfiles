@@ -55,14 +55,15 @@ map <Leader>cd :cd %:p:h<CR>
 vnoremap <Leader>s :sort<CR>
 
 " easier moving of code blocks
-" Try to go into visual mode (v), thenselect several lines of code here and
-" then press ``>`` several times.
+" Try to go into visual mode (v), then
+" select several lines of code here and
+" press ``>`` several times.
 vnoremap < <gv  " better indentation
 vnoremap > >gv  " better indentation
 
 " Show whitespace (must be inserted before selecting colorscheme)
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-au InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 
 " Color scheme
 set t_Co=256
@@ -74,8 +75,12 @@ filetype off
 filetype plugin indent on
 syntax on
 
-" Show line numbers and length
-set number
+" (relative) line numbers and length
+
+" InsertEnter,InsertLeave doesn't seem to work as expected
+autocmd InsertEnter * set number norelativenumber
+autocmd InsertLeave * set number relativenumber
+set number relativenumber
 set tw=79
 set wrap
 set linebreak
