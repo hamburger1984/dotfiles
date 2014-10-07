@@ -13,11 +13,11 @@ make && make install
 echo "----- VERSION"
 $HOME/opt/bin/vim --version
 
-echo "----- LN to $HOME/bin"
-for f in vim vimtutor gvim ; do
-    if [ -f $HOME/bin/$f ]; then
-        rm -f $HOME/bin/$f
-    fi
-    ln -s $HOME/opt/bin/$f $HOME/bin/$f
-done
+#echo "----- LN to $HOME/bin"
+#for f in vim vimtutor gvim ; do
+#    if [ -f $HOME/bin/$f ]; then
+#        rm -f $HOME/bin/$f
+#    fi
+#    ln -s $HOME/opt/bin/$f $HOME/bin/$f
+#done
 

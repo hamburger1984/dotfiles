@@ -2,10 +2,12 @@
 
 pwd
 
-for FILE in *.MOV
+shopt -s nocaseglob
+for FILE in *.mov
 do
-    DEST=$(echo $FILE | sed 's/\.MOV/\.mp4/')
+    DEST=$(echo $FILE | sed 's/\.mov/\.mp4/I')
     echo "----- $FILE -> $DEST -----"
 
     ffmpeg -i "$FILE" -vcodec libx264 -crf 26 -strict -2 "$DEST" || break
 done
+shopt -u nocaseglob
