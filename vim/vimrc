@@ -148,6 +148,10 @@ nnoremap <Leader><Space> :Goyo<CR>
 let g:goyo_width = 100
 let g:goyo_linenr = 0
 
+" Filetype mappings..
+au BufNewFile,BufRead *.md set filetype=markdown
+au BufNewFile,BufRead *.config set filetype=xml
+
 " Folding..
 nnoremap <Leader>f za
 vnoremap <Leader>f zf
