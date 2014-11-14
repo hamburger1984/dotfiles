@@ -25,20 +25,12 @@ alias rpull='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && echo -n \"-
 alias rfetch='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && echo -n \"----- \" && echo \"{}\" | rev | cut -d\"/\" -f2 | rev && git fetch --prune" \;'
 alias rst='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && echo -n \"----- \" && echo \"{}\" | rev | cut -d\"/\" -f2 | rev && git status" \;'
 
-function playFolder(){
 ## use with youtube-dl, grab a few (mrsuicidesheep?) tracks, cd to folder, win!
-    while true
-    do
-        FILE=`find . -type f -iname "*.mp3" -o -iname "*.ogg" -o -iname "*.m4a" | sort -R | head -n 1`
-        echo " ▸ $FILE"
-        cvlc --play-and-exit "$FILE" &> /dev/null
-        sleep 0.5s
-    done
-}
+alias playFolder='find . -type f \( -iname "*.aiff" -o -iname "*.m4a" -o -iname "*.mp3" -o -iname "*.ogg" \) > .play.vlc && cvlc -I ncurses .play.vlc; rm -f .play.vlc'
 
 alias htpc='ssh root@192.168.1.71'
 alias mobi1='ssh krohn@mobi1.cpt.haw-hamburg.de'
-alias mobi5='konsoleprofile colors=Solarized; ssh krohn@141.22.213.44; resetcolors'
+#alias mobi5='konsoleprofile colors=Solarized; ssh krohn@141.22.213.44; resetcolors'
 #alias mobi5='ssh krohn@mobi5.cpt.haw-hamburg.de'
 alias linklab='ssh krohn@212.45.111.154'
 
