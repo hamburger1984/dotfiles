@@ -5,9 +5,8 @@ BASE=$(pwd)
 find . -type f -name .ytdlsource | while read SOURCE
 do
     SOURCE=${SOURCE/\./$BASE}
-    pushd "$(dirname "$SOURCE")" > /dev/null
+    cd "$(dirname "$SOURCE")"
     pwd
     youtube-dl -t -i -c -w -x -a .ytdlsource
-    popd > /dev/null
 done
 
