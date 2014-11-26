@@ -7,6 +7,6 @@ do
     SOURCE=${SOURCE/\./$BASE}
     cd "$(dirname "$SOURCE")"
     pwd
-    youtube-dl -t -i -c -w -x -a .ytdlsource
+    youtube-dl -f m4a -t -i -c -w -x -a .ytdlsource
 done
 
