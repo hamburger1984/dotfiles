@@ -1,0 +1,70 @@
+#!/bin/sh
+
+# (re)create an IPv6 tunnel once connected to certain WLAN networks
+
+# usage:
+# - copy to /etc/NetworkManager/dispatcher.d/
+# - chown root
+# - chmod +x
+# - fill HEUSER, HEKEY, HETUNNEL, HESERVER4END, HESERVER6END, HECLIENT6END
+#   (see tunnel setting on tunnelbroker.net)
+
+PATH=/bin:/usr/bin:/usr/sbin
+
+# whitelist of essids
+essids=(myhomenetwork, another_network)
+interfaces=(wlp3s0)
+
+interface=$1
+status=$2
+essid=$(iwgetid -r)
+if [[ ! $essid ]]; then
+    exit 0
+fi
+if [[ ! ${interfaces[*]} =~ $interface ]]; then
+    logger -s "$interface is $status - ignoring interface"
+    exit 0
+fi
+if [[ ! ${essids[*]} =~ $essid ]]; then
+    logger -s "$interface is $status - ignoring ESSID=$essid"
+    exit 0
+fi
+
+case $status in
+    up)
+        logger -s "$1 is $2 ($essid) -- (re)starting ipv6 tunnel"
+
+        # tunnelbroker settings..
+        HEUSER='...' # tunnelbroker username
+        HEKEY='...' # tunnelbroker update key
+        HETUNNEL=123 # from the website, "Global Tunnel ID"
+
+        ### other settings from the website (the tunnel settings):
+        HESERVER4END='<ipv4 server address>'
+        HESERVER6END='<ipv6 server address>'
+        HECLIENT6END='<ipv6 client address>'
+
+        IF0='sit0'
+        IF1='sit1'
+
+        if cat /proc/net/dev | egrep --quiet "$IF0|$IF1" ; then
+            route -A inet6 delete ::/0 dev $IF1
+            ifconfig $IF0 down
+            ifconfig $IF1 down
+        fi
+
+        #echo "Updating your IPv4 tunnel endpoint setting on the Hurricane Electric Website."
+        curl -k -s "https://ipv4.tunnelbroker.net/nic/update?username=$HEUSER&password=$HEKEY&hostname=$HETUNNEL"
+
+        #echo "Setting up the tunnel now."
+        ifconfig $IF0 up
+        ifconfig $IF0 inet6 tunnel ::$HESERVER4END
+
+        ifconfig $IF1 up
+        ifconfig $IF1 inet6 add $HECLIENT6END
+
+        route -A inet6 add ::/0 dev $IF1
+
+        logger -s "External IPs are `curl -s 'http://v6.ipv6-test.com/api/myip.php'` and `curl -s 'http://v4.ipv6-test.com/api/myip.php'`"
+        ;;
+esac
