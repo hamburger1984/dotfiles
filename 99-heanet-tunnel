@@ -9,7 +9,6 @@
 # - fill HEUSER, HEKEY, HETUNNEL, HESERVER4END, HESERVER6END, HECLIENT6END
 #   (see tunnel setting on tunnelbroker.net)
 
-PATH=/bin:/usr/bin:/usr/sbin
 
 # whitelist of essids
 essids=(myhomenetwork, another_network)
@@ -17,22 +16,22 @@ interfaces=(wlp3s0)
 
 interface=$1
 status=$2
-essid=$(iwgetid -r)
-if [[ ! $essid ]]; then
-    exit 0
-fi
+essid=$(/usr/sbin/iwgetid -r)
 if [[ ! ${interfaces[*]} =~ $interface ]]; then
-    logger -s "$interface is $status - ignoring interface"
+    /usr/bin/logger -s "$interface changed to $status - ignoring interface"
     exit 0
 fi
-if [[ ! ${essids[*]} =~ $essid ]]; then
-    logger -s "$interface is $status - ignoring ESSID=$essid"
+if [[ $essid && ! ${essids[*]} =~ $essid ]]; then
+    /usr/bin/logger -s "$interface changed to $status - ignoring ESSID=$essid"
     exit 0
 fi
 
+IF0='sit0'
+IF1='sit1'
+
 case $status in
     up)
-        logger -s "$1 is $2 ($essid) -- (re)starting ipv6 tunnel"
+        /usr/bin/logger -s "$1 changed to $2 - ESSID=$essid -- (re)starting ipv6 tunnel"
 
         # tunnelbroker settings..
         HEUSER='...' # tunnelbroker username
@@ -44,27 +43,37 @@ case $status in
         HESERVER6END='<ipv6 server address>'
         HECLIENT6END='<ipv6 client address>'
 
-        IF0='sit0'
-        IF1='sit1'
-
-        if cat /proc/net/dev | egrep --quiet "$IF0|$IF1" ; then
-            route -A inet6 delete ::/0 dev $IF1
-            ifconfig $IF0 down
-            ifconfig $IF1 down
+        if /usr/bin/cat /proc/net/dev | /usr/bin/egrep --quiet "$IF0|$IF1" ; then
+            /usr/sbin/route -A inet6 delete ::/0 dev $IF1
+            /usr/sbin/ifconfig $IF0 down
+            /usr/sbin/ifconfig $IF1 down
         fi
 
         #echo "Updating your IPv4 tunnel endpoint setting on the Hurricane Electric Website."
-        curl -k -s "https://ipv4.tunnelbroker.net/nic/update?username=$HEUSER&password=$HEKEY&hostname=$HETUNNEL"
+        /usr/bin/curl -k -s "https://ipv4.tunnelbroker.net/nic/update?username=$HEUSER&password=$HEKEY&hostname=$HETUNNEL"
 
         #echo "Setting up the tunnel now."
-        ifconfig $IF0 up
-        ifconfig $IF0 inet6 tunnel ::$HESERVER4END
+        /usr/sbin/ifconfig $IF0 up
+        /usr/sbin/ifconfig $IF0 inet6 tunnel ::$HESERVER4END
 
-        ifconfig $IF1 up
-        ifconfig $IF1 inet6 add $HECLIENT6END
+        /usr/sbin/ifconfig $IF1 up
+        /usr/sbin/ifconfig $IF1 inet6 add $HECLIENT6END
 
-        route -A inet6 add ::/0 dev $IF1
+        /usr/sbin/route -A inet6 add ::/0 dev $IF1
 
-        logger -s "External IPs are `curl -s 'http://v6.ipv6-test.com/api/myip.php'` and `curl -s 'http://v4.ipv6-test.com/api/myip.php'`"
+        /usr/bin/logger -s "External IPs are `curl -s 'http://v6.ipv6-test.com/api/myip.php'` and `curl -s 'http://v4.ipv6-test.com/api/myip.php'`"
+        ;;
+    down)
+        /usr/bin/logger -s "$1 changed to $2"
+
+        if /usr/bin/cat /proc/net/dev | /usr/bin/egrep --quiet "$IF0|$IF1" ; then
+            /usr/bin/logger -s "removing tunnel"
+            /usr/sbin/route -A inet6 delete ::/0 dev $IF1
+            /usr/sbin/ifconfig $IF0 down
+            /usr/sbin/ifconfig $IF1 down
+        fi
+        ;;
+    *)
+        /usr/bin/logger -s "$1 changed to $2"
         ;;
 esac
