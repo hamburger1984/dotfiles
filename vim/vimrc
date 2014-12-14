@@ -2,11 +2,14 @@
 " Automatic reloading of .vimrc
 au! bufwritepost .vimrc source %
 
-" Better copy & paste
+" Better paste
 " press F2 before pasting large code blocks
 " at the bottom you should see ``-- INSERT (paste) --``
 set pastetoggle=<F2>
-set clipboard=unnamed
+
+" Select a default copy&paste register
+" * is selection ~ unnamed, + is clipboard ~ unnamedplus
+set clipboard=unnamedplus
 
 " Mouse & Backspace
 set mouse=a
@@ -29,13 +32,9 @@ noremap <C-z> :update<CR>
 vnoremap <C-z> <C-C> :update<CR>
 inoremap <C-z> <C-O> :update<CR>
 
-" Bind Ctrl+<movement> keys to move around the windows,
-" instead of using Ctrl+w + <movement>
-" Every unnecessary keystroke that can be saved is good for your health :)
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-map <C-h> <C-w>h
+" faster split resize
+map <Leader>+ <esc>:res +3<CR>
+map <Leader>- <esc>:res -3<CR>
 
 " easier moving between tabs
 map <Leader>n <esc>:tabprevious<CR>
@@ -80,7 +79,6 @@ filetype plugin indent on
 syntax on
 
 " (relative) line numbers and length
-" InsertEnter,InsertLeave doesn't seem to work as expected
 au InsertEnter * set number norelativenumber
 au InsertLeave * set number relativenumber
 set number relativenumber
@@ -90,10 +88,6 @@ set linebreak
 set fo-=t
 set colorcolumn=80
 highlight ColorColumn ctermbg=236
-
-" easier formatting of paragraphs
-"" vmap Q gq
-"" nmap Q gqap
 
 " Useful settings
 set history=700
@@ -131,20 +125,16 @@ call pathogen#infect()
 " Settings for vim-airline
 " cd ~/.vim/bundle
 " git clone git://github.com/bling/vim-airline.git
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled=1
 " once powerline fonts are installed use this:
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts=1
 set laststatus=2
 
 " Settings for vim-flake8
-" cd ~/.vim/bundle
-" git clone git://github.com/nvie/vim-flake8.git
 "" use F3 to run flake8
 au FileType python map <buffer> <F3> :call Flake8()<CR>
 
 " Distraction free writing goyo.vim
-" cd ~/.vim/bundle
-" git clone https://github.com/junegunn/goyo.vim.git
 " toogle with <Leader><Space>
 nnoremap <Leader><Space> :Goyo<CR>
 let g:goyo_width = 120
