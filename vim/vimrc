@@ -72,6 +72,8 @@ au BufWinEnter * call matchadd('ErrorMsg', '\s\+$', -1)
 " Color scheme
 set t_Co=256
 color molokai
+" color summerfruit256
+" color wombat256mod
 
 " Enable syntax highlighting
 filetype off
@@ -82,6 +84,8 @@ syntax on
 au InsertEnter * set number norelativenumber
 au InsertLeave * set number relativenumber
 set number relativenumber
+
+" 80 cols, wrap, ..
 set tw=79
 set wrap
 set linebreak
