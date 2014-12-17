@@ -1,51 +1,54 @@
-[submodule "vim/vim-pathogen"]
-	path = vim/vim-pathogen
+[submodule "vim/submodules/vim-pathogen"]
+	path = vim/submodules/vim-pathogen
 	url = https://github.com/tpope/vim-pathogen.git
-[submodule "vim/bundle/SimpylFold"]
-	path = vim/bundle/SimpylFold
-	url = https://github.com/tmhedberg/SimpylFold.git
-[submodule "vim/bundle/supertab"]
-	path = vim/bundle/supertab
-	url = https://github.com/ervandew/supertab.git
-[submodule "vim/bundle/vim-airline"]
-	path = vim/bundle/vim-airline
-	url = https://github.com/bling/vim-airline.git
-[submodule "vim/bundle/vim-flake8"]
-	path = vim/bundle/vim-flake8
-	url = https://github.com/nvie/vim-flake8.git
-[submodule "vim/bundle/vim-latex"]
-	path = vim/bundle/vim-latex
-	url = https://github.com/lervag/vim-latex.git
-[submodule "vim/bundle/goyo.vim"]
-	path = vim/bundle/goyo.vim
-	url = https://github.com/junegunn/goyo.vim.git
-[submodule "vim/bundle/blockdiag.vim"]
-	path = vim/bundle/blockdiag.vim
-	url = https://github.com/aohta/blockdiag.vim.git
-[submodule "vim/bundle/molokai"]
-	path = vim/bundle/molokai
-	url = https://github.com/tomasr/molokai.git
-[submodule "vim/bundle/wombat256.vim"]
-	path = vim/bundle/wombat256.vim
-	url = https://github.com/vim-scripts/wombat256.vim.git
-[submodule "vim/bundle/AutoFenc"]
-	path = vim/bundle/AutoFenc
-	url = https://github.com/s3rvac/AutoFenc.git
-[submodule "vim/bundle/vim-fugitive"]
-	path = vim/bundle/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
-[submodule "vim/bundle/tagbar"]
-	path = vim/bundle/tagbar
-	url = https://github.com/majutsushi/tagbar.git
-[submodule "vim/bundle/vim-css-color"]
-	path = vim/bundle/vim-css-color
-	url = https://github.com/ap/vim-css-color.git
-[submodule "vim/bundle/Better-CSS-Syntax-for-Vim"]
-	path = vim/bundle/Better-CSS-Syntax-for-Vim
-	url = https://github.com/vim-scripts/Better-CSS-Syntax-for-Vim.git
-[submodule "vim/bundle/syntastic"]
-	path = vim/bundle/syntastic
-	url = https://github.com/scrooloose/syntastic.git
-[submodule "vim/bundle/nerdtree"]
-	path = vim/bundle/nerdtree
+[submodule "vim/submodules/summerfruit256.vim"]
+	path = vim/submodules/summerfruit256.vim
+	url = https://github.com/vim-scripts/summerfruit256.vim.git
+[submodule "vim/submodules/vim-colors-solarized"]
+	path = vim/submodules/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "vim/submodules/nerdtree"]
+	path = vim/submodules/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
+[submodule "vim/submodules/syntastic"]
+	path = vim/submodules/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule "vim/submodules/vim-css-color"]
+	path = vim/submodules/vim-css-color
+	url = https://github.com/ap/vim-css-color.git
+[submodule "vim/submodules/tagbar"]
+	path = vim/submodules/tagbar
+	url = https://github.com/majutsushi/tagbar.git
+[submodule "vim/submodules/vim-fugitive"]
+	path = vim/submodules/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "vim/submodules/AutoFenc"]
+	path = vim/submodules/AutoFenc
+	url = https://github.com/s3rvac/AutoFenc.git
+[submodule "vim/submodules/wombat256.vim"]
+	path = vim/submodules/wombat256.vim
+	url = https://github.com/vim-scripts/wombat256.vim.git
+[submodule "vim/submodules/molokai"]
+	path = vim/submodules/molokai
+	url = https://github.com/tomasr/molokai.git
+[submodule "vim/submodules/blockdiag.vim"]
+	path = vim/submodules/blockdiag.vim
+	url = https://github.com/aohta/blockdiag.vim.git
+[submodule "vim/submodules/goyo.vim"]
+	path = vim/submodules/goyo.vim
+	url = https://github.com/junegunn/goyo.vim.git
+[submodule "vim/submodules/vim-latex"]
+	path = vim/submodules/vim-latex
+	url = https://github.com/lervag/vim-latex.git
+[submodule "vim/submodules/vim-flake8"]
+	path = vim/submodules/vim-flake8
+	url = https://github.com/nvie/vim-flake8.git
+[submodule "vim/submodules/vim-airline"]
+	path = vim/submodules/vim-airline
+	url = https://github.com/bling/vim-airline.git
+[submodule "vim/submodules/supertab"]
+	path = vim/submodules/supertab
+	url = https://github.com/ervandew/supertab.git
+[submodule "vim/submodules/SimpylFold"]
+	path = vim/submodules/SimpylFold
+	url = https://github.com/tmhedberg/SimpylFold.git

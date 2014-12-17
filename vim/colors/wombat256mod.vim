@@ -1,1 +1,1 @@
-../bundle/wombat256.vim/colors/wombat256mod.vim
+../submodules/wombat256.vim/colors/wombat256mod.vim
