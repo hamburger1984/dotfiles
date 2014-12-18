@@ -52,3 +52,6 @@
 [submodule "vim/submodules/SimpylFold"]
 	path = vim/submodules/SimpylFold
 	url = https://github.com/tmhedberg/SimpylFold.git
+[submodule "vim/submodules/ag.vim"]
+	path = vim/submodules/ag.vim
+	url = https://github.com/rking/ag.vim.git

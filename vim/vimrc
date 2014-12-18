@@ -1,10 +1,7 @@
-
 " Automatic reloading of .vimrc
 au! bufwritepost .vimrc source %
 
 " Better paste
-" press F2 before pasting large code blocks
-" at the bottom you should see ``-- INSERT (paste) --``
 set pastetoggle=<F2>
 
 " Select a default copy&paste register
@@ -18,19 +15,23 @@ set bs=2
 set sm " Shortly jump to matching bracket
 set so=4 " scrolloff (lines of context during scrolling)
 
-" Rebind <Leader> key
+" <Leader> key
 let mapleader=","
 
-" Bind nohl
-" Removes highlight of previous search
+" Learn to move..
+nnoremap <Left> :echoe "Use h"<CR>
+vnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+vnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+vnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
+vnoremap <Down> :echoe "Use j"<CR>
+
+" nohl
 noremap <C-n> :nohl<CR>
 vnoremap <C-n> :nohl<CR>
 inoremap <C-n> :nohl<CR>
-
-" Quicksave command
-noremap <C-z> :update<CR>
-vnoremap <C-z> <C-C> :update<CR>
-inoremap <C-z> <C-O> :update<CR>
 
 " faster split resize
 map <Leader>+ <esc>:res +3<CR>
@@ -47,16 +48,13 @@ map <Leader>M <esc>:tabm +1<CR>
 " moar tabs
 set tabpagemax=50
 
-" ,cd Change directory to that of current file
+" <Leader>cd Change directory to that of current file
 map <Leader>cd :cd %:p:h<CR>
 
 " map sort to a key
 vnoremap <Leader>s :sort<CR>
 
 " easier moving of code blocks
-" Try to go into visual mode (v), then
-" select several lines of code here and
-" press ``>`` several times.
 vnoremap < <gv
 vnoremap > >gv
 
@@ -71,9 +69,9 @@ au BufWinEnter * call matchadd('ErrorMsg', '\s\+$', -1)
 
 " Color scheme
 set t_Co=256
-color molokai
+" color molokai
 " color summerfruit256
-" color wombat256mod
+color wombat256mod
 
 " Enable syntax highlighting
 filetype off
@@ -86,18 +84,18 @@ au InsertLeave * set number relativenumber
 set number relativenumber
 
 " 80 cols, wrap, ..
-set tw=79
+set tw=80
 set wrap
 set linebreak
 set fo-=t
-set colorcolumn=80
+set colorcolumn=+1
 highlight ColorColumn ctermbg=236
 
 " Useful settings
 set history=700
 set undolevels=700
 
-" Real programmers don't use TABs but spaces
+" Don't use TABs but spaces
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -116,34 +114,6 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-" Setup Pathogen to manage your plugins
-" mkdir -p ~/.vim/autoload ~/.vim/bundle
-" curl -so ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
-" Now you can install any plugin into a .vim/bundle/plugin-name/ folder
-call pathogen#infect()
-
-" ============================================================================
-
-" set guifont=Source\ Code\ Pro\ for\ Powerline
-
-" Settings for vim-airline
-" cd ~/.vim/bundle
-" git clone git://github.com/bling/vim-airline.git
-let g:airline#extensions#tabline#enabled=1
-" once powerline fonts are installed use this:
-let g:airline_powerline_fonts=1
-set laststatus=2
-
-" Settings for vim-flake8
-"" use F3 to run flake8
-au FileType python map <buffer> <F3> :call Flake8()<CR>
-
-" Distraction free writing goyo.vim
-" toogle with <Leader><Space>
-nnoremap <Leader><Space> :Goyo<CR>
-let g:goyo_width = 120
-let g:goyo_linenr = 0
-
 " Filetype mappings..
 au BufNewFile,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead *.config set filetype=xml
@@ -152,6 +122,26 @@ au BufNewFile,BufRead *.config set filetype=xml
 nnoremap <Leader>f za
 vnoremap <Leader>f zf
 au FileType python setl fen foldmethod=indent foldlevelstart=0 foldnestmax=2
+
+" ============================================================================
+" Setup Pathogen
+call pathogen#infect()
+
+" ============================================================================
+" Settings for plugins
+
+" vim-airline
+let g:airline#extensions#tabline#enabled=1
+let g:airline_powerline_fonts=1
+set laststatus=2
+
+" vim-flake8
+au FileType python map <buffer> <F3> :call Flake8()<CR>
+
+" goyo.vim
+nnoremap <Leader><Space> :Goyo<CR>
+let g:goyo_width = 120
+let g:goyo_linenr = 0
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
