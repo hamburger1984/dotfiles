@@ -37,6 +37,10 @@ inoremap <C-n> :nohl<CR>
 map <Leader>+ <esc>:res +3<CR>
 map <Leader>- <esc>:res -3<CR>
 
+" new split below/right of current
+set splitbelow
+set splitright
+
 " easier moving between tabs
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
