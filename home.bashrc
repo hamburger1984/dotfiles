@@ -12,7 +12,7 @@ alias mv='mv -i'
 alias l='ls -lah'
 
 alias resetcolors='konsoleprofile colors=DarkPastels'
-alias su='konsoleprofile colors=WhiteOnBlack; /usr/bin/su; resetcolors'
+alias su='konsoleprofile colors=DarkPastelsSU; /usr/bin/su; resetcolors'
 
 # cmake & make
 alias cm='cmake ..; make -j -l 4'
