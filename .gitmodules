@@ -31,9 +31,6 @@
 [submodule "vim/submodules/molokai"]
 	path = vim/submodules/molokai
 	url = https://github.com/tomasr/molokai.git
-[submodule "vim/submodules/blockdiag.vim"]
-	path = vim/submodules/blockdiag.vim
-	url = https://github.com/aohta/blockdiag.vim.git
 [submodule "vim/submodules/goyo.vim"]
 	path = vim/submodules/goyo.vim
 	url = https://github.com/junegunn/goyo.vim.git
@@ -52,6 +49,15 @@
 [submodule "vim/submodules/SimpylFold"]
 	path = vim/submodules/SimpylFold
 	url = https://github.com/tmhedberg/SimpylFold.git
-[submodule "vim/submodules/ag.vim"]
-	path = vim/submodules/ag.vim
-	url = https://github.com/rking/ag.vim.git
+[submodule "vim/submodules/vim-surround"]
+	path = vim/submodules/vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule "vim/submodules/ctrlp.vim"]
+	path = vim/submodules/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim.git
+[submodule "vim/submodules/vim-markdown"]
+	path = vim/submodules/vim-markdown
+	url = https://github.com/tpope/vim-markdown
+[submodule "vim/submodules/vim-gitgutter"]
+	path = vim/submodules/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter

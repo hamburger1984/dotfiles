@@ -6,10 +6,14 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # User specific aliases and functions
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias l='ls -lah'
+alias lt='ls -laht'
 
 alias resetcolors='konsoleprofile colors=DarkPastels'
 alias su='konsoleprofile colors=DarkPastelsSU; /usr/bin/su; resetcolors'
