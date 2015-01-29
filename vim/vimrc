@@ -104,6 +104,9 @@ set shiftwidth=4
 set shiftround
 set expandtab
 
+" Indent new lines
+set autoindent
+
 " Make search case insensitive
 set hlsearch
 set incsearch
