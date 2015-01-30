@@ -61,3 +61,6 @@
 [submodule "vim/submodules/vim-gitgutter"]
 	path = vim/submodules/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter
+[submodule "vim/submodules/vimerl"]
+	path = vim/submodules/vimerl
+	url = https://github.com/jimenezrick/vimerl.git
