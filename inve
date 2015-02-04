@@ -14,8 +14,7 @@ while [ "$PWD" != "/" ]; do
     # Stop here if this the root of a virtualenv
     if [ \
         -x bin/python \
-        -a -e lib/python*/site.py \
-        -a -e include/python*/Python.h ]
+        -a -d lib/python*/site-packages ]
     then
         break
     fi
