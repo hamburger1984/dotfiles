@@ -41,16 +41,29 @@ map <Leader>- <esc>:res -3<CR>
 set splitbelow
 set splitright
 
+" ...let's try to use buffers instead of tabs...
+" see: https://joshldavis.com/2014/04/05/vim-tab-madness-buffers-vs-tabs/
 " easier moving between tabs
-map <Leader>n <esc>:tabprevious<CR>
-map <Leader>m <esc>:tabnext<CR>
+" map <Leader>n <esc>:tabprevious<CR>
+" map <Leader>m <esc>:tabnext<CR>
 
 " move tabs
-map <Leader>N <esc>:tabm -1<CR>
-map <Leader>M <esc>:tabm +1<CR>
+" map <Leader>N <esc>:tabm -1<CR>
+" map <Leader>M <esc>:tabm +1<CR>
 
 " moar tabs
-set tabpagemax=50
+" set tabpagemax=50
+
+" ...so: buffers
+" easier buffer switching
+map <Leader>n <esc>:bprevious<CR>
+map <Leader>m <esc>:bnext<CR>
+
+" open new (empty) buffer
+map <Leader>a <esc>:enew<CR>
+
+" close/delete current buffer
+map <Leader>x <esc>:bd<CR>
 
 " <Leader>cd Change directory to that of current file
 map <Leader>cd :cd %:p:h<CR>
@@ -130,22 +143,19 @@ vnoremap <Leader>f zf
 au FileType python setl fen foldmethod=indent foldlevelstart=0 foldnestmax=2
 au FileType json setl fen foldmethod=syntax foldlevelstart=2
 
-" running stuff ~> format/lint/whatever/..
-au FileType json map <buffer> <F3> :%!python -m json.tool<CR>
-au FileType xml map <buffer> <F3> :%!xmllint --format --recover -<CR>
-
 " ============================================================================
 " Setup Pathogen
 call pathogen#infect()
-
 " ============================================================================
-" Settings for plugins
 
 " vim-airline
 let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts=1
 set laststatus=2
 
+" running stuff ~> format/lint/whatever/..
+au FileType json map <buffer> <F3> :%!python -m json.tool<CR>
+au FileType xml map <buffer> <F3> :%!xmllint --format --recover -<CR>
 " vim-flake8
 au FileType python map <buffer> <F3> :call Flake8()<CR>
 
@@ -160,3 +170,5 @@ nmap <F8> :TagbarToggle<CR>
 " Syntastic
 let g:syntastic_python_python_exec = '~/opt/bin/python3'
 
+" NERDTree
+map <Leader>e :NERDTreeToggle<CR>
