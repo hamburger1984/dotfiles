@@ -34,8 +34,8 @@ vnoremap <C-n> :nohl<CR>
 inoremap <C-n> :nohl<CR>
 
 " faster split resize
-map <Leader>+ <esc>:res +3<CR>
-map <Leader>- <esc>:res -3<CR>
+map <Leader>+ <esc>:vertical resize +5<CR>
+map <Leader>- <esc>:vertical resize -5<CR>
 
 " new split below/right of current
 set splitbelow

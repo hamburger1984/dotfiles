@@ -12,11 +12,12 @@ alias ....='cd ../../..'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-alias l='ls -lah'
-alias lt='ls -laht'
+alias l='ls -loah'
+alias lt='ls -loaht'
+alias lS='ls -loahS'
 
 alias resetcolors='konsoleprofile colors=DarkPastels'
-alias su='konsoleprofile colors=DarkPastelsSU; /usr/bin/su; resetcolors'
+alias su='konsoleprofile colors=RedOnBlack; /usr/bin/su; resetcolors'
 
 # cmake & make
 alias cm='cmake ..; make -j -l 4'
@@ -75,7 +76,7 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
 # prompt
-export PS1="\[\e[0m\]\t \[\e[0;33m\]\u\[\e[0m\]@\[\e[0;33m\]\h\[\e[0m\] \[\w\] \[\e[0;34m\]$(git branch 2>/dev/null|cut -f2 -d\* -s| xargs echo)\[\e[0m\]\$ "
+export PS1='\[\e[0m\]\t \[\e[0;33m\]\u\[\e[0m\]@\[\e[0;33m\]\h\[\e[0m\] \[\w\] \[\e[0;34m\]$(git branch 2>/dev/null|cut -f2 -d\* -s| xargs echo)\[\e[0m\]\$ '
 
 if [ -n "$VIRTUAL_ENV" ]; then
     export PS1="$PS1\[\033[0;34m\](${VIRTUAL_ENV##*/})\[\e[0m\] "
