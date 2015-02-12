@@ -64,3 +64,6 @@
 [submodule "vim/submodules/vimerl"]
 	path = vim/submodules/vimerl
 	url = https://github.com/jimenezrick/vimerl.git
+[submodule "vim/submodules/csv.vim"]
+	path = vim/submodules/csv.vim
+	url = https://github.com/chrisbra/csv.vim.git
