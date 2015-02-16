@@ -41,20 +41,6 @@ map <Leader>- <esc>:vertical resize -5<CR>
 set splitbelow
 set splitright
 
-" ...let's try to use buffers instead of tabs...
-" see: https://joshldavis.com/2014/04/05/vim-tab-madness-buffers-vs-tabs/
-" easier moving between tabs
-" map <Leader>n <esc>:tabprevious<CR>
-" map <Leader>m <esc>:tabnext<CR>
-
-" move tabs
-" map <Leader>N <esc>:tabm -1<CR>
-" map <Leader>M <esc>:tabm +1<CR>
-
-" moar tabs
-" set tabpagemax=50
-
-" ...so: buffers
 " easier buffer switching
 map <Leader>n <esc>:bprevious<CR>
 map <Leader>m <esc>:bnext<CR>
@@ -172,3 +158,7 @@ let g:syntastic_python_python_exec = '~/opt/bin/python3'
 
 " NERDTree
 map <Leader>e :NERDTreeToggle<CR>
+
+" Unite
+map <Leader>b :Unite buffer<CR>
+map <Leader>r :Unite file_rec<CR>
