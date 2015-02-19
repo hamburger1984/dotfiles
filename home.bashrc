@@ -33,11 +33,7 @@ alias rst='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && echo -n \"---
 ## use with youtube-dl, grab a few (mrsuicidesheep?) tracks, cd to folder, win!
 alias playFolder='find . -type f \( -iname "*.aiff" -o -iname "*.m4a" -o -iname "*.mp3" -o -iname "*.ogg" -o -iname "*.opus" -o -iname "*.webm" \) | sed "s/^\.\/\(.*\)/\1/" | sort > .play.vlc && cvlc -I ncurses .play.vlc; rm -f .play.vlc'
 
-alias htpc='ssh root@192.168.1.71'
-alias mobi1='ssh krohn@mobi1.cpt.haw-hamburg.de'
-#alias mobi5='konsoleprofile colors=Solarized; ssh krohn@141.22.213.44; resetcolors'
-#alias mobi5='ssh krohn@mobi5.cpt.haw-hamburg.de'
-alias linklab='ssh krohn@212.45.111.154'
+alias flowb='ssh 212.45.111.157'
 
 # other..
 alias histstat="history | awk '{a[\$2]++ } END{for(i in a){print a[i] \" \" i}}'|sort -rn|head -n 12"
