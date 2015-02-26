@@ -20,4 +20,4 @@
     sl = stash list
     st = status
 [push]
-	default = simple
+    default = simple

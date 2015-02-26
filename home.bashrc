@@ -14,7 +14,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias l='ls -loah'
 alias lt='ls -loaht'
-alias lS='ls -loahS'
+alias lss='ls -loahS'
 
 alias resetcolors='konsoleprofile colors=DarkPastels'
 alias su='konsoleprofile colors=RedOnBlack; /usr/bin/su; resetcolors'

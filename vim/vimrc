@@ -127,7 +127,7 @@ au BufNewFile,BufRead *.conf set filetype=config
 nnoremap <Leader>f za
 vnoremap <Leader>f zf
 au FileType python setl fen foldmethod=indent foldlevelstart=0 foldnestmax=2
-au FileType json setl fen foldmethod=syntax foldlevelstart=2
+au FileType json,c,cpp,xml setl fen foldmethod=syntax foldlevelstart=2
 
 " ============================================================================
 " Setup Pathogen
