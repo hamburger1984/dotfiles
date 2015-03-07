@@ -40,6 +40,19 @@ alias histstat="history | awk '{a[\$2]++ } END{for(i in a){print a[i] \" \" i}}'
 
 alias simplehttp='python -m SimpleHTTPServer'
 
+function spindown(){
+if test "$#" -ne 1; then
+echo "Usage: spindown drivename"
+return 0
+fi
+if mount | grep -q $1; then
+echo "$1 is mounted.. cannot spin down"
+else
+echo "spinning down $1"
+sudo hdparm -y $1
+fi
+}
+
 function adjustExif(){
 while IFS= read -d $'\0' -r PIC; do
 #DATE=$(exiftool -p '$DateTimeOriginal' "$PIC" | sed 's/[: ]//g')
