@@ -52,8 +52,11 @@ map <Leader>m <esc>:bnext<CR>
 " open new (empty) buffer
 map <Leader>a <esc>:enew<CR>
 
-" close/delete current buffer
-map <Leader>x <esc>:bd<CR>
+" open new vertical split
+map <Leader>v <esc>:vnew<CR>
+
+" close current file, but keep buffers intact
+map <Leader>x <esc>:bp\|bd #<CR>
 
 " <Leader>cd Change directory to that of current file
 map <Leader>cd :cd %:p:h<CR>
