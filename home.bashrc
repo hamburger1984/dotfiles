@@ -16,15 +16,15 @@ alias l='ls -loah'
 alias lt='ls -loaht'
 alias lss='ls -loahS'
 
-alias resetcolors='konsoleprofile colors=DarkPastels'
-alias su='konsoleprofile colors=RedOnBlack; /usr/bin/su; resetcolors'
+# alias resetcolors='konsoleprofile colors=DarkPastels'
+# alias su='konsoleprofile colors=RedOnBlack; /usr/bin/su; resetcolors'
 
 # cmake & make
-alias cm='cmake ..; make -j -l 4'
+alias cm='cmake ..; make -j -l 6'
 # cmake (for kde) & make
-alias km='cmake -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix` ..; make -j -l 4'
+alias km='cmake -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix` ..; make -j -l 6'
 # qmake & make
-alias qm='qmake ; make -j -l 4'
+alias qm='qmake ..; make -j -l 6'
 
 alias rpull='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && echo -n \"----- \" && echo \"{}\" | rev | cut -d\"/\" -f2 | rev && git pull" \;'
 alias rfetch='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && echo -n \"----- \" && echo \"{}\" | rev | cut -d\"/\" -f2 | rev && git fetch --prune" \;'
@@ -85,7 +85,7 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
 # prompt
-export PS1='\[\e[0m\]\t \[\e[0;33m\]\u\[\e[0m\]@\[\e[0;33m\]\h\[\e[0m\] \[\w\] \[\e[0;34m\]$(git branch 2>/dev/null|cut -f2 -d\* -s| xargs echo)\[\e[0m\]\$ '
+export PS1='\e[0m\t \e[0;33m\u\e[0m@\e[0;33m\h\e[0m \[\w\] \e[0;34m$(git branch 2>/dev/null|cut -f2 -d\* -s| xargs echo)\e[0m\$ '
 
 if [ -n "$VIRTUAL_ENV" ]; then
     export PS1="$PS1\[\033[0;34m\](${VIRTUAL_ENV##*/})\[\e[0m\] "
