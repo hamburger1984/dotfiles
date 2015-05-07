@@ -35,6 +35,8 @@ alias playFolder='find . -type f \( -iname "*.aiff" -o -iname "*.m4a" -o -iname 
 
 alias flowb='ssh 212.45.111.157'
 
+alias berry='ssh root@192.168.1.71'
+
 # other..
 alias histstat="history | awk '{a[\$2]++ } END{for(i in a){print a[i] \" \" i}}'|sort -rn|head -n 12"
 
