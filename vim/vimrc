@@ -152,6 +152,9 @@ au FileType xml map <buffer> <F3> :%!xmllint --format --recover -<CR>
 " vim-flake8
 au FileType python map <buffer> <F3> :call Flake8()<CR>
 
+" run make
+nnoremap <F5> :!make<CR>
+
 " goyo.vim
 nnoremap <Leader><Space> :Goyo<CR>
 let g:goyo_width = 120
