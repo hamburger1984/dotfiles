@@ -3,8 +3,8 @@
 # git clone https://github.com/python/cpython.git
 # cd cpython
 
-git pull && \
-    ./configure --prefix=$HOME/opt --exec_prefix=$HOME/opt && \
+#git pull && \
+./configure --prefix=$HOME/opt --exec_prefix=$HOME/opt && \
     make -j && \
     make install
 

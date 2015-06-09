@@ -73,3 +73,6 @@
 [submodule "vim/submodules/riv.vim"]
 	path = vim/submodules/riv.vim
 	url = https://github.com/Rykka/riv.vim.git
+[submodule "vim/submodules/rust.vim"]
+	path = vim/submodules/rust.vim
+	url = https://github.com/rust-lang/rust.vim.git

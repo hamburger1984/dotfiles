@@ -16,11 +16,12 @@ echo "----- CONFIGURE"
     --enable-luainterp \
     --enable-gui=gtk2 \
     --enable-cscope \
+    --enable-gpm \
     --prefix=/home/andreas/opt
 
 echo "----- COMPILE, INSTALL"
 make && make install
 
 echo "----- VERSION"
-$HOME/opt/bin/vim --version
-
+which vim
+vim --version
