@@ -4,4 +4,5 @@
 
 ./configure --enable-ccache && \
     make -j -l 3 && \
-    sudo make install
+    echo "run 'sudo make install' now.."
+#    sudo make install
