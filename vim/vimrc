@@ -35,7 +35,7 @@ vnoremap <Down> :echoe "Use j"<CR>
 " nohl
 noremap <C-n> :nohl<CR>
 vnoremap <C-n> :nohl<CR>
-inoremap <C-n> :nohl<CR>
+inoremap <C-n> <esc>:nohl<CR>
 
 " faster split resize
 map <Leader>+ <esc>:vertical resize +5<CR>
@@ -58,7 +58,7 @@ map <Leader>v <esc>:vnew<CR>
 " close current file, but keep buffers intact
 map <Leader>x <esc>:bp\|bd #<CR>
 
-" <Leader>cd Change directory to that of current file
+" change directory to that of current file
 map <Leader>cd :cd %:p:h<CR>
 
 " map sort to a key

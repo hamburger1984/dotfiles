@@ -20,7 +20,7 @@ echo "----- CONFIGURE"
     --prefix=/home/andreas/opt
 
 echo "----- COMPILE, INSTALL"
-make && make install
+make -j -l 3 && make install
 
 echo "----- VERSION"
 which vim

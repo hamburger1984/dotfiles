@@ -5,8 +5,15 @@ BASE=$(pwd)
 find . -type f -name .ytdlsource | while read SOURCE
 do
     SOURCE=${SOURCE/\./$BASE}
-    cd "$(dirname "$SOURCE")"
-    pwd
-    youtube-dl -f bestaudio -t -i -c -w -x -a .ytdlsource
+    pushd "$(dirname "$SOURCE")"
+
+
+    # fetch everything.
+    # youtube-dl -f bestaudio -t -i -c -w -x -a .ytdlsource
+
+    # .. just the latest (given new-to-old order..)
+    youtube-dl --playlist-end 5 -f bestaudio -t -i -c -w -x -a .ytdlsource
+
+    popd &> /dev/null
 done
 

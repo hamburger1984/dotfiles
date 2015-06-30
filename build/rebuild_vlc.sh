@@ -5,6 +5,9 @@ if [ ! -f ./configure ]; then
     ./bootstrap
 fi
 
+# build artefact
+rm -f modules/stream_out/chromecast/cast_channel.pb.*
+
 ./configure --prefix=$HOME/opt --exec-prefix=$HOME/opt \
     --with-x --enable-vdpau --enable-wayland \
     --enable-xvideo --enable-sdl \
@@ -19,6 +22,6 @@ fi
     --without-kde-solid \
     --enable-qt --enable-ncurses --enable-chromaprint
 
-./compile -j -l 6
+./compile -j -l 3
 
 make install
