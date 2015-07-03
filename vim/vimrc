@@ -1,6 +1,10 @@
 " Automatic reloading of .vimrc
 au! bufwritepost .vimrc source %
 
+if has("win32")
+    set encoding=utf-8
+endif
+
 " Better paste
 set pastetoggle=<F2>
 
