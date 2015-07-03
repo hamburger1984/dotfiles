@@ -2,4 +2,8 @@
 set lines=44 columns=120
 set ve=all
 
-set guifont=Source\ Code\ Pro\ for\ Powerline\ Medium\ 9
+if has("win32")
+    set guifont=Consolas:h10:cANSI
+else
+    set guifont=Source\ Code\ Pro\ for\ Powerline\ Medium\ 9
+endif
