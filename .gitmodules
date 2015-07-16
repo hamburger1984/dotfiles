@@ -88,3 +88,6 @@
 [submodule "vim/submodules/lightline.vim"]
 	path = vim/submodules/lightline.vim
 	url = https://github.com/itchyny/lightline.vim.git
+[submodule "vim/submodules/vim-bufferline"]
+	path = vim/submodules/vim-bufferline
+	url = https://github.com/bling/vim-bufferline.git

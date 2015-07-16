@@ -1,7 +1,6 @@
 " Automatic reloading of .vimrc
 au! bufwritepost .vimrc source %
 
-
 "-------------------------------------------------------------------------------
 " Set encoding to utf-8
 "-------------------------------------------------------------------------------
@@ -204,17 +203,27 @@ let g:lightline = {
     \ 'colorscheme': 'wombat',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+    \             [ 'readonly', 'fugitive', 'filename' ],
+    \             [ 'modified', 'bufferline' ] ],
+    \   'right': [ [ 'lineinfo' ], [ 'percent'],
+    \              [ 'fileformat', 'fileencoding', 'filetype', 'syntastic' ] ]
     \ },
     \ 'component': {
+    \   'fugitive': '%{exists("*fugitive#head")?" ".fugitive#head():""}',
     \   'readonly': '%{&filetype=="help"?"":&readonly?"":""}',
     \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-    \   'fugitive': '%{exists("*fugitive#head")?" ".fugitive#head():""}'
+    \   'bufferline': '%{bufferline#refresh_status()}%{g:bufferline_status_info.before . g:bufferline_status_info.current . g:bufferline_status_info.after}'
+    \ },
+    \ 'component_expand': {
+    \     'syntastic': 'SyntasticStatuslineFlag',
+    \ },
+    \ 'component_type': {
+    \     'syntastic': 'middle',
     \ },
     \ 'component_visible_condition': {
+    \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())',
     \   'readonly': '(&filetype!="help"&& &readonly)',
-    \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
-    \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+    \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))'
     \ },
     \ 'component_function': {
     \   'filetype': 'TypeIcon',
@@ -235,6 +244,10 @@ function! FormatIcon()
 endfunction
 
 set laststatus=2
+"-------------------------------------------------------------------------------
+" silence bufferline - lightline will display its content
+"-------------------------------------------------------------------------------
+let g:bufferline_echo = 0
 "-------------------------------------------------------------------------------
 " running stuff ~> format/lint/whatever/..
 "-------------------------------------------------------------------------------

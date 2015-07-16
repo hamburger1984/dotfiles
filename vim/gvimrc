@@ -1,6 +1,9 @@
-
 set lines=44 columns=120
 set ve=all
+
+set guioptions-=m " no menu
+set guioptions-=T " no toolbar
+set guioptions-=r " no right scrollbar
 
 if has("win32")
     set guifont=Consolas:h10:cANSI
