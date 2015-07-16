@@ -85,3 +85,6 @@
 [submodule "vim/submodules/nerdtree-git-plugin"]
 	path = vim/submodules/nerdtree-git-plugin
 	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
+[submodule "vim/submodules/lightline.vim"]
+	path = vim/submodules/lightline.vim
+	url = https://github.com/itchyny/lightline.vim.git

@@ -198,12 +198,42 @@ call pathogen#infect()
 " ============================================================================
 
 "-------------------------------------------------------------------------------
-" vim-airline
+" lightline
 "-------------------------------------------------------------------------------
-let g:airline#extensions#tabline#enabled=1
-if !has("win32")
-    let g:airline_powerline_fonts=1
-endif
+let g:lightline = {
+    \ 'colorscheme': 'wombat',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+    \ },
+    \ 'component': {
+    \   'readonly': '%{&filetype=="help"?"":&readonly?"":""}',
+    \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+    \   'fugitive': '%{exists("*fugitive#head")?" ".fugitive#head():""}'
+    \ },
+    \ 'component_visible_condition': {
+    \   'readonly': '(&filetype!="help"&& &readonly)',
+    \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+    \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+    \ },
+    \ 'component_function': {
+    \   'filetype': 'TypeIcon',
+    \   'fileformat': 'FormatIcon'
+    \ },
+    \ 'separator': { 'left': '', 'right': '' },
+    \ 'subseparator': { 'left': '', 'right': '' }
+    \ }
+
+function! TypeIcon()
+    return winwidth(0) < 70 ? '' : (strlen(&filetype) ? &filetype . ' ' .
+                \ WebDevIconsGetFileTypeSymbol() : 'no ft')
+endfunction
+
+function! FormatIcon()
+    return winwidth(0) < 70 ? '' : (&fileformat . ' ' .
+                \ WebDevIconsGetFileFormatSymbol())
+endfunction
+
 set laststatus=2
 "-------------------------------------------------------------------------------
 " running stuff ~> format/lint/whatever/..
@@ -228,33 +258,33 @@ nmap <F8> :TagbarToggle<CR>
 " Tagbar for objective c
 "-------------------------------------------------------------------------------
 let g:tagbar_type_objc = {
-\  'ctagstype': 'objc'
-\, 'ctagsargs': [
-\   '--options='.expand('~/.vim/bundle/ctags-options-objc')
-\,  '--objc-kinds=-N'
-\,  '--format=2'
-\,  '--excmd=pattern'
-\,  '--extra='
-\,  '--fields=nksaSmte'
-\,  '-f -'
-\]
-\, 'kinds': [
-\     'i:class interface'
-\,    'x:class extension'
-\,    'I:class implementation'
-\,    'P:protocol'
-\,    'M:method'
-\,    't:typedef'
-\,    'v:variable'
-\,    'p:property'
-\,    'e:enumeration'
-\,    'f:function'
-\,    'd:macro'
-\,    'g:pragma'
-\,    'c:constant'
-\, ]
-\, 'sro': ' '
-\}
+    \  'ctagstype': 'objc'
+    \, 'ctagsargs': [
+    \   '--options='.expand('~/.vim/bundle/ctags-options-objc')
+    \,  '--objc-kinds=-N'
+    \,  '--format=2'
+    \,  '--excmd=pattern'
+    \,  '--extra='
+    \,  '--fields=nksaSmte'
+    \,  '-f -'
+    \]
+    \, 'kinds': [
+    \     'i:class interface'
+    \,    'x:class extension'
+    \,    'I:class implementation'
+    \,    'P:protocol'
+    \,    'M:method'
+    \,    't:typedef'
+    \,    'v:variable'
+    \,    'p:property'
+    \,    'e:enumeration'
+    \,    'f:function'
+    \,    'd:macro'
+    \,    'g:pragma'
+    \,    'c:constant'
+    \, ]
+    \, 'sro': ' '
+    \}
 "-------------------------------------------------------------------------------
 " Syntastic
 "-------------------------------------------------------------------------------
@@ -263,6 +293,10 @@ let g:syntastic_python_python_exec = '~/opt/bin/python3'
 " NERDTree
 "-------------------------------------------------------------------------------
 map <Leader>e :NERDTreeToggle<CR>
+"-------------------------------------------------------------------------------
+" NERDTree GitPlugin & WebDevIcons
+"-------------------------------------------------------------------------------
+let g:WebDevIconsNerdTreeGitPluginForceVAlign=1
 "-------------------------------------------------------------------------------
 " Unite
 "-------------------------------------------------------------------------------
