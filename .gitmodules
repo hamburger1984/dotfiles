@@ -79,3 +79,6 @@
 [submodule "vim/submodules/nim.vim"]
 	path = vim/submodules/nim.vim
 	url = https://github.com/zah/nim.vim
+[submodule "vim/submodules/vim-devicons"]
+	path = vim/submodules/vim-devicons
+	url = https://github.com/ryanoasis/vim-devicons.git

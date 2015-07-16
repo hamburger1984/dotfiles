@@ -12,12 +12,12 @@ alias ....='cd ../../..'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+alias less='less --RAW-CONTROL-CHARS'
+export LS_OPTS='--color=auto'
+alias ls='ls ${LS_OPTS}'
 alias l='ls -loah'
 alias lt='ls -loaht'
 alias lss='ls -loahS'
-
-# alias resetcolors='konsoleprofile colors=DarkPastels'
-# alias su='konsoleprofile colors=RedOnBlack; /usr/bin/su; resetcolors'
 
 # cmake & make
 alias cm='cmake ..; make -j -l 6'
@@ -34,7 +34,6 @@ alias rst='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && echo -n \"---
 alias playFolder='find . -type f \( -iname "*.aiff" -o -iname "*.m4a" -o -iname "*.mp3" -o -iname "*.ogg" -o -iname "*.opus" -o -iname "*.webm" \) -printf "%Ts\t%p\n" | sort -nr | cut -f2 | sed "s/^\.\/\(.*\)/\1/" > .play.vlc && cvlc -I ncurses .play.vlc; rm -f .play.vlc'
 
 alias flowb='ssh 212.45.111.157'
-
 alias berry='ssh root@192.168.1.71'
 
 # other..
@@ -43,16 +42,16 @@ alias histstat="history | awk '{a[\$2]++ } END{for(i in a){print a[i] \" \" i}}'
 alias simplehttp='python -m SimpleHTTPServer'
 
 function spindown(){
-if test "$#" -ne 1; then
-echo "Usage: spindown drivename"
-return 0
-fi
-if mount | grep -q $1; then
-echo "$1 is mounted.. cannot spin down"
-else
-echo "spinning down $1"
-sudo hdparm -y $1
-fi
+    if test "$#" -ne 1; then
+        echo "Usage: spindown drivename"
+        return 0
+    fi
+    if mount | grep -q $1; then
+        echo "$1 is mounted.. cannot spin down"
+    else
+        echo "spinning down $1"
+        sudo hdparm -y $1
+    fi
 }
 
 function adjustExif(){
@@ -75,16 +74,6 @@ export PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"
 if [ $TERM = linux ]; then
     setfont /lib/kbd/consolefonts/Lat2-Terminus16.psfu.gz
 fi
-
-# Colour in man pages
-# ============================================================
-export LESS_TERMCAP_mb=$'\E[01;31m'
-export LESS_TERMCAP_md=$'\E[01;31m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[01;44;33m'
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[01;32m'
 
 # prompt
 export PS1='\e[0m\t \e[0;33m\u\e[0m@\e[0;33m\h\e[0m \[\w\] \e[0;34m$(git branch 2>/dev/null|cut -f2 -d\* -s| xargs echo)\e[0m\$ '

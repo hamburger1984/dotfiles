@@ -1,32 +1,46 @@
 " Automatic reloading of .vimrc
 au! bufwritepost .vimrc source %
 
-if has("win32")
-    set encoding=utf-8
-endif
 
-" Better paste
+"-------------------------------------------------------------------------------
+" Set encoding to utf-8
+"-------------------------------------------------------------------------------
+set encoding=utf-8
+"-------------------------------------------------------------------------------
+" Toggle paste - turns on/off autoindenting etc.
+"-------------------------------------------------------------------------------
 set pastetoggle=<F2>
-
+"-------------------------------------------------------------------------------
+" Turn off paste mode when leaving insert
+"-------------------------------------------------------------------------------
+au InsertLeave * set nopaste
+"-------------------------------------------------------------------------------
 " Select a default copy&paste register
-" * is selection ~ unnamed, + is clipboard ~ unnamedplus
+" * is selection ~ unnamed
+" + is clipboard ~ unnamedplus
+"-------------------------------------------------------------------------------
 if has("win32")
     set clipboard=unnamed
 else
     set clipboard=unnamedplus
 endif
-
+"-------------------------------------------------------------------------------
 " Mouse & Backspace
+"-------------------------------------------------------------------------------
 set mouse=a
 set bs=2
-
+"-------------------------------------------------------------------------------
+" Brackets & scrolling
+"-------------------------------------------------------------------------------
 set sm " Shortly jump to matching bracket
 set so=4 " scrolloff (lines of context during scrolling)
-
+"-------------------------------------------------------------------------------
 " <Leader> key
+"-------------------------------------------------------------------------------
 let mapleader=","
-
+"-------------------------------------------------------------------------------
 " Learn to move..
+"-------------------------------------------------------------------------------
 nnoremap <Left> :echoe "Use h"<CR>
 vnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
@@ -35,44 +49,78 @@ nnoremap <Up> :echoe "Use k"<CR>
 vnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 vnoremap <Down> :echoe "Use j"<CR>
-
-" nohl
+"-------------------------------------------------------------------------------
+" faster split resize
+"-------------------------------------------------------------------------------
+map <Leader>+ <esc>:vertical resize +5<CR>
+map <Leader>- <esc>:vertical resize -5<CR>
+"-------------------------------------------------------------------------------
+" new split below/right of current
+"-------------------------------------------------------------------------------
+set splitbelow
+set splitright
+"-------------------------------------------------------------------------------
+" easier buffer switching
+"-------------------------------------------------------------------------------
+map <Leader>n <esc>:bprevious<CR>
+map <Leader>m <esc>:bnext<CR>
+"-------------------------------------------------------------------------------
+" open new (empty) buffer
+"-------------------------------------------------------------------------------
+map <Leader>a <esc>:enew<CR>
+"-------------------------------------------------------------------------------
+" open new vertical split
+"-------------------------------------------------------------------------------
+map <Leader>v <esc>:vnew<CR>
+"-------------------------------------------------------------------------------
+" close current file, but keep buffers intact
+"-------------------------------------------------------------------------------
+map <Leader>x <esc>:bp\|bd #<CR>
+"-------------------------------------------------------------------------------
+" change directory to that of current file
+"-------------------------------------------------------------------------------
+map <Leader>cd :cd %:p:h<CR>
+"-------------------------------------------------------------------------------
+" map sort to a key
+"-------------------------------------------------------------------------------
+vnoremap <Leader>s :sort<CR>
+"-------------------------------------------------------------------------------
+" easier moving of code blocks
+"-------------------------------------------------------------------------------
+vnoremap < <gv
+vnoremap > >gv
+"-------------------------------------------------------------------------------
+" Make search case insensitive
+"-------------------------------------------------------------------------------
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+"-------------------------------------------------------------------------------
+" Automatically insert \v when searching, for sensible regex matching.
+"-------------------------------------------------------------------------------
+nnoremap / /\v
+vnoremap / /\v
+nnoremap ? ?\v
+vnoremap ? ?\v
+"-------------------------------------------------------------------------------
+" Keep search matches in the middle of the screen, and pulse the line when moving
+"-------------------------------------------------------------------------------
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+nnoremap <silent> * *zz
+nnoremap <silent> # #zz
+nnoremap <silent> g* g*zz
+nnoremap <silent> g# g#zz
+"-------------------------------------------------------------------------------
+" Clear search highlight
+"-------------------------------------------------------------------------------
 noremap <C-n> :nohl<CR>
 vnoremap <C-n> :nohl<CR>
 inoremap <C-n> <esc>:nohl<CR>
-
-" faster split resize
-map <Leader>+ <esc>:vertical resize +5<CR>
-map <Leader>- <esc>:vertical resize -5<CR>
-
-" new split below/right of current
-set splitbelow
-set splitright
-
-" easier buffer switching
-map <Leader>n <esc>:bprevious<CR>
-map <Leader>m <esc>:bnext<CR>
-
-" open new (empty) buffer
-map <Leader>a <esc>:enew<CR>
-
-" open new vertical split
-map <Leader>v <esc>:vnew<CR>
-
-" close current file, but keep buffers intact
-map <Leader>x <esc>:bp\|bd #<CR>
-
-" change directory to that of current file
-map <Leader>cd :cd %:p:h<CR>
-
-" map sort to a key
-vnoremap <Leader>s :sort<CR>
-
-" easier moving of code blocks
-vnoremap < <gv
-vnoremap > >gv
-
-" Whitespaces...
+"-------------------------------------------------------------------------------
+" Highlight multiple spaces and trailing whitespace
+"-------------------------------------------------------------------------------
 set listchars=tab:\|\ ,trail:·
 set list
 highlight Whitespace cterm=underline gui=underline ctermfg=yellow guifg=yellow
@@ -80,61 +128,65 @@ au ColorScheme * highlight Whitespace cterm=underline gui=underline ctermfg=yell
 au BufWinEnter * call matchadd('Whitespace', '  \+\($\)\@!', -1)
 " highlight trailing whitespace
 au BufWinEnter * call matchadd('ErrorMsg', '\s\+$', -1)
-
-" Color scheme
+"-------------------------------------------------------------------------------
+" Set color scheme
+"-------------------------------------------------------------------------------
 set t_Co=256
 color wombat256mod
-
+"-------------------------------------------------------------------------------
 " Enable syntax highlighting
+"-------------------------------------------------------------------------------
 filetype off
 filetype plugin indent on
 syntax on
-
-" (relative) line numbers and length
+"-------------------------------------------------------------------------------
+" (relative) line numbers
+"-------------------------------------------------------------------------------
 au InsertEnter * set number norelativenumber
 au InsertLeave * set number relativenumber
 set number relativenumber
-
+"-------------------------------------------------------------------------------
 " 80 cols, wrap, ..
+"-------------------------------------------------------------------------------
 set tw=80
 set wrap
 set linebreak
 set fo-=t
 set colorcolumn=+1
 highlight ColorColumn ctermbg=236
-
+"-------------------------------------------------------------------------------
 " Useful settings
+"-------------------------------------------------------------------------------
 set history=700
 set undolevels=700
-
+"-------------------------------------------------------------------------------
 " Don't use TABs but spaces
+"-------------------------------------------------------------------------------
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set shiftround
 set expandtab
-
+"-------------------------------------------------------------------------------
 " Indent new lines
+"-------------------------------------------------------------------------------
 set autoindent
-
-" Make search case insensitive
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-
+"-------------------------------------------------------------------------------
 " Disable stupid backup and swap files - they trigger too many events
 " for file system watchers
+"-------------------------------------------------------------------------------
 set nobackup
 set nowritebackup
 set noswapfile
-
+"-------------------------------------------------------------------------------
 " Filetype mappings..
+"-------------------------------------------------------------------------------
 au BufNewFile,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead *.config set filetype=xml
 au BufNewFile,BufRead *.conf set filetype=config
-
+"-------------------------------------------------------------------------------
 " Folding..
+"-------------------------------------------------------------------------------
 nnoremap <Leader>f za
 vnoremap <Leader>f zf
 au FileType python setl fen foldmethod=indent foldlevelstart=0 foldnestmax=2
@@ -145,36 +197,74 @@ au FileType json,c,cpp,xml setl fen foldmethod=syntax foldlevelstart=2
 call pathogen#infect()
 " ============================================================================
 
+"-------------------------------------------------------------------------------
 " vim-airline
+"-------------------------------------------------------------------------------
 let g:airline#extensions#tabline#enabled=1
 if !has("win32")
     let g:airline_powerline_fonts=1
 endif
 set laststatus=2
-
+"-------------------------------------------------------------------------------
 " running stuff ~> format/lint/whatever/..
+"-------------------------------------------------------------------------------
 au FileType json map <buffer> <F3> :%!python -m json.tool<CR>
-au FileType xml map <buffer> <F3> :%!xmllint --format --recover -<CR>
-" vim-flake8
+au FileType nim map <buffer> <Leader>c :!nim c %<CR>
+au FileType nim map <buffer> <F3> :!nim c -r %<CR>
 au FileType python map <buffer> <F3> :call Flake8()<CR>
-
-" run make
+au FileType xml map <buffer> <F3> :%!xmllint --format --recover -<CR>
 nnoremap <F5> :!make<CR>
-
+"-------------------------------------------------------------------------------
 " goyo.vim
+"-------------------------------------------------------------------------------
 nnoremap <Leader><Space> :Goyo<CR>
 let g:goyo_width = 120
 let g:goyo_linenr = 0
-
+"-------------------------------------------------------------------------------
 " Tagbar
+"-------------------------------------------------------------------------------
 nmap <F8> :TagbarToggle<CR>
-
+"-------------------------------------------------------------------------------
+" Tagbar for objective c
+"-------------------------------------------------------------------------------
+let g:tagbar_type_objc = {
+\  'ctagstype': 'objc'
+\, 'ctagsargs': [
+\   '--options='.expand('~/.vim/bundle/ctags-options-objc')
+\,  '--objc-kinds=-N'
+\,  '--format=2'
+\,  '--excmd=pattern'
+\,  '--extra='
+\,  '--fields=nksaSmte'
+\,  '-f -'
+\]
+\, 'kinds': [
+\     'i:class interface'
+\,    'x:class extension'
+\,    'I:class implementation'
+\,    'P:protocol'
+\,    'M:method'
+\,    't:typedef'
+\,    'v:variable'
+\,    'p:property'
+\,    'e:enumeration'
+\,    'f:function'
+\,    'd:macro'
+\,    'g:pragma'
+\,    'c:constant'
+\, ]
+\, 'sro': ' '
+\}
+"-------------------------------------------------------------------------------
 " Syntastic
+"-------------------------------------------------------------------------------
 let g:syntastic_python_python_exec = '~/opt/bin/python3'
-
+"-------------------------------------------------------------------------------
 " NERDTree
+"-------------------------------------------------------------------------------
 map <Leader>e :NERDTreeToggle<CR>
-
+"-------------------------------------------------------------------------------
 " Unite
+"-------------------------------------------------------------------------------
 map <Leader>b :Unite buffer<CR>
 map <Leader>r :Unite file_rec<CR>
