@@ -5,5 +5,6 @@ set ve=all
 if has("win32")
     set guifont=Consolas:h10:cANSI
 else
-    set guifont=Source\ Code\ Pro\ for\ Powerline\ Medium\ 9
+    " set guifont=Source\ Code\ Pro\ for\ Powerline\ Medium\ 9
+    set guifont=Sauce\ Code\ Powerline\ Plus\ Nerd\ File\ Types\ Mono\ 9
 endif
