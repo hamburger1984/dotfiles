@@ -159,7 +159,7 @@ highlight ColorColumn ctermbg=236
 set history=700
 set undolevels=700
 "-------------------------------------------------------------------------------
-" Don't use TABs but spaces
+" Don't use TABs but 4 spaces (except for xml, see below..)
 "-------------------------------------------------------------------------------
 set tabstop=4
 set softtabstop=4
@@ -183,13 +183,18 @@ set noswapfile
 au BufNewFile,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead *.config set filetype=xml
 au BufNewFile,BufRead *.conf set filetype=config
+au BufNewFile,BufRead *.geojson set filetype=json
 "-------------------------------------------------------------------------------
 " Folding..
 "-------------------------------------------------------------------------------
 nnoremap <Leader>f za
 vnoremap <Leader>f zf
-au FileType python setl fen foldmethod=indent foldlevelstart=0 foldnestmax=2
-au FileType json,c,cpp,xml setl fen foldmethod=syntax foldlevelstart=2
+au FileType python setl fen foldmethod=indent foldlevelstart=0 foldnestmax=3
+au FileType json,c,cpp setl fen foldmethod=syntax foldlevelstart=2
+" slow for big files..
+" let g:xml_syntax_folding=1
+" au FileType xml setl fen foldmethod=syntax foldlevelstart=1
+au FileType xml setl fen foldmethod=indent foldlevelstart=1 sw=2
 
 " ============================================================================
 " Setup Pathogen
