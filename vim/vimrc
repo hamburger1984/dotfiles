@@ -5,29 +5,37 @@ au! bufwritepost .vimrc source %
 "-------------------------------------------------------------------------------
 call plug#begin('~/.vim/plugged')
 " -- plugins
+Plug 'bling/vim-bufferline'
+Plug 'itchyny/lightline.vim'
+Plug 'ryanoasis/vim-devicons'
+
 Plug 's3rvac/AutoFenc'
 Plug 'chrisbra/csv.vim'
+
 Plug 'airblade/vim-gitgutter'
-Plug 'junegunn/goyo.vim'
-Plug 'itchyny/lightline.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'zah/nim.vim'
+Plug 'tpope/vim-fugitive'
+
+Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
+
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+Plug 'Xuyuanp/nerdtree-git-plugin', {'on': 'NERDTreeToggle'}
+
+Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
+
 Plug 'Rykka/riv.vim'
+Plug 'tpope/vim-markdown'
+Plug 'zah/nim.vim'
 Plug 'rust-lang/rust.vim'
+Plug 'jimenezrick/vimerl'
+Plug 'lervag/vimtex'
+
 Plug 'tmhedberg/SimpylFold'
 Plug 'ervandew/supertab'
-Plug 'scrooloose/syntastic'
-Plug 'majutsushi/tagbar'
 Plug 'Shougo/unite.vim'
-Plug 'bling/vim-bufferline'
-Plug 'ryanoasis/vim-devicons'
-Plug 'jimenezrick/vimerl'
+
+Plug 'scrooloose/syntastic'
 Plug 'nvie/vim-flake8'
-Plug 'tpope/vim-fugitive'
-Plug 'lervag/vimtex'
-Plug 'tpope/vim-markdown'
-Plug 'tpope/vim-surround'
+
 " -- color
 Plug 'tomasr/molokai'
 Plug 'altercation/vim-colors-solarized'
