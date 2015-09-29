@@ -1,6 +1,41 @@
 " Automatic reloading of .vimrc
 au! bufwritepost .vimrc source %
-
+"-------------------------------------------------------------------------------
+" Plugins
+"-------------------------------------------------------------------------------
+call plug#begin('~/.vim/plugged')
+" -- plugins
+Plug 's3rvac/AutoFenc'
+Plug 'chrisbra/csv.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/goyo.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'zah/nim.vim'
+Plug 'Rykka/riv.vim'
+Plug 'rust-lang/rust.vim'
+Plug 'tmhedberg/SimpylFold'
+Plug 'ervandew/supertab'
+Plug 'scrooloose/syntastic'
+Plug 'majutsushi/tagbar'
+Plug 'Shougo/unite.vim'
+Plug 'bling/vim-bufferline'
+Plug 'ryanoasis/vim-devicons'
+Plug 'jimenezrick/vimerl'
+Plug 'nvie/vim-flake8'
+Plug 'tpope/vim-fugitive'
+Plug 'lervag/vimtex'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-surround'
+" -- color
+Plug 'tomasr/molokai'
+Plug 'altercation/vim-colors-solarized'
+Plug 'vim-scripts/summerfruit256.vim'
+Plug 'vim-scripts/wombat256.vim'
+Plug 'dsolstad/vim-wombat256i'
+Plug 'romainl/Apprentice'
+call plug#end()
 "-------------------------------------------------------------------------------
 " Set encoding to utf-8
 "-------------------------------------------------------------------------------
@@ -131,7 +166,8 @@ au BufWinEnter * call matchadd('ErrorMsg', '\s\+$', -1)
 " Set color scheme
 "-------------------------------------------------------------------------------
 set t_Co=256
-color wombat256mod
+" colorscheme apprentice
+colorscheme wombat256i
 "-------------------------------------------------------------------------------
 " Enable syntax highlighting
 "-------------------------------------------------------------------------------
@@ -156,8 +192,8 @@ highlight ColorColumn ctermbg=236
 "-------------------------------------------------------------------------------
 " Useful settings
 "-------------------------------------------------------------------------------
-set history=700
-set undolevels=700
+set history=1000
+set undolevels=1000
 "-------------------------------------------------------------------------------
 " Don't use TABs but 4 spaces (except for xml, see below..)
 "-------------------------------------------------------------------------------
@@ -195,12 +231,6 @@ au FileType json,c,cpp setl fen foldmethod=syntax foldlevelstart=2
 " let g:xml_syntax_folding=1
 " au FileType xml setl fen foldmethod=syntax foldlevelstart=1
 au FileType xml setl fen foldmethod=indent foldlevelstart=1 sw=2
-
-" ============================================================================
-" Setup Pathogen
-call pathogen#infect()
-" ============================================================================
-
 "-------------------------------------------------------------------------------
 " lightline
 "-------------------------------------------------------------------------------
@@ -279,7 +309,7 @@ nmap <F8> :TagbarToggle<CR>
 let g:tagbar_type_objc = {
     \  'ctagstype': 'objc'
     \, 'ctagsargs': [
-    \   '--options='.expand('~/.vim/bundle/ctags-options-objc')
+    \   '--options='.expand('~/.vim/extras/ctags-options-objc')
     \,  '--objc-kinds=-N'
     \,  '--format=2'
     \,  '--excmd=pattern'

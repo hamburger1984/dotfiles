@@ -1,1 +1,0 @@
-../submodules/lightline.vim/
