@@ -5,44 +5,58 @@ au! bufwritepost .vimrc source %
 "-------------------------------------------------------------------------------
 call plug#begin('~/.vim/plugged')
 " -- plugins
+" bufferline, lightline, icons
 Plug 'bling/vim-bufferline'
 Plug 'itchyny/lightline.vim'
 Plug 'ryanoasis/vim-devicons'
 
-Plug 's3rvac/AutoFenc'
-Plug 'chrisbra/csv.vim'
-
+" git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
+" distraction free
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 
+" nerdtree (+git)
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'Xuyuanp/nerdtree-git-plugin', {'on': 'NERDTreeToggle'}
 
+" tagbar
 Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
 
-Plug 'Rykka/riv.vim'
-Plug 'tpope/vim-markdown'
-Plug 'zah/nim.vim'
-Plug 'rust-lang/rust.vim'
-Plug 'jimenezrick/vimerl'
-Plug 'lervag/vimtex'
+" fileencodings & language plugins
+Plug 's3rvac/AutoFenc'
+Plug 'chrisbra/csv.vim', {'for': 'csv'}
+Plug 'Rykka/riv.vim', {'for': 'rst'}
+Plug 'tpope/vim-markdown', {'for': 'markdown'}
+Plug 'zah/nim.vim', {'for': 'nim'}
+Plug 'rust-lang/rust.vim', {'for': 'rust'}
+Plug 'jimenezrick/vimerl', {'for': 'erlang'}
+Plug 'lervag/vimtex', {'for': 'tex'}
 
+" fold, complete, buffers, search
 Plug 'tmhedberg/SimpylFold'
 Plug 'ervandew/supertab'
 Plug 'Shougo/unite.vim'
 
+" syntax check..
 Plug 'scrooloose/syntastic'
-Plug 'nvie/vim-flake8'
+Plug 'nvie/vim-flake8', {'for': 'python'}
 
 " -- color
+" molokai
 Plug 'tomasr/molokai'
+" solarized
 Plug 'altercation/vim-colors-solarized'
+" summerfruit256
 Plug 'vim-scripts/summerfruit256.vim'
+" wombat256mod
 Plug 'vim-scripts/wombat256.vim'
+" wombat256i
 Plug 'dsolstad/vim-wombat256i'
+" apprentice
 Plug 'romainl/Apprentice'
+
 call plug#end()
 "-------------------------------------------------------------------------------
 " Set encoding to utf-8
