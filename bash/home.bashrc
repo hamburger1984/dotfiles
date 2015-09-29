@@ -25,7 +25,9 @@ alias cm='cmake ..; make -j -l 6'
 alias km='cmake -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix` ..; make -j -l 6'
 # qmake & make
 alias qm='qmake ..; make -j -l 6'
-
+# pip
+alias pipup='pip freeze --local | grep -v "^\-e" | cut -d= -f1 | xargs pip install -U'
+# git
 alias rpull='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && echo -n \"----- \" && echo \"{}\" | rev | cut -d\"/\" -f2 | rev && git pull" \;'
 alias rfetch='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && echo -n \"----- \" && echo \"{}\" | rev | cut -d\"/\" -f2 | rev && git fetch --prune" \;'
 alias rst='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && echo -n \"----- \" && echo \"{}\" | rev | cut -d\"/\" -f2 | rev && git status" \;'
@@ -33,6 +35,7 @@ alias rst='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && echo -n \"---
 ## use with youtube-dl, grab a few (mrsuicidesheep?) tracks, cd to folder, win!
 alias playFolder='find . -type f \( -iname "*.aiff" -o -iname "*.m4a" -o -iname "*.mp3" -o -iname "*.ogg" -o -iname "*.opus" -o -iname "*.webm" \) -printf "%Ts\t%p\n" | sort -nr | cut -f2 | sed "s/^\.\/\(.*\)/\1/" > .play.vlc && cvlc -I ncurses .play.vlc; rm -f .play.vlc'
 
+alias flowll='ssh 212.45.111.154'
 alias flowb='ssh 212.45.111.157'
 alias berry='ssh root@192.168.1.71'
 
