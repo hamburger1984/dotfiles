@@ -1,6 +1,7 @@
 #!/bin/sh
 
 files=("$HOME/.vimrc" "$HOME/.gvimrc")
+
 for f in "${files[@]}"; do
     if [ -f "$f" ]; then
         echo "removing $f"
@@ -13,6 +14,7 @@ if [ "`uname -o`" == "Msys" ]; then
 else
     folder="$HOME/.vim"
 fi
+
 if [ -d "$folder" ]; then
     echo "removing $folder"
     rm -rf "$folder"
