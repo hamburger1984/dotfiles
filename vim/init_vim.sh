@@ -1,6 +1,15 @@
 #!/bin/sh
 
-files=("$HOME/.vimrc" "$HOME/.gvimrc")
+if [ "`uname -o`" == "Msys" -o "`uname -o`" == "Cygwin" ]; then
+    echo "running on WIN"
+    folder="$HOME/vimfiles"
+    pre="_"
+else
+    echo "running on LINUX"
+    folder="$HOME/.vim"
+    pre="."
+fi
+files=("$HOME/${pre}vimrc" "$HOME/${pre}gvimrc")
 
 for f in "${files[@]}"; do
     if [ -f "$f" ]; then
@@ -8,13 +17,6 @@ for f in "${files[@]}"; do
         rm -f "$f"
     fi
 done
-
-if [ "`uname -o`" == "Msys" ]; then
-    folder="$HOME/vimfiles"
-else
-    folder="$HOME/.vim"
-fi
-
 if [ -d "$folder" ]; then
     echo "removing $folder"
     rm -rf "$folder"
@@ -33,8 +35,8 @@ curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" \
 
 cd "$HOME"
 echo "linking [g]vimrc to $HOME"
-ln -s "$dir/vimrc" ".vimrc"
-ln -s "$dir/gvimrc" ".gvimrc"
+ln -s "$dir/vimrc" "${pre}vimrc"
+ln -s "$dir/gvimrc" "${pre}gvimrc"
 
 cd "$folder"
 ln -s "$dir/extras" "extras"

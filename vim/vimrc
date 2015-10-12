@@ -3,10 +3,10 @@ au! bufwritepost .vimrc source %
 "-------------------------------------------------------------------------------
 " Plugins
 "-------------------------------------------------------------------------------
-if has('win32')
-    call plug#begin('~/vimfiles/plugged')
+if has('win32') || has('windows')
+    call plug#begin('$HOME/vimfiles/plugged')
 else
-    call plug#begin('~/.vim/plugged')
+    call plug#begin('$HOME/.vim/plugged')
 endif
 " -- plugins
 " bufferline, lightline, icons
