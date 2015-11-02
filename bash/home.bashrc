@@ -26,7 +26,7 @@ alias km='cmake -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix` ..; make -j -l 6'
 # qmake & make
 alias qm='qmake ..; make -j -l 6'
 # pip
-alias pipup='pip freeze --local | grep -v "^\-e" | cut -d= -f1 | xargs pip install -U'
+alias pipup3.5='pip3.5 freeze --local | grep -v "^\-e" | cut -d= -f1 | xargs pip3.5 install -U'
 # git
 alias rpull='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && echo -n \"----- \" && echo \"{}\" | rev | cut -d\"/\" -f2 | rev && git pull" \;'
 alias rfetch='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && echo -n \"----- \" && echo \"{}\" | rev | cut -d\"/\" -f2 | rev && git fetch --prune" \;'
@@ -43,6 +43,8 @@ alias berry='ssh root@192.168.1.71'
 alias histstat="history | awk '{a[\$2]++ } END{for(i in a){print a[i] \" \" i}}'|sort -rn|head -n 25"
 
 alias simplehttp='python -m SimpleHTTPServer'
+
+alias svndiffview='svn diff --git > .temp.patch; vim .temp.patch; rm -f .temp.patch'
 
 function spindown(){
     if test "$#" -ne 1; then
@@ -65,6 +67,10 @@ touch -t $(echo $DATE | sed 's/\(..$\)/\.\1/') "$PIC"
 done < <(find . -iname '*.jpg' -print0)
 }
 
+function nodemcu_prepare(){
+export PATH=/home/andreas/Projects/nodemcu/esp-open-sdk/xtensa-lx106-elf/bin:$PATH
+}
+
 # history..
 export HISTCONTROL=ignoredups
 export HISTSIZE=
@@ -84,3 +90,7 @@ export PS1='\e[0m\t \e[0;33m\u\e[0m@\e[0;33m\h\e[0m \[\w\] \e[0;34m$(git branch 
 if [ -n "$VIRTUAL_ENV" ]; then
     export PS1="$PS1\[\033[0;34m\](${VIRTUAL_ENV##*/})\[\e[0m\] "
 fi
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+export EDITOR="vim"

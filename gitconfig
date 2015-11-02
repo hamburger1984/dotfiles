@@ -21,3 +21,10 @@
     st = status
 [push]
     default = simple
+[gui]
+	fontdiff = -family \"ProFontWindows Plus Nerd File Types Mono Plus Pomicons\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
+	fontui = -family \"DejaVu Sans\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+[url "git://anongit.kde.org/"]
+	insteadOf = kde:
+[url "git@git.kde.org:"]
+	pushInsteadOf = kde:

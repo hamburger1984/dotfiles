@@ -5,13 +5,14 @@ set guioptions-=m " no menu
 set guioptions-=T " no toolbar
 set guioptions-=r " no right scrollbar
 
-if has("win32")
+if has('win32')
     " set guifont=Consolas:h10:cANSI
     set guifont=Sauce_Code_Powerline_PNFT_Mono_:h9:cANSI
 else
     " set guifont=Source\ Code\ Pro\ for\ Powerline\ Medium\ 9
     " set guifont=Sauce\ Code\ Powerline\ Plus\ Nerd\ File\ Types\ Mono\ 9
-    set guifont=ProFontWindows\ Plus\ Nerd\ File\ Types\ Mono\ Plus\ Font\ Awesome\ Plus\ Octicons\ Plus\ Pomicons\ 12
+    " set guifont=ProFontWindows\ Plus\ Nerd\ File\ Types\ Mono\ Plus\ Font\ Awesome\ Plus\ Octicons\ Plus\ Pomicons\ 12
+    set guifont=InputMono\ Light\ Plus\ Nerd\ File\ Types\ Mono\ Plus\ Font\ Awesome\ Plus\ Octicons\ Plus\ Pomicons\ Light\ 10
 endif
 
 " colorscheme summerfruit256
