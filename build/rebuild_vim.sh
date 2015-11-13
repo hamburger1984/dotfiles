@@ -1,26 +1,22 @@
 #!/bin/sh
 
-# --------------------------------------------
-# hg clone https://vim.googlecode.com/hg/ vim
-# cd vim
-# --------------------------------------------
-
-echo "----- PULL"
-hg pull && hg update tip
-
 echo "----- CONFIGURE"
-./configure --with-features=huge \
-    --enable-multibyte \
-    --enable-pythoninterp \
-    --enable-python3interp \
-    --enable-luainterp \
-    --enable-gui=gtk2 \
+./configure \
     --enable-cscope \
+    --enable-fontset \
     --enable-gpm \
+    --enable-gui=gtk2 \
+    --enable-luainterp=dynamic \
+    --enable-perlinterp=dynmic \
+    --enable-python3interp=dynamic \
+    --enable-pythoninterp=dynamic \
+    --enable-tclinterp=dynamic \
+    --with-features=huge \
+    --with-luajit \
     --prefix=/home/andreas/opt
 
 echo "----- COMPILE, INSTALL"
-make -j -l 3 && make install
+make -j -l 4 && make install
 
 echo "----- VERSION"
 which vim
