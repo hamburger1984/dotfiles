@@ -1,5 +1,6 @@
+"-------------------------------------------------------------------------------
 " Automatic reloading of .vimrc
-" au! bufwritepost .vimrc source %
+"-------------------------------------------------------------------------------
 augroup reload_vimrc
     au!
     au bufwritepost $MYVIMRC nested source $MYVIMRC

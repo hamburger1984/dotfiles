@@ -13,8 +13,7 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias less='less --RAW-CONTROL-CHARS'
-export LS_OPTS='--color=auto'
-alias ls='ls ${LS_OPTS}'
+alias ls='ls --color=auto'
 alias l='ls -loah'
 alias lt='ls -loaht'
 alias lss='ls -loahS'
@@ -90,7 +89,5 @@ export PS1='\e[0m\t \e[0;33m\u\e[0m@\e[0;33m\h\e[0m \[\w\] \e[0;34m$(git branch 
 if [ -n "$VIRTUAL_ENV" ]; then
     export PS1="$PS1\[\033[0;34m\](${VIRTUAL_ENV##*/})\[\e[0m\] "
 fi
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 export EDITOR="vim"
