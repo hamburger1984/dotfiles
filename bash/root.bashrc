@@ -40,4 +40,5 @@ fi
 
 # prompt
 # PS1='\[\e[0m\]\t \[\e[0;31m\]\u\[\e[0m\]@\[\e[0;31m\]\h\[\e[0m\] \[\w\] \[\e[0;34m\]$(git branch 2>/dev/null|cut -f2 -d\* -s| xargs echo)\[\e[0m\]\$ '
-export PS1='\e[41m\t\e[0m \e[0;36m\u\e[0m@\e[0;36m\h\e[0m \[\w\] \e[0;34m$(git branch 2>/dev/null|cut -f2 -d\* -s| xargs echo)\e[0m\$ '
+# export PS1='\e[41m\t\e[0m \e[0;36m\u\e[0m@\e[0;36m\h\e[0m \[\w\] \e[0;34m$(git branch 2>/dev/null|cut -f2 -d\* -s| xargs echo)\e[0m\$ '
+export PS1="\[\e[37;41m\]\t \h\[\e[m\] \w \\$ "
