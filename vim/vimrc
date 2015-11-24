@@ -283,17 +283,6 @@ au BufNewFile,BufRead *.config set filetype=xml
 au BufNewFile,BufRead *.conf set filetype=config
 au BufNewFile,BufRead *.geojson set filetype=json
 "-------------------------------------------------------------------------------
-" Virtualenv support
-"-------------------------------------------------------------------------------
-" py << EOF
-" import os
-" import sys
-" if 'VIRTUAL_ENV' in os.environ:
-"   project_base_dir = os.environ['VIRTUAL_ENV']
-"   activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-"   execfile(activate_this, dict(__file__=activate_this))
-" EOF
-"-------------------------------------------------------------------------------
 " Folding..
 "-------------------------------------------------------------------------------
 nnoremap <Leader>f za
@@ -405,41 +394,6 @@ nnoremap <F5> :!make<CR>
 nnoremap <Leader><Space> :Goyo<CR>
 let g:goyo_width = 120
 let g:goyo_linenr = 0
-" "-------------------------------------------------------------------------------
-" " Tagbar
-" "-------------------------------------------------------------------------------
-" nmap <F8> :TagbarToggle<CR>
-"-------------------------------------------------------------------------------
-" Tagbar for objective c
-"-------------------------------------------------------------------------------
-let g:tagbar_type_objc = {
-    \  'ctagstype': 'objc'
-    \, 'ctagsargs': [
-    \   '--options='.expand('~/.vim/extras/ctags-options-objc')
-    \,  '--objc-kinds=-N'
-    \,  '--format=2'
-    \,  '--excmd=pattern'
-    \,  '--extra='
-    \,  '--fields=nksaSmte'
-    \,  '-f -'
-    \]
-    \, 'kinds': [
-    \     'i:class interface'
-    \,    'x:class extension'
-    \,    'I:class implementation'
-    \,    'P:protocol'
-    \,    'M:method'
-    \,    't:typedef'
-    \,    'v:variable'
-    \,    'p:property'
-    \,    'e:enumeration'
-    \,    'f:function'
-    \,    'd:macro'
-    \,    'g:pragma'
-    \,    'c:constant'
-    \, ]
-    \, 'sro': ' '
-    \}
 "-------------------------------------------------------------------------------
 " Syntastic
 "-------------------------------------------------------------------------------
