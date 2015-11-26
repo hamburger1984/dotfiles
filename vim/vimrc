@@ -59,20 +59,10 @@ Plug 'ervandew/supertab'
 Plug 'scrooloose/syntastic'
 Plug 'nvie/vim-flake8', {'for': 'python'}
 
-" scheme: molokai
-Plug 'tomasr/molokai'
-" scheme: solarized
-Plug 'altercation/vim-colors-solarized'
-" scheme: summerfruit256
-Plug 'vim-scripts/summerfruit256.vim'
-" scheme: wombat256mod
-Plug 'vim-scripts/wombat256.vim'
-" scheme: wombat256i
-Plug 'dsolstad/vim-wombat256i'
-" scheme: apprentice
-Plug 'romainl/Apprentice'
 " scheme: PaperColor
 Plug 'NLKNguyen/papercolor-theme'
+" scheme: hybrid
+Plug 'w0ng/vim-hybrid'
 
 " bufferline, lightline, icons
 Plug 'bling/vim-bufferline'
@@ -224,11 +214,8 @@ if !has('gui_running')
     set t_Co=256
 endif
 set background=dark
-" colorscheme apprentice
-" colorscheme wombat256i
-colorscheme PaperColor
-" set background=light
-" colorscheme summerfruit256
+" colorscheme PaperColor
+colorscheme hybrid
 call togglebg#map("<F4>")
 "-------------------------------------------------------------------------------
 " Enable syntax highlighting
