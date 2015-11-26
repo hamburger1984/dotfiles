@@ -59,6 +59,8 @@ Plug 'ervandew/supertab'
 Plug 'scrooloose/syntastic'
 Plug 'nvie/vim-flake8', {'for': 'python'}
 
+" scheme: landscape
+Plug 'itchyny/landscape.vim'
 " scheme: PaperColor
 Plug 'NLKNguyen/papercolor-theme'
 " scheme: hybrid
@@ -214,9 +216,9 @@ if !has('gui_running')
     set t_Co=256
 endif
 set background=dark
+colorscheme landscape
 " colorscheme PaperColor
-colorscheme hybrid
-call togglebg#map("<F4>")
+" colorscheme hybrid
 "-------------------------------------------------------------------------------
 " Enable syntax highlighting
 "-------------------------------------------------------------------------------
@@ -284,7 +286,6 @@ au FileType xml setl fen foldmethod=indent foldlevelstart=1 sw=2
 " lightline
 "-------------------------------------------------------------------------------
 let g:lightline = {
-      \ 'colorscheme': 'PaperColor',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'fugitive', 'filename' ],
