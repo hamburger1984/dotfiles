@@ -402,10 +402,19 @@ autocmd BufReadPost fugitive://* set bufhidden=delete " Delete all fugitive buff
 "-------------------------------------------------------------------------------
 " Unite
 "-------------------------------------------------------------------------------
+let g:unite_source_history_yank_enable = 1
+try
+  let g:unite_source_rec_async_command='ag --nocolor --nogroup -g ""'
+  call unite#filters#matcher_default#use(['matcher_fuzzy'])
+catch
+endtry
+" search a file in the filetree
+nnoremap <Leader>, :split<cr> :<C-u>Unite -start-insert file_rec/async<cr>
+" reset not it is <C-l> normally
+nnoremap <Leader>r <Plug>(unite_restart)
 map <Leader>b :Unite buffer<CR>
-map <Leader>r :Unite file_rec<CR>
 nmap <F8> :Unite -buffer-name=outline outline<CR>
-nnoremap <Leader>/ :Unite grep:.<CR>
+" nnoremap <Leader>/ :Unite grep:.<CR>
 " Useful when building interfaces at appropriate places
 let g:unite_source_menu_menus = {}
 " Interface for Git
