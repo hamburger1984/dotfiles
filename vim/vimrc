@@ -8,11 +8,11 @@ augroup END
 "-------------------------------------------------------------------------------
 " Plugins
 "-------------------------------------------------------------------------------
-if has('win32')
-    let plug_path='$HOME/vimfiles/plugged'
-else
-    let plug_path='$HOME/.vim/plugged'
-endif
+" if has('win32')
+"     let plug_path='$HOME/vimfiles/plugged'
+" else
+let plug_path='$HOME/.vim/plugged'
+" endif
 call plug#begin(plug_path)
 
 " git

@@ -2,13 +2,13 @@
 
 if [ "`uname -o`" == "Msys" -o "`uname -o`" == "Cygwin" ]; then
     echo "running on WIN"
-    folder="$HOME/vimfiles"
     pre="_"
 else
     echo "running on LINUX"
-    folder="$HOME/.vim"
     pre="."
 fi
+folder="$HOME/.vim"
+
 files=("$HOME/${pre}vimrc" "$HOME/${pre}gvimrc")
 
 for f in "${files[@]}"; do
