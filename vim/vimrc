@@ -20,8 +20,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 
-" svn (sigh)
-Plug 'vim-scripts/vim-svngutter'
+" svn (sigh) NO!
+" Plug 'vim-scripts/vim-svngutter'
 
 " distraction free
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
