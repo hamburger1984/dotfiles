@@ -314,8 +314,8 @@ let g:lightline = {
       \   'filetype': 'LightLineTypeIcon',
       \   'fileformat': 'LightLineFormatIcon'
       \ },
-      \ 'separator': { 'left': '▙', 'right': '▟' },
-      \ 'subseparator': { 'left': '█', 'right': '█' }
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
       \ }
 
 function! LightLineModified()
