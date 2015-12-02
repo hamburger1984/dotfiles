@@ -65,10 +65,6 @@ touch -t $(echo $DATE | sed 's/\(..$\)/\.\1/') "$PIC"
 done < <(find . -iname '*.jpg' -print0)
 }
 
-function nodemcu_prepare(){
-export PATH=/home/andreas/Projects/nodemcu/esp-open-sdk/xtensa-lx106-elf/bin:$PATH
-}
-
 # history..
 export HISTCONTROL=ignoredups
 export HISTSIZE=

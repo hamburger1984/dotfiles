@@ -1,6 +1,6 @@
 #!/bin/sh
 
-for medium in data1 bay ; do
+for medium in data1 bay brick ; do
     if [ -d "/run/media/andreas/${medium}" ]; then
         echo "--- ${medium} ---"
     else

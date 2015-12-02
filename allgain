@@ -3,12 +3,12 @@
 if [ ! -d "$1" ]
 then
 	echo "Arg "$1" is NOT a directory!"
-	exit 1 
+	exit 1
 fi
 
 echo "adjusting ogg files"
 vorbisgain -a -f -r -s "$1"
-echo 
+echo
 
 echo "adjusting mp3 files"
 #subdirs=$(find "$1" -type d)
