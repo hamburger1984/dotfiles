@@ -27,8 +27,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 
 " nerdtree (+git)
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+"Plug 'scrooloose/nerdtree'
+"Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " unite, unite-outline
 Plug 'Shougo/vimproc.vim'
@@ -131,6 +131,8 @@ map <Leader>- <esc>:vertical resize -5<CR>
 "-------------------------------------------------------------------------------
 set splitbelow
 set splitright
+"set diffopt+=vertical
+"silent! set splitvertical
 "-------------------------------------------------------------------------------
 " move between splits
 "-------------------------------------------------------------------------------
@@ -371,7 +373,7 @@ set noshowmode
 "-------------------------------------------------------------------------------
 let g:bufferline_echo=0
 "-------------------------------------------------------------------------------
-" running stuff ~> format/lint/whatever/..
+" running stuff ~> format/lint/make/..
 "-------------------------------------------------------------------------------
 au FileType json map <buffer> <F3> :%!python -m json.tool<CR>
 au FileType nim map <buffer> <Leader>c :!nim c %<CR>
@@ -379,7 +381,7 @@ au FileType nim map <buffer> <F3> :!nim c -r %<CR>
 au FileType python map <buffer> <F3> :call Flake8()<CR>
 au FileType xml map <buffer> <F3> :%!xmllint --format --recover -<CR>
 au FileType html map <buffer> <F3> :!tidy -q -mi --show-errors 0 --wrap 0 %<CR>
-nnoremap <F5> :!make<CR>
+nnoremap <F5> :cd<CR> :!make<CR>
 "-------------------------------------------------------------------------------
 " goyo.vim
 "-------------------------------------------------------------------------------
@@ -393,8 +395,8 @@ let g:syntastic_python_python_exec = '~/opt/bin/python3'
 "-------------------------------------------------------------------------------
 " NERDTree
 "-------------------------------------------------------------------------------
-map <Leader>e :NERDTreeToggle<CR>
-let NERDTreeIgnore=['\.pyc$', '\~$', '^__pycache__$']
+"map <Leader>e :NERDTreeToggle<CR>
+"let NERDTreeIgnore=['\.pyc$', '\~$', '^__pycache__$']
 "-------------------------------------------------------------------------------
 " NERDTree GitPlugin & WebDevIcons
 "-------------------------------------------------------------------------------
@@ -406,20 +408,21 @@ autocmd BufReadPost fugitive://* set bufhidden=delete " Delete all fugitive buff
 "-------------------------------------------------------------------------------
 " Unite
 "-------------------------------------------------------------------------------
-let g:unite_source_history_yank_enable = 1
-try
-  let g:unite_source_rec_async_command='ag --nocolor --nogroup -g ""'
-  call unite#filters#matcher_default#use(['matcher_fuzzy'])
-catch
-endtry
-" search a file in the filetree
-nnoremap <Leader>, :split<cr> :<C-u>Unite -start-insert file_rec/async<cr>
-" reset not it is <C-l> normally
-nnoremap <Leader>r <Plug>(unite_restart)
-map <Leader>b :Unite buffer<CR>
-nmap <F8> :Unite -buffer-name=outline outline<CR>
-" nnoremap <Leader>/ :Unite grep:.<CR>
-" Useful when building interfaces at appropriate places
+"let g:unite_source_history_yank_enable = 1
+"let g:unite_split_rule = "botright"
+let g:unite_enable_start_insert = 1
+if executable('ag')
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_rec_async_command =
+        \ ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
+endif
+"nnoremap <Leader>r <Plug>(unite_restart)
+nnoremap <Leader>b :Unite -buffer-name=buffers buffer<CR>
+nnoremap <Leader>r :Unite -buffer-name=files file_rec/async<CR>
+nnoremap <Leader>e :Unite -buffer-name=files file<CR>
+nnoremap <F8> :Unite -buffer-name=outline outline<CR>
+"nnoremap <Leader>/ :Unite grep:.<CR>
+"Useful when building interfaces at appropriate places
 let g:unite_source_menu_menus = {}
 " Interface for Git
 let g:unite_source_menu_menus.git = {
