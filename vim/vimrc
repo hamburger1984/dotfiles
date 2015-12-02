@@ -66,7 +66,7 @@ Plug 'NLKNguyen/papercolor-theme'
 " scheme: hybrid
 Plug 'w0ng/vim-hybrid'
 " lightline scheme: hybrid
-Plug 'cocopon/lightline-hybrid.vim'
+"Plug 'cocopon/lightline-hybrid.vim'
 
 " bufferline, lightline, icons
 Plug 'bling/vim-bufferline'
@@ -289,7 +289,7 @@ au FileType xml setl fen foldmethod=indent foldlevelstart=1 sw=2
 " lightline
 "-------------------------------------------------------------------------------
 let g:lightline = {
-      \ 'colorscheme': 'hybrid',
+      \ 'colorscheme': 'seoul256',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'fugitive', 'filename' ],
