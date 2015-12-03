@@ -15,6 +15,11 @@ let plug_path='$HOME/.vim/plugged'
 " endif
 call plug#begin(plug_path)
 
+" some util plugins
+Plug 'xolox/vim-misc'  " needed for vim-shell
+Plug 'xolox/vim-shell'  " fullscreen, hide flashing cmd prompts in windows
+Plug 'Shougo/vimproc.vim'  " needed by unite (at least)
+
 " git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-git'
@@ -26,19 +31,14 @@ Plug 'tpope/vim-fugitive'
 " distraction free
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 
-" nerdtree (+git)
-"Plug 'scrooloose/nerdtree'
-"Plug 'Xuyuanp/nerdtree-git-plugin'
-
 " unite, unite-outline
-Plug 'Shougo/vimproc.vim'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/unite-outline'
 
 " fileencodings & language plugins
 Plug 's3rvac/AutoFenc'
 Plug 'NLKNguyen/c-syntax.vim', {'for': 'c'}
-Plug 'chrisbra/csv.vim', {'for': 'csv'}
+Plug 'chrisbra/csv.vim' " delaying this causes an error , {'for': 'csv'}
 Plug 'wannesm/wmgraphviz.vim', {'for': ['dot', 'gv']}
 Plug 'jimenezrick/vimerl', {'for': 'erlang'}
 Plug 'fatih/vim-go', {'for': 'go'}
