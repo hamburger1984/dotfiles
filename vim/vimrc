@@ -21,7 +21,7 @@ Plug 'xolox/vim-shell'  " fullscreen, hide flashing cmd prompts in windows
 Plug 'Shougo/vimproc.vim'  " needed by unite (at least)
 
 " git
-Plug 'jreybert/vimagit'
+Plug 'jreybert/vimagit', { 'branch': 'next' }
 Plug 'itchyny/vim-gitbranch'
 Plug 'airblade/vim-gitgutter'
 
