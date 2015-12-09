@@ -7,38 +7,36 @@ else
     echo "running on LINUX"
     pre="."
 fi
-folder="$HOME/.vim"
+
+destdir="$HOME/.vim"
+srcdir="$(dirname $(readlink -f $0))"
 
 files=("$HOME/${pre}vimrc" "$HOME/${pre}gvimrc")
 
 for f in "${files[@]}"; do
-    if [ -f "$f" ]; then
+    if [ -f "$f" -o -L "$f" ]; then
         echo "removing $f"
         rm -f "$f"
     fi
 done
-if [ -d "$folder" ]; then
-    echo "removing $folder"
-    rm -rf "$folder"
+if [ -d "$destdir" ]; then
+    echo "removing $destdir"
+    rm -rf "$destdir"
 fi
 
-dir=`pwd`
-
-
-# fetch plug.vim to $HOME/.vim/autoload
-mkdir -p "$folder/autoload/"
-cd "$folder/autoload/"
-echo "fetching plug.vim to $folder/autoload/"
-curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" \
-    --output plug.vim
-
-
 cd "$HOME"
-echo "linking [g]vimrc to $HOME"
-ln -s "$dir/vimrc" "${pre}vimrc"
-ln -s "$dir/gvimrc" "${pre}gvimrc"
+echo "linking vimrc to $HOME"
+ln -s "$srcdir/vimrc" "${pre}vimrc"
+echo "linking gvimrc to $HOME"
+ln -s "$srcdir/gvimrc" "${pre}gvimrc"
 
-cd "$folder"
-ln -s "$dir/extras" "extras"
+mkdir "$destdir"
+cd "$destdir"
+echo "linking extras to $destdir"
+ln -s "$srcdir/extras" "extras"
 
-echo "START VIM AND RUN :PlugInstall<CR> NOW.."
+read -p "Starting vim and :PlugInstall-ing stuff.." -n1 -s
+vim -c "PlugInstall" -c "qall"; reset
+
+echo "done"
+

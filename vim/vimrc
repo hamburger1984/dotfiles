@@ -8,11 +8,13 @@ augroup END
 "-------------------------------------------------------------------------------
 " Plugins
 "-------------------------------------------------------------------------------
-" if has('win32')
-"     let plug_path='$HOME/vimfiles/plugged'
-" else
+" Load vim-plug
+if empty(glob("$HOME/.vim/autoload/plug.vim"))
+    execute "!curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+endif
+
 let plug_path='$HOME/.vim/plugged'
-" endif
+
 call plug#begin(plug_path)
 
 " some util plugins
@@ -23,7 +25,7 @@ Plug 'Shougo/vimproc.vim'  " needed by unite (at least)
 " git
 Plug 'jreybert/vimagit', { 'branch': 'next' }
 Plug 'itchyny/vim-gitbranch'
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 
 " svn (sigh) NO!
 " Plug 'vim-scripts/vim-svngutter'
