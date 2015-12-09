@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ "`uname -o`" == "Msys" -o "`uname -o`" == "Cygwin" ]; then
     echo "running on WIN"
