@@ -9,11 +9,12 @@ echo "----- CONFIGURE"
     --enable-luainterp=dynamic \
     --enable-perlinterp=dynmic \
     --enable-python3interp=dynamic \
-    --enable-pythoninterp=dynamic \
     --enable-tclinterp=dynamic \
     --with-features=huge \
     --with-luajit \
     --prefix=/home/andreas/opt
+
+#     --enable-pythoninterp=dynamic \
 
 echo "----- COMPILE, INSTALL"
 make -j -l 4 && make install

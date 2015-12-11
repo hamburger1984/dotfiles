@@ -63,12 +63,6 @@ Plug 'nvie/vim-flake8', {'for': 'python'}
 
 " scheme: landscape
 Plug 'itchyny/landscape.vim'
-" scheme: PaperColor
-Plug 'NLKNguyen/papercolor-theme'
-" scheme: hybrid
-Plug 'w0ng/vim-hybrid'
-" lightline scheme: hybrid
-"Plug 'cocopon/lightline-hybrid.vim'
 
 " bufferline, lightline, icons
 Plug 'bling/vim-bufferline'
@@ -223,8 +217,6 @@ if !has('gui_running')
 endif
 set background=dark
 colorscheme landscape
-" colorscheme PaperColor
-" colorscheme hybrid
 "-------------------------------------------------------------------------------
 " Enable syntax highlighting
 "-------------------------------------------------------------------------------
@@ -294,7 +286,6 @@ au FileType yaml setl fen foldmethod=indent foldlevelstart=1 sw=2
 " lightline
 "-------------------------------------------------------------------------------
 let g:lightline = {
-      \ 'colorscheme': 'seoul256',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'branch', 'filename' ],
