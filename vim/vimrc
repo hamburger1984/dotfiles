@@ -25,10 +25,6 @@ Plug 'Shougo/vimproc.vim'  " needed by unite (at least)
 " git
 Plug 'jreybert/vimagit', { 'branch': 'next' }
 Plug 'itchyny/vim-gitbranch'
-" Plug 'airblade/vim-gitgutter'
-
-" svn (sigh) NO!
-" Plug 'vim-scripts/vim-svngutter'
 
 " distraction free
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
@@ -288,53 +284,29 @@ au FileType yaml setl fen foldmethod=indent foldlevelstart=1 sw=2
 let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'branch', 'readonly', 'filename', 'modified' ],
-      \             [ 'bufferline' ] ],
+      \             [ 'branch', 'filename', 'readonly', 'modified'] ],
       \   'right': [ [ 'lineinfo' ], [ 'percent'],
-      \              [ 'fileformat', 'fileencoding', 'filetype', 'syntastic' ] ]
+      \              [ 'fileformat', 'fileencoding', 'filetype', 'syntastic'] ]
       \ },
       \ 'component': {
-      \   'bufferline': '%{bufferline#refresh_status()}%{g:bufferline_status_info.before . g:bufferline_status_info.current . g:bufferline_status_info.after}'
+      \   'filetype': '%{(strlen(&filetype)?&filetype." ".WebDevIconsGetFileTypeSymbol():"no ft")}',
+      \   'fileformat': '%{(&fileformat." ".WebDevIconsGetFileFormatSymbol())}',
+      \   'readonly': '%{&filetype=="help"?"":&readonly?"":""}',
+      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
       \ },
       \ 'component_expand': {
-      \     'syntastic': 'SyntasticStatuslineFlag',
+      \   'syntastic': 'SyntasticStatuslineFlag',
       \ },
       \ 'component_type': {
-      \     'syntastic': 'middle',
+      \   'syntastic': 'middle',
       \ },
       \ 'component_function': {
       \   'branch': 'LightLineBranch',
-      \   'readonly': 'LightLineReadonly',
-      \   'modified': 'LightLineModified',
       \   'filename': 'LightLineFilename',
-      \   'filetype': 'LightLineTypeIcon',
-      \   'fileformat': 'LightLineFormatIcon'
       \ },
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' }
       \ }
-
-function! LightLineModified()
-  if &filetype == "help"
-    return ""
-  elseif &modified
-    return "+"
-  elseif &modifiable
-    return ""
-  else
-    return ""
-  endif
-endfunction
-
-function! LightLineReadonly()
-  if &filetype == "help"
-    return ""
-  elseif &readonly
-    return ""
-  else
-    return ""
-  endif
-endfunction
 
 function! LightLineBranch()
     if exists("*gitbranch#name")
@@ -348,22 +320,21 @@ function! LightLineFilename()
   return ('' != expand('%:t') ? expand('%:t') : '[No Name]')
 endfunction
 
-function! LightLineTypeIcon()
-    return winwidth(0) < 70 ? '' : (strlen(&filetype) ? &filetype . ' ' .
-                \ WebDevIconsGetFileTypeSymbol() : 'no ft')
-endfunction
-
-function! LightLineFormatIcon()
-    return winwidth(0) < 70 ? '' : (&fileformat . ' ' .
-                \ WebDevIconsGetFileFormatSymbol())
-endfunction
-
 set laststatus=2
 set noshowmode
 "-------------------------------------------------------------------------------
-" silence bufferline - lightline will display its content
+" bufferline
 "-------------------------------------------------------------------------------
-let g:bufferline_echo=0
+let g:bufferline_active_buffer_left=''
+let g:bufferline_active_buffer_right=''
+let g:bufferline_active_highlight='StatusLine'
+let g:bufferline_echo=1
+let g:bufferline_fixed_index=0
+let g:bufferline_inactive_highlight='StatusLineNC'
+let g:bufferline_modified='+'
+let g:bufferline_rotate=1
+let g:bufferline_show_bufnr=0
+let g:bufferline_solo_highlight=0
 "-------------------------------------------------------------------------------
 " running stuff ~> format/lint/make/..
 "-------------------------------------------------------------------------------
@@ -384,6 +355,10 @@ let g:goyo_linenr = 0
 " Syntastic
 "-------------------------------------------------------------------------------
 let g:syntastic_python_python_exec = '~/opt/bin/python3'
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 "-------------------------------------------------------------------------------
 " Unite
 "-------------------------------------------------------------------------------
