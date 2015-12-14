@@ -284,9 +284,9 @@ au FileType yaml setl fen foldmethod=indent foldlevelstart=1 sw=2
 let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'branch', 'filename', 'readonly', 'modified'] ],
-      \   'right': [ [ 'lineinfo' ], [ 'percent'],
-      \              [ 'fileformat', 'fileencoding', 'filetype', 'syntastic'] ]
+      \             [ 'branch', 'filename', 'readonly', 'modified' ] ],
+      \   'right': [ [ 'syntastic', 'lineinfo' ], [ 'percent' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
       \ 'component': {
       \   'filetype': '%{(strlen(&filetype)?&filetype." ".WebDevIconsGetFileTypeSymbol():"no ft")}',
@@ -303,6 +303,7 @@ let g:lightline = {
       \ 'component_function': {
       \   'branch': 'LightLineBranch',
       \   'filename': 'LightLineFilename',
+      \   'mode': 'LightLineMode',
       \ },
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' }
@@ -318,6 +319,19 @@ endfunction
 
 function! LightLineFilename()
   return ('' != expand('%:t') ? expand('%:t') : '[No Name]')
+endfunction
+
+function! LightLineMode()
+    if &ft == 'unite'
+        return 'Unite'
+    endif
+    let _ = lightline#mode()
+    return _ == 'NORMAL' ? 'N' :
+        \ _ == 'INSERT' ? 'I' :
+        \ _ == 'REPLACE' ? 'R' :
+        \ _ == 'VISUAL' ? 'V' :
+        \ _ == 'V-LINE' ? 'VL' :
+        \ _
 endfunction
 
 set laststatus=2
@@ -364,6 +378,7 @@ let g:syntastic_check_on_wq = 0
 "-------------------------------------------------------------------------------
 " let g:unite_source_history_yank_enable = 1
 " let g:unite_enable_start_insert = 1
+let g:unite_force_overwrite_statusline = 0
 if executable('ag')
     let g:unite_source_grep_command = 'ag'
     let g:unite_source_rec_async_command =
