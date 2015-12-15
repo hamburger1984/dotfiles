@@ -358,7 +358,7 @@ au FileType nim map <buffer> <F3> :!nim c -r %<CR>
 au FileType python map <buffer> <F3> :call Flake8()<CR>
 au FileType xml map <buffer> <F3> :%!xmllint --format --recover -<CR>
 au FileType html map <buffer> <F3> :!tidy -q -mi --show-errors 0 --wrap 0 %<CR>
-nnoremap <F5> :cd<CR> :!make<CR>
+nnoremap <F5> :cd %:p:h<CR> :!make<CR>
 "-------------------------------------------------------------------------------
 " goyo.vim
 "-------------------------------------------------------------------------------
