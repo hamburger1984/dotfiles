@@ -284,10 +284,11 @@ au FileType json,c,cpp,java,js setl fen foldmethod=syntax
 " PYTHON: folding up to 3 levels
 au FileType python setl fen foldmethod=indent foldnestmax=3
 " TEX: folding + line wrapping
-au FileType tex setl fen foldmethod=expr
+au FileType tex,plaintex setl fen foldmethod=expr
     \ foldexpr=vimtex#fold#level(v:lnum)
     \ foldtext=vimtex#fold#text()
-    \ fo+=t fo+=a
+    \ fo+=t fo-=c
+" fo+=a  " .. is useful but might interfere with non-text parts of tex
 " XML: syntax folding is slow for large files - use indent
 " .. might have to switch for unformatted files
 " let g:xml_syntax_folding=1
@@ -301,7 +302,8 @@ au FileType yaml setl fen foldmethod=indent sw=2
 let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'branch', 'filename', 'readonly', 'modified' ] ],
+      \             [ 'branch', 'filename', 'readonly', 'modified' ],
+      \             [ 'fmtopts' ] ],
       \   'right': [ [ 'syntastic', 'lineinfo' ], [ 'percent' ],
       \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
@@ -310,6 +312,7 @@ let g:lightline = {
       \   'fileformat': '%{&fileformat." ".WebDevIconsGetFileFormatSymbol()}',
       \   'readonly': '%{&filetype=="help"?"":&readonly?"":""}',
       \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+      \   'fmtopts': '%{strlen(&fo)?&fo:"⌀"}',
       \ },
       \ 'component_expand': {
       \   'syntastic': 'SyntasticStatuslineFlag',
