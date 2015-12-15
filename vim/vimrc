@@ -229,6 +229,7 @@ set number relativenumber
 " 80 cols, wrap, ..
 "-------------------------------------------------------------------------------
 set tw=80
+set wm=4
 set wrap
 set linebreak
 set fo-=t
@@ -271,13 +272,19 @@ au BufNewFile,BufRead *.geojson set filetype=json
 "-------------------------------------------------------------------------------
 nnoremap <Leader>f za
 vnoremap <Leader>f zf
-au FileType python setl fen foldmethod=indent foldlevelstart=0 foldnestmax=3
-au FileType json,c,cpp setl fen foldmethod=syntax foldlevelstart=2
+" foldlevelstart is a global setting?!
+set foldlevelstart=1
+"-------------------------------------------------------------------------------
+" Filetype specific settings..
+"-------------------------------------------------------------------------------
+au FileType json,c,cpp setl fen foldmethod=syntax
+au FileType python setl fen foldmethod=indent foldnestmax=3
+au FileType tex setl fo+=t fo+=a
 " slow for big files..
 " let g:xml_syntax_folding=1
-" au FileType xml setl fen foldmethod=syntax foldlevelstart=1
-au FileType xml setl fen foldmethod=indent foldlevelstart=1 sw=2
-au FileType yaml setl fen foldmethod=indent foldlevelstart=1 sw=2
+" au FileType xml setl fen foldmethod=syntax
+au FileType xml setl fen foldmethod=indent sw=2
+au FileType yaml setl fen foldmethod=indent sw=2
 "-------------------------------------------------------------------------------
 " lightline
 "-------------------------------------------------------------------------------
