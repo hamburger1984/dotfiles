@@ -8,13 +8,13 @@ echo "----- CONFIGURE"
     --enable-gui=gtk2 \
     --enable-luainterp=dynamic \
     --enable-perlinterp=dynmic \
+    --enable-pythoninterp=dynamic \
     --enable-python3interp=dynamic \
     --enable-tclinterp=dynamic \
     --with-features=huge \
     --with-luajit \
     --prefix=/home/andreas/opt
 
-#     --enable-pythoninterp=dynamic \
 
 echo "----- COMPILE, INSTALL"
 make -j -l 4 && make install

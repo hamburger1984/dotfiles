@@ -45,7 +45,9 @@ Plug 'elzr/vim-json', {'for': 'json'}
 Plug 'tpope/vim-markdown', {'for': 'markdown'}
 Plug 'zah/nim.vim', {'for': 'nim'}
 Plug 'hdima/python-syntax', {'for': 'python'}
-Plug 'Rykka/riv.vim', {'for': 'rst'}
+" crashes when loaded on-demand:
+"Plug 'Rykka/riv.vim', {'for': 'rst'}
+Plug 'Rykka/riv.vim'
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'lervag/vimtex', {'for': 'tex'}
 
@@ -238,8 +240,8 @@ highlight ColorColumn ctermbg=236
 "-------------------------------------------------------------------------------
 " Useful settings
 "-------------------------------------------------------------------------------
-set history=1000
-set undolevels=1000
+set history=2000
+set undolevels=2000
 "-------------------------------------------------------------------------------
 " Don't use TABs but 4 spaces (except for xml, see below..)
 "-------------------------------------------------------------------------------
@@ -277,13 +279,21 @@ set foldlevelstart=1
 "-------------------------------------------------------------------------------
 " Filetype specific settings..
 "-------------------------------------------------------------------------------
-au FileType json,c,cpp setl fen foldmethod=syntax
+" C_LIKE: fold by syntax
+au FileType json,c,cpp,java,js setl fen foldmethod=syntax
+" PYTHON: folding up to 3 levels
 au FileType python setl fen foldmethod=indent foldnestmax=3
-au FileType tex setl fo+=t fo+=a
-" slow for big files..
+" TEX: folding + line wrapping
+au FileType tex setl fen foldmethod=expr
+    \ foldexpr=vimtex#fold#level(v:lnum)
+    \ foldtext=vimtex#fold#text()
+    \ fo+=t fo+=a
+" XML: syntax folding is slow for large files - use indent
+" .. might have to switch for unformatted files
 " let g:xml_syntax_folding=1
 " au FileType xml setl fen foldmethod=syntax
 au FileType xml setl fen foldmethod=indent sw=2
+" YAML: fold by indent (syntax would be nicer but not supported..)
 au FileType yaml setl fen foldmethod=indent sw=2
 "-------------------------------------------------------------------------------
 " lightline
@@ -297,7 +307,7 @@ let g:lightline = {
       \ },
       \ 'component': {
       \   'filetype': '%{(strlen(&filetype)?&filetype." ".WebDevIconsGetFileTypeSymbol():"no ft")}',
-      \   'fileformat': '%{(&fileformat." ".WebDevIconsGetFileFormatSymbol())}',
+      \   'fileformat': '%{&fileformat." ".WebDevIconsGetFileFormatSymbol()}',
       \   'readonly': '%{&filetype=="help"?"":&readonly?"":""}',
       \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
       \ },
