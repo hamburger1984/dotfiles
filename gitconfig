@@ -22,7 +22,7 @@
 [push]
     default = simple
 [gui]
-	fontdiff = -family \"DejaVu Sans Mono for Powerline Plus Nerd File Types Mono Plus Font Awesome Plus Octicons Plus Pomicons\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family Hack -size 10 -weight normal -slant roman -underline 0 -overstrike 0
 	fontui = -family \"DejaVu Sans\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
 [url "git://anongit.kde.org/"]
 	insteadOf = kde:

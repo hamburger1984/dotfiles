@@ -32,7 +32,7 @@ alias rfetch='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && echo -n \"
 alias rst='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && echo -n \"----- \" && echo \"{}\" | rev | cut -d\"/\" -f2 | rev && git status" \;'
 
 ## use with youtube-dl, grab a few (mrsuicidesheep?) tracks, cd to folder, win!
-alias playFolder='find . -type f \( -iname "*.aiff" -o -iname "*.m4a" -o -iname "*.mp3" -o -iname "*.ogg" -o -iname "*.opus" -o -iname "*.webm" \) -printf "%Ts\t%p\n" | sort -nr | cut -f2 | sed "s/^\.\/\(.*\)/\1/" > .play.vlc && cvlc -I ncurses .play.vlc; rm -f .play.vlc'
+alias playFolder='find . -type f \( -iname "*.aiff" -o -iname "*.m4a" -o -iname "*.mp3" -o -iname "*.ogg" -o -iname "*.opus" -o -iname "*.webm" \) -printf "%Ts\t%p\n" | sort -nr | cut -f2 | sed "s/^\.\/\(.*\)/\1/" > .play.vlc && cvlc -I ncurses -Z .play.vlc; rm -f .play.vlc'
 
 alias flowll='ssh 212.45.111.154'
 alias flowb='ssh 212.45.111.157'
