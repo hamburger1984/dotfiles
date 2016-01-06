@@ -202,8 +202,8 @@ inoremap <silent> <C-n> <esc>:nohl<CR>
 "-------------------------------------------------------------------------------
 set listchars=tab:\|\ ,trail:·
 set list
-highlight Whitespace cterm=underline gui=underline ctermfg=gray guifg=gray
-au ColorScheme * highlight Whitespace cterm=underline gui=underline ctermfg=gray guifg=gray
+highlight Whitespace cterm=underline gui=underline ctermfg=94 guifg=#875f00
+au ColorScheme * highlight Whitespace cterm=underline gui=underline ctermfg=94 guifg=#875f00
 au BufWinEnter * call matchadd('Whitespace', '  \+\($\)\@!', -1)
 " highlight trailing whitespace
 au BufWinEnter * call matchadd('ErrorMsg', '\s\+$', -1)
