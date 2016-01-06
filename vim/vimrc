@@ -409,3 +409,7 @@ nnoremap <Leader>r :Unite -buffer-name=files file_rec/async<CR>
 nnoremap <Leader>e :Unite -buffer-name=files file<CR>
 nnoremap <Leader>t :Unite -buffer-name=outline outline<CR>
 nnoremap <F8> :Unite -buffer-name=outline outline<CR>
+"-------------------------------------------------------------------------------
+" Magit
+"-------------------------------------------------------------------------------
+let g:magit_show_help=0
