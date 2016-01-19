@@ -34,9 +34,9 @@ fi
 
 cd "$destdir"
 
-if [ -L "extras" ]; then
-    echo "removing old extras link"
-    rm -f "extras"
+if [ -L "extras" -o -d "extras" ]; then
+    echo "removing old extras link (or folder)"
+    rm -rf "extras"
 fi
 echo "linking extras to $destdir"
 ln -s "$srcdir/extras" "extras"
