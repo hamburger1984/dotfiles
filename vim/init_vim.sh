@@ -19,24 +19,34 @@ for f in "${files[@]}"; do
         rm -f "$f"
     fi
 done
-if [ -d "$destdir" ]; then
-    echo "removing $destdir"
-    rm -rf "$destdir"
-fi
 
 cd "$HOME"
+
 echo "linking vimrc to $HOME"
 ln -s "$srcdir/vimrc" "${pre}vimrc"
 echo "linking gvimrc to $HOME"
 ln -s "$srcdir/gvimrc" "${pre}gvimrc"
 
-mkdir "$destdir"
+if [ ! -d "$destdir" ]; then
+    echo "creating $destdir"
+    mkdir "$destdir"
+fi
+
 cd "$destdir"
+
+if [ -L "extras" ]; then
+    echo "removing old extras link"
+    rm -f "extras"
+fi
 echo "linking extras to $destdir"
 ln -s "$srcdir/extras" "extras"
+
+if [ ! -d "autoload" ]; then
+    echo "creating autload folder in $destdir"
+    mkdir "autload"
+fi
 
 read -p "Starting vim and :PlugInstall-ing stuff.." -n1 -s
 vim -c "PlugInstall" -c "qall"; reset
 
 echo "done"
-
