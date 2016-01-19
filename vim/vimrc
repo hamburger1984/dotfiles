@@ -25,6 +25,8 @@ Plug 'Shougo/vimproc.vim'  " needed by unite (at least)
 " git
 Plug 'jreybert/vimagit', { 'branch': 'next' }
 Plug 'itchyny/vim-gitbranch'
+" vcs agnostic gitgutter
+Plug 'mhinz/vim-signify'
 
 " distraction free
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
@@ -280,7 +282,7 @@ set foldlevelstart=1
 " Filetype specific settings..
 "-------------------------------------------------------------------------------
 " C_LIKE: fold by syntax
-au FileType json,c,cpp,java,js setl fen foldmethod=syntax
+au FileType json,c,cpp,java,javascript setl fen foldmethod=syntax
 " PYTHON: folding up to 3 levels
 au FileType python setl fen foldmethod=indent foldnestmax=3
 " TEX: folding + line wrapping
@@ -413,3 +415,16 @@ nnoremap <F8> :Unite -buffer-name=outline outline<CR>
 " Magit
 "-------------------------------------------------------------------------------
 let g:magit_show_help=0
+"-------------------------------------------------------------------------------
+" vim-javascript
+"-------------------------------------------------------------------------------
+set conceallevel=1
+let g:javascript_conceal_function   = "ƒ"
+let g:javascript_conceal_null       = "ø"
+let g:javascript_conceal_this       = "@"
+let g:javascript_conceal_return     = "⇚"
+let g:javascript_conceal_undefined  = "¿"
+let g:javascript_conceal_NaN        = "ℕ"
+let g:javascript_conceal_prototype  = "¶"
+let g:javascript_conceal_static     = "•"
+let g:javascript_conceal_super      = "Ω"
