@@ -22,6 +22,9 @@ Plug 'xolox/vim-misc'  " needed for vim-shell
 Plug 'xolox/vim-shell'  " fullscreen, hide flashing cmd prompts in windows
 Plug 'Shougo/vimproc.vim'  " needed by unite (at least)
 
+" start screen
+Plug 'mhinz/vim-startify'
+
 " git
 Plug 'jreybert/vimagit', { 'branch': 'next' }
 Plug 'itchyny/vim-gitbranch'
@@ -47,10 +50,7 @@ Plug 'elzr/vim-json', {'for': 'json'}
 Plug 'tpope/vim-markdown', {'for': 'markdown'}
 Plug 'zah/nim.vim', {'for': 'nim'}
 Plug 'hdima/python-syntax', {'for': 'python'}
-" crashes when loaded on-demand:
-"Plug 'Rykka/riv.vim', {'for': 'rst'}
-Plug 'Rykka/riv.vim'
-Plug 'rust-lang/rust.vim', {'for': 'rust'}
+Plug 'Rykka/riv.vim' " crashes when loaded on-demand , {'for': 'rst'}
 Plug 'lervag/vimtex', {'for': 'tex'}
 
 " fold, complete, buffers, search
@@ -196,7 +196,7 @@ nnoremap <silent> g# g#zz
 "-------------------------------------------------------------------------------
 " Clear search highlight
 "-------------------------------------------------------------------------------
-noremap <silent> <C-n> :nohl<CR>
+noremap  <silent> <C-n> :nohl<CR>
 vnoremap <silent> <C-n> :nohl<CR>
 inoremap <silent> <C-n> <esc>:nohl<CR>
 "-------------------------------------------------------------------------------
@@ -266,11 +266,11 @@ set noswapfile
 "-------------------------------------------------------------------------------
 " Filetype mappings..
 "-------------------------------------------------------------------------------
-au BufNewFile,BufRead *.md set filetype=markdown
-au BufNewFile,BufRead *.config set filetype=xml
-au BufNewFile,BufRead *.xaml set filetype=xml
 au BufNewFile,BufRead *.conf set filetype=config
+au BufNewFile,BufRead *.config set filetype=xml
 au BufNewFile,BufRead *.geojson set filetype=json
+au BufNewFile,BufRead *.md set filetype=markdown
+au BufNewFile,BufRead *.xaml set filetype=xml
 "-------------------------------------------------------------------------------
 " Folding..
 "-------------------------------------------------------------------------------
@@ -283,10 +283,13 @@ set foldlevelstart=1
 "-------------------------------------------------------------------------------
 " C_LIKE: fold by syntax
 au FileType json,c,cpp,java,javascript setl fen foldmethod=syntax
+    \ conceallevel=1
 " PYTHON: folding up to 3 levels
 au FileType python setl fen foldmethod=indent foldnestmax=3
 " TEX: folding + line wrapping
 au FileType tex,plaintex setl fen foldmethod=expr
+    \ conceallevel=2
+    \ foldlevel=1
     \ foldexpr=vimtex#fold#level(v:lnum)
     \ foldtext=vimtex#fold#text()
     \ fo+=t fo-=c
@@ -310,8 +313,8 @@ let g:lightline = {
       \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
       \ 'component': {
-      \   'filetype': '%{(strlen(&filetype)?&filetype." ".WebDevIconsGetFileTypeSymbol():"no ft")}',
       \   'fileformat': '%{&fileformat." ".WebDevIconsGetFileFormatSymbol()}',
+      \   'filetype': '%{(strlen(&filetype)?&filetype." ".WebDevIconsGetFileTypeSymbol():"no ft")}',
       \   'readonly': '%{&filetype=="help"?"":&readonly?"":""}',
       \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
       \   'fmtopts': '%{strlen(&fo)?&fo:"⌀"}',
@@ -361,40 +364,37 @@ set noshowmode
 "-------------------------------------------------------------------------------
 " bufferline
 "-------------------------------------------------------------------------------
-let g:bufferline_active_buffer_left=''
-let g:bufferline_active_buffer_right=''
-let g:bufferline_active_highlight='StatusLine'
+let g:bufferline_active_buffer_left='❨'
+let g:bufferline_active_buffer_right='❩'
 let g:bufferline_echo=1
-let g:bufferline_fixed_index=0
-let g:bufferline_inactive_highlight='StatusLineNC'
 let g:bufferline_modified='+'
-let g:bufferline_rotate=1
-let g:bufferline_show_bufnr=0
+let g:bufferline_rotate=0
+" let g:bufferline_show_bufnr=0
 let g:bufferline_solo_highlight=0
 "-------------------------------------------------------------------------------
 " running stuff ~> format/lint/make/..
 "-------------------------------------------------------------------------------
-au FileType json map <buffer> <F3> :%!python -m json.tool<CR>
-au FileType nim map <buffer> <Leader>c :!nim c %<CR>
-au FileType nim map <buffer> <F3> :!nim c -r %<CR>
+au FileType html   map <buffer> <F3> :!tidy -q -mi --show-errors 0 --wrap 0 %<CR>
+au FileType json   map <buffer> <F3> :%!python -m json.tool<CR>
+au FileType nim    map <buffer> <F3> :!nim c -r %<CR>
+au FileType nim    map <buffer> <Leader>c :!nim c %<CR>
 au FileType python map <buffer> <F3> :call Flake8()<CR>
-au FileType xml map <buffer> <F3> :%!xmllint --format --recover -<CR>
-au FileType html map <buffer> <F3> :!tidy -q -mi --show-errors 0 --wrap 0 %<CR>
+au FileType xml    map <buffer> <F3> :%!xmllint --format --recover -<CR>
 nnoremap <F5> :cd %:p:h<CR> :!make<CR>
 "-------------------------------------------------------------------------------
 " goyo.vim
 "-------------------------------------------------------------------------------
 nnoremap <Leader><Space> :Goyo<CR>
-let g:goyo_width = 120
 let g:goyo_linenr = 0
+let g:goyo_width = 120
 "-------------------------------------------------------------------------------
 " Syntastic
 "-------------------------------------------------------------------------------
-let g:syntastic_python_python_exec = '~/opt/bin/python3'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_python_python_exec = '~/opt/bin/python3'
 "-------------------------------------------------------------------------------
 " Unite
 "-------------------------------------------------------------------------------
@@ -406,11 +406,11 @@ if executable('ag')
     let g:unite_source_rec_async_command =
         \ ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
 endif
-nnoremap <Leader>b :Unite -buffer-name=buffers buffer<CR>
-nnoremap <Leader>r :Unite -buffer-name=files file_rec/async<CR>
-nnoremap <Leader>e :Unite -buffer-name=files file<CR>
-nnoremap <Leader>t :Unite -buffer-name=outline outline<CR>
 nnoremap <F8> :Unite -buffer-name=outline outline<CR>
+nnoremap <Leader>b :Unite -buffer-name=buffers buffer<CR>
+nnoremap <Leader>e :Unite -buffer-name=files file<CR>
+nnoremap <Leader>r :Unite -buffer-name=files file_rec/async<CR>
+nnoremap <Leader>t :Unite -buffer-name=outline outline<CR>
 "-------------------------------------------------------------------------------
 " Magit
 "-------------------------------------------------------------------------------
@@ -418,13 +418,16 @@ let g:magit_show_help=0
 "-------------------------------------------------------------------------------
 " vim-javascript
 "-------------------------------------------------------------------------------
-set conceallevel=1
+let g:javascript_conceal_NaN        = "ℕ"
 let g:javascript_conceal_function   = "ƒ"
 let g:javascript_conceal_null       = "ø"
-let g:javascript_conceal_this       = "@"
-let g:javascript_conceal_return     = "⇚"
-let g:javascript_conceal_undefined  = "¿"
-let g:javascript_conceal_NaN        = "ℕ"
 let g:javascript_conceal_prototype  = "¶"
+let g:javascript_conceal_return     = "⇚"
 let g:javascript_conceal_static     = "•"
 let g:javascript_conceal_super      = "Ω"
+let g:javascript_conceal_this       = "@"
+let g:javascript_conceal_undefined  = "¿"
+"-------------------------------------------------------------------------------
+" Latex
+"-------------------------------------------------------------------------------
+let g:tex_conceal="adgms"
