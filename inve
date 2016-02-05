@@ -13,21 +13,43 @@ start="$PWD"
 
 # First, locate the root of the current virtualenv
 while [ "$PWD" != "/" ]; do
-    # Stop here if this the root of a virtualenv
-    if [ \
-        -x bin/python \
-        -a -d lib/python*/site-packages ]
-    then
-        break
-    elif [ -d .venv/bin \
-           -a -x .venv/bin/python \
-           -a -d .venv/lib/python*/site-packages ]
-    then
-        cd .venv
+    if [ -x bin/python ]; then
+        # we're alreay in a directory containing a (executable) bin/python
         break
     fi
+
+    # dotglob -> "*" also matches names starting with "."
+    shopt -s dotglob
+    # nullglob -> no result if pattern doesn't match
+    shopt -s nullglob
+    PYs=(*/bin/python)
+    shopt -u dotglob
+    shopt -u nullglob
+
+    # strip "/bin/python" off the end of each match
+    PYs=(${PYs[@]//\/bin\/python/})
+
+    if [ "${#PYs[@]}" -eq "1" ]; then
+        # one match -> use it!
+        cd ${PYs[0]}
+        break
+    elif [ ${#PYs[@]} -ge 2 ]; then
+        # multiple matches -> ask the user
+        PS3="Multiple environments found - please choose: "
+        select PY in ${PYs[@]}; do
+            if [ ! -z "$PY" ]; then
+                cd $PY
+                break
+            else
+                echo " > invalid choice!"
+            fi
+        done
+        break
+    fi
+
     cd ..
 done
+
 if [ "$PWD" = "/" ]; then
     cd "$start"
     echo "Could not activate: no virtual environment found." >&2
