@@ -403,6 +403,15 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_python_exec = '~/opt/bin/python3'
 "-------------------------------------------------------------------------------
+" pymode
+"-------------------------------------------------------------------------------
+let g:pymode_rope_goto_definition_bind='<Leader>d'
+let g:pymode_rope_show_doc_bind='<Leader>D'
+let g:pymode_rope_rename_bind='<Leader>rr'
+let g:pymode_rope_rename_bind='<Leader>ro'
+let g:pymode_run_bind = '<Leader>R'
+let g:pymode_breakpoint = 0
+"-------------------------------------------------------------------------------
 " Unite
 "-------------------------------------------------------------------------------
 " let g:unite_source_history_yank_enable = 1
