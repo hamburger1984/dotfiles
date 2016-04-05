@@ -5,7 +5,7 @@
 
 #git pull && \
 ./configure --prefix=$HOME/opt --exec_prefix=$HOME/opt && \
-    make -j -l 3 && \
+    make -j && \
     make install
 
 python3 --version
