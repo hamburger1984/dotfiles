@@ -49,12 +49,8 @@ Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 Plug 'elzr/vim-json', {'for': 'json'}
 Plug 'tpope/vim-markdown', {'for': 'markdown'}
 Plug 'zah/nim.vim', {'for': 'nim'}
-" Plug 'hdima/python-syntax', {'for': 'python'}
-" Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
-Plug 'klen/python-mode', {'for': 'python'}
 Plug 'Rykka/riv.vim' " crashes when loaded on-demand , {'for': 'rst'}
 Plug 'lervag/vimtex', {'for': 'tex'}
-" Plug 'b4winckler/vim-objc', {'for': 'objc'}
 Plug 'msanders/cocoa.vim', {'for': 'objc'}
 Plug 'ryotakato/unite-outline-objc', {'for': 'objc'}
 
@@ -64,7 +60,7 @@ Plug 'ervandew/supertab'
 
 " syntax check..
 Plug 'scrooloose/syntastic'
-Plug 'nvie/vim-flake8', {'for': 'python'}
+Plug 'klen/python-mode', {'for': 'python'}
 
 " scheme: landscape
 Plug 'itchyny/landscape.vim'
@@ -402,20 +398,39 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_python_exec = '~/opt/bin/python3'
+let g:syntastic_ignore_files = ['\.py$']
 "-------------------------------------------------------------------------------
 " python-mode
 "-------------------------------------------------------------------------------
+let g:pymode_indent = 1
+let g:pymode_folding = 1
+let g:pymode_run = 0
+let g:pymode_run_bind = '<Leader>R'
+let g:pymode_breakpoint = 0
+let g:pymode_breakpoint_bind = '<Leader>B'
+let g:pymode_lint = 1
+let g:pymode_lint_on_write = 1
+let g:pymode_lint_unmodified = 1
+let g:pymode_lint_on_fly = 0
+let g:pymode_lint_message = 1
+let g:pymode_lint_cwindow = 1
+let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe', 'pylint']
+let g:pymode_lint_signs = 1
+let g:pymode_rope = 1
+let g:pymode_rope_lookup_project = 0
+let g:pymode_rope_completion = 1
 let g:pymode_rope_goto_definition_bind='<Leader>d'
 let g:pymode_rope_show_doc_bind='<Leader>D'
 let g:pymode_rope_rename_bind='<Leader>rr'
-let g:pymode_rope_rename_bind='<Leader>ro'
-let g:pymode_run_bind = '<Leader>R'
-let g:pymode_breakpoint = 0
+let g:pymode_rope_organize_imports_bind='<Leader>ri'
+let g:pymode_syntax = 1
+let g:pymode_syntax_slow_sync = 1
+let g:pymode_syntax_print_as_function = 1
 "-------------------------------------------------------------------------------
 " Unite
 "-------------------------------------------------------------------------------
 " let g:unite_source_history_yank_enable = 1
-let g:unite_enable_start_insert = 1
+let g:unite_enable_start_insert = 0
 let g:unite_force_overwrite_statusline = 0
 if executable('ag')
     let g:unite_source_grep_command = 'ag'
@@ -426,7 +441,7 @@ nnoremap <F8>      :Unite -buffer-name=outline outline<CR>
 nnoremap <Leader>t :Unite -buffer-name=outline outline<CR>
 nnoremap <Leader>b :Unite -buffer-name=buffers buffer<CR>
 nnoremap <Leader>e :Unite -buffer-name=files file<CR>
-nnoremap <Leader>E :Unite -buffer-name=files file_rec/async<CR>
+nnoremap <Leader>E :Unite -start-insert -buffer-name=files file_rec/async<CR>
 "-------------------------------------------------------------------------------
 " Magit
 "-------------------------------------------------------------------------------
