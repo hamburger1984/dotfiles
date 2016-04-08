@@ -16,6 +16,8 @@ endif
 let plug_path='$HOME/.vim/plugged'
 
 call plug#begin(plug_path)
+" sensible defaults
+Plug 'tpope/vim-sensible'
 
 " some util plugins
 Plug 'xolox/vim-misc'  " needed for vim-shell
