@@ -1,0 +1,28 @@
+diff --git a/src/auto/configure b/src/auto/configure
+index 91b075d..930c4c8 100755
+--- a/src/auto/configure
++++ b/src/auto/configure
+@@ -5690,7 +5690,8 @@ $as_echo "OK" >&6; }
+ 
+                   perlcppflags=`$vi_cv_path_perl -Mlib=$srcdir -MExtUtils::Embed \
+ 	      -e 'ccflags;perl_inc;print"\n"' | sed -e 's/-fno[^ ]*//' \
+-			-e 's/-fdebug-prefix-map[^ ]*//g'`
++			-e 's/-fdebug-prefix-map[^ ]*//g' \
++            -e 's/-Werror=format-security/-Wformat &/'`
+             perllibs=`cd $srcdir; $vi_cv_path_perl -MExtUtils::Embed -e 'ldopts' | \
+ 		sed -e '/Warning/d' -e '/Note (probably harmless)/d' \
+ 			-e 's/-bE:perl.exp//' -e 's/-lc //'`
+diff --git a/src/configure.in b/src/configure.in
+index 0a8c95b..8eee3cf 100644
+--- a/src/configure.in
++++ b/src/configure.in
+@@ -1003,7 +1003,8 @@ if test "$enable_perlinterp" = "yes" -o "$enable_perlinterp" = "dynamic"; then
+       dnl Remove "-fdebug-prefix-map", it isn't supported by clang.
+       perlcppflags=`$vi_cv_path_perl -Mlib=$srcdir -MExtUtils::Embed \
+ 	      -e 'ccflags;perl_inc;print"\n"' | sed -e 's/-fno[[^ ]]*//' \
+-			-e 's/-fdebug-prefix-map[[^ ]]*//g'`
++			-e 's/-fdebug-prefix-map[[^ ]]*//g' \
++            -e 's/-Werror=format-security/-Wformat &/'`
+       dnl Remove "-lc", it breaks on FreeBSD when using "-pthread".
+       perllibs=`cd $srcdir; $vi_cv_path_perl -MExtUtils::Embed -e 'ldopts' | \
+ 		sed -e '/Warning/d' -e '/Note (probably harmless)/d' \

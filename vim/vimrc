@@ -20,8 +20,8 @@ call plug#begin(plug_path)
 Plug 'tpope/vim-sensible'
 
 " some util plugins
-Plug 'xolox/vim-misc'  " needed for vim-shell
-Plug 'xolox/vim-shell'  " fullscreen, hide flashing cmd prompts in windows
+Plug 'xolox/vim-misc'      " needed for vim-shell
+Plug 'xolox/vim-shell'     " fullscreen, hide flashing cmd prompts in windows
 Plug 'Shougo/vimproc.vim'  " needed by unite (at least)
 
 " start screen
@@ -71,6 +71,7 @@ Plug 'itchyny/landscape.vim'
 Plug 'bling/vim-bufferline'
 Plug 'itchyny/lightline.vim'
 Plug 'ryanoasis/vim-devicons'
+Plug 'naddeoa/vim-visual-page-percent'
 
 call plug#end()
 "-------------------------------------------------------------------------------
@@ -314,7 +315,7 @@ let g:lightline = {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'branch', 'filename', 'readonly', 'modified' ],
       \             [ 'fmtopts' ] ],
-      \   'right': [ [ 'syntastic', 'lineinfo' ], [ 'percent' ],
+      \   'right': [ [ 'syntastic', 'lineinfo' ], [ 'visualpercent' ],
       \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
       \ 'component': {
@@ -323,6 +324,7 @@ let g:lightline = {
       \   'readonly': '%{&filetype=="help"?"":&readonly?"":""}',
       \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
       \   'fmtopts': '%{strlen(&fo)?&fo:"⌀"}',
+      \   'visualpercent': '%{VisualPercent()}',
       \ },
       \ 'component_expand': {
       \   'syntastic': 'SyntasticStatuslineFlag',
