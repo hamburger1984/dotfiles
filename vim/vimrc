@@ -444,7 +444,7 @@ endif
 nnoremap <F8>      :Unite -buffer-name=outline outline<CR>
 nnoremap <Leader>t :Unite -buffer-name=outline outline<CR>
 nnoremap <Leader>b :Unite -buffer-name=buffers buffer<CR>
-nnoremap <Leader>e :Unite -buffer-name=files file<CR>
+nnoremap <Leader>e :Unite -start-insert -buffer-name=files file<CR>
 nnoremap <Leader>E :Unite -start-insert -buffer-name=files file_rec/async<CR>
 "-------------------------------------------------------------------------------
 " Magit
