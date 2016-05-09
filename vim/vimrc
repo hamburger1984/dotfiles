@@ -28,6 +28,7 @@ Plug 'Shougo/vimproc.vim'  " needed by unite (at least)
 Plug 'mhinz/vim-startify'
 
 " git
+Plug 'cohama/agit.vim'
 Plug 'jreybert/vimagit', { 'branch': 'next' }
 Plug 'itchyny/vim-gitbranch'
 " vcs agnostic gitgutter
@@ -39,6 +40,12 @@ Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 " unite, unite-outline
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/unite-outline'
+
+" pick
+Plug 'thoughtbot/pick.vim'
+
+" cursorword (underline all occurrences of the word under cursor)
+Plug 'itchyny/vim-cursorword'
 
 " fileencodings & language plugins
 Plug 's3rvac/AutoFenc'
@@ -433,7 +440,7 @@ let g:pymode_syntax_print_as_function = 1
 "-------------------------------------------------------------------------------
 " Unite
 "-------------------------------------------------------------------------------
-" let g:unite_source_history_yank_enable = 1
+let g:unite_source_history_yank_enable = 1
 let g:unite_enable_start_insert = 0
 let g:unite_force_overwrite_statusline = 0
 if executable('ag')
@@ -441,11 +448,16 @@ if executable('ag')
     let g:unite_source_rec_async_command =
         \ ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
 endif
-nnoremap <F8>      :Unite -buffer-name=outline outline<CR>
+" nnoremap <F8>      :Unite -buffer-name=outline outline<CR>
 nnoremap <Leader>t :Unite -buffer-name=outline outline<CR>
-nnoremap <Leader>b :Unite -buffer-name=buffers buffer<CR>
-nnoremap <Leader>e :Unite -start-insert -buffer-name=files file<CR>
-nnoremap <Leader>E :Unite -start-insert -buffer-name=files file_rec/async<CR>
+" nnoremap <Leader>b :Unite -buffer-name=buffers buffer<CR>
+" nnoremap <Leader>e :Unite -start-insert -buffer-name=files file<CR>
+" nnoremap <Leader>E :Unite -start-insert -buffer-name=files file_rec/async<CR>
+"-------------------------------------------------------------------------------
+" Pick
+"-------------------------------------------------------------------------------
+nnoremap <Leader>e :call PickFile()<CR>
+nnoremap <Leader>b :call PickBuffer()<CR>
 "-------------------------------------------------------------------------------
 " Magit
 "-------------------------------------------------------------------------------

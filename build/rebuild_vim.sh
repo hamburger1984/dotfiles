@@ -9,6 +9,8 @@
 #     --enable-rubyinterp=yes \
 #     --with-tlib=ncurses \
 
+PREFIX="$HOME/opt"
+
 echo "----- CONFIGURE"
 ./configure \
     --enable-fail-if-missing \
@@ -17,14 +19,14 @@ echo "----- CONFIGURE"
     --enable-gpm \
     --enable-gui=gtk3 \
     --enable-luainterp=dynamic \
-    --enable-perlinterp=yes \
+    --enable-perlinterp=dynamic \
     --enable-pythoninterp=dynamic \
     --enable-python3interp=dynamic \
     --enable-tclinterp=dynamic \
     --with-features=huge \
     --with-luajit \
     --with-tlib=ncurses \
-    --prefix=/home/andreas/opt &&
+    --prefix=$PREFIX &&
 echo "----- COMPILE, INSTALL" &&
 make -j -l 4 && make install &&
 echo "----- VERSION" &&
