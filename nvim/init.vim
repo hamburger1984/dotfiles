@@ -9,11 +9,11 @@ augroup END
 " Plugins
 "-------------------------------------------------------------------------------
 " Load vim-plug
-if empty(glob("$HOME/.vim/autoload/plug.vim"))
-    execute "!curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+if empty(glob("$HOME/.config/nvim/autoload/plug.vim"))
+    execute "!curl -fLo $HOME/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 endif
 
-let plug_path='$HOME/.vim/plugged'
+let plug_path='$HOME/.config/nvim/plugged'
 
 call plug#begin(plug_path)
 " sensible defaults

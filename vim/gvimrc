@@ -9,7 +9,8 @@ if has('win32')
     " set guifont=Consolas:h10:cANSI
     set guifont=Sauce_Code_Powerline_PNFT_Mono_:h9:cANSI
 else
-    set guifont=Hack\ 10
+    " set guifont=Hack\ 10
+    set guifont=ProFontWindows\ Nerd\ Font\ 12
 endif
 
 " colorscheme summerfruit256
