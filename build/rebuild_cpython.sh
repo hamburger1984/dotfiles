@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 # git clone https://github.com/python/cpython.git
 # cd cpython
 

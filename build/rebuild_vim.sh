@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 #     --enable-pythoninterp=dynamic \
 #     --enable-python3interp=dynamic \
 

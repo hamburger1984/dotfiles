@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 prefix=~/opt
 export PKG_CONFIG_PATH="$prefix/lib/pkgconfig"
 export PATH="$(pwd)/synfig-core/src/tool/.libs:$PATH"

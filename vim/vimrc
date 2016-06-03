@@ -24,6 +24,12 @@ Plug 'xolox/vim-misc'      " needed for vim-shell
 Plug 'xolox/vim-shell'     " fullscreen, hide flashing cmd prompts in windows
 Plug 'Shougo/vimproc.vim'  " needed by unite (at least)
 
+" text writing
+Plug 'reedes/vim-wordy'
+
+" note taking
+Plug 'xolox/vim-notes'
+
 " start screen
 Plug 'mhinz/vim-startify'
 
@@ -40,9 +46,6 @@ Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 " unite, unite-outline
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/unite-outline'
-
-" pick
-Plug 'thoughtbot/pick.vim'
 
 " cursorword (underline all occurrences of the word under cursor)
 Plug 'itchyny/vim-cursorword'
@@ -64,6 +67,7 @@ Plug 'msanders/cocoa.vim', {'for': 'objc'}
 Plug 'ryotakato/unite-outline-objc', {'for': 'objc'}
 
 " fold, complete, buffers, search
+Plug 'ddrscott/vim-side-search'
 Plug 'tmhedberg/SimpylFold'
 Plug 'ervandew/supertab'
 
@@ -450,14 +454,13 @@ if executable('ag')
 endif
 " nnoremap <F8>      :Unite -buffer-name=outline outline<CR>
 nnoremap <Leader>t :Unite -buffer-name=outline outline<CR>
-" nnoremap <Leader>b :Unite -buffer-name=buffers buffer<CR>
-" nnoremap <Leader>e :Unite -start-insert -buffer-name=files file<CR>
+nnoremap <Leader>b :Unite -buffer-name=buffers buffer<CR>
+nnoremap <Leader>e :Unite -start-insert -buffer-name=files file<CR>
 " nnoremap <Leader>E :Unite -start-insert -buffer-name=files file_rec/async<CR>
 "-------------------------------------------------------------------------------
-" Pick
+" SideSearch
 "-------------------------------------------------------------------------------
-nnoremap <Leader>e :call PickFile()<CR>
-nnoremap <Leader>b :call PickBuffer()<CR>
+nnoremap <Leader>7 :SideSearch <C-r><C-w><CR> | wincmd p
 "-------------------------------------------------------------------------------
 " Magit
 "-------------------------------------------------------------------------------

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 # ./configure --prefix=$HOME/opt --enable-ccache && \
 
 ./configure --enable-ccache && \

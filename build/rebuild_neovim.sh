@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 PREFIX="$HOME/opt"
 make CMAKE_EXTRA_FLAGS=-DCMAKE_INSTALL_PREFIX="$PREFIX" && \
     make CMAKE_EXTRA_FLAGS=-DCMAKE_INSTALL_PREFIX="$PREFIX" install
