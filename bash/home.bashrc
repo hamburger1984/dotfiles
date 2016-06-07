@@ -1,5 +1,8 @@
 # .bashrc
 
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
 # Source global definitions
 if [ -f /etc/bashrc ]; then
     . /etc/bashrc
@@ -13,7 +16,8 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias less='less --RAW-CONTROL-CHARS'
-alias ls='ls --color=auto'
+export LS_OPTS='--color=auto'
+alias ls='ls ${LS_OPTS}'
 alias l='ls -loah'
 alias lt='ls -loaht'
 alias lss='ls -loahS'
@@ -26,6 +30,7 @@ alias km='cmake -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix` ..; make -j -l 6'
 alias qm='qmake ..; make -j -l 6'
 # pip
 alias pipup3.5='pip3.5 freeze --local | grep -v "^\-e" | cut -d= -f1 | xargs pip3.5 install -U'
+
 # git
 alias rpull='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && echo -n \"----- \" && echo \"{}\" | rev | cut -d\"/\" -f2 | rev && git pull" \;'
 alias rfetch='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && echo -n \"----- \" && echo \"{}\" | rev | cut -d\"/\" -f2 | rev && git fetch --prune" \;'
@@ -67,6 +72,7 @@ done < <(find . -iname '*.jpg' -print0)
 
 # history..
 export HISTCONTROL=ignoredups
+# export HISTCONTROL=ignoreboth:erasedups
 export HISTSIZE=
 export HISTFILESIZE=
 export HISTFILE=~/.bash4_history
@@ -76,12 +82,15 @@ export PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"
 # tty font
 if [ $TERM = linux ]; then
     setfont /lib/kbd/consolefonts/Lat2-Terminus16.psfu.gz
+else
+    # enable colors for neovim
+    export TERM="xterm-256color"
 fi
 
 # prompt
 # get current branch in git repo
 function parse_git_branch() {
-    BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+    BRANCH=`LANG="CC" git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
     if [ ! "${BRANCH}" == "" ]
     then
         STAT=`parse_git_dirty`
@@ -93,7 +102,7 @@ function parse_git_branch() {
 
 # get current status of git repo
 function parse_git_dirty {
-    status=`git status 2>&1 | tee`
+    status=`LANG="CC" git status 2>&1 | tee`
     dirty=`echo -n "${status}" 2> /dev/null | grep "modified:" &> /dev/null; echo "$?"`
     untracked=`echo -n "${status}" 2> /dev/null | grep "Untracked files" &> /dev/null; echo "$?"`
     ahead=`echo -n "${status}" 2> /dev/null | grep "Your branch is ahead of" &> /dev/null; echo "$?"`
@@ -126,10 +135,7 @@ function parse_git_dirty {
     fi
 }
 
-if [ -n "$PS1" ]; then
-    export PS1="\t \[\e[33m\]\h\[\e[m\] \w \[\e[34m\]\`parse_git_branch\`\[\e[m\]\\$ "
-    export TERM="xterm-256color"
-fi
+export PS1="\t \[\e[33m\]\h\[\e[m\] \w \[\e[34m\]\`parse_git_branch\`\[\e[m\]\\$ "
 
 if [ -n "$VIRTUAL_ENV" ]; then
     export PS1="$PS1\[\033[0;34m\](${VIRTUAL_ENV##*/})\[\e[0m\] "
