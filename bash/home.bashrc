@@ -85,6 +85,9 @@ if [ $TERM = linux ]; then
 elif [ $TERM = xterm ]; then
     # tell neovim about colors
     export TERM="xterm-256color"
+elif [ $TERM = screen ]; then
+    # tell neovim about colors
+    export TERM="screen-256color"
 fi
 
 # prompt
