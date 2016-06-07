@@ -37,6 +37,7 @@ Plug 'mhinz/vim-startify'
 Plug 'cohama/agit.vim'
 Plug 'jreybert/vimagit', { 'branch': 'next' }
 Plug 'itchyny/vim-gitbranch'
+
 " vcs agnostic gitgutter
 Plug 'mhinz/vim-signify'
 
@@ -54,17 +55,19 @@ Plug 'itchyny/vim-cursorword'
 Plug 's3rvac/AutoFenc'
 Plug 'NLKNguyen/c-syntax.vim', {'for': 'c'}
 Plug 'chrisbra/csv.vim' " delaying this causes an error , {'for': 'csv'}
-Plug 'wannesm/wmgraphviz.vim', {'for': ['dot', 'gv']}
 Plug 'jimenezrick/vimerl', {'for': 'erlang'}
 Plug 'fatih/vim-go', {'for': 'go'}
+Plug 'wannesm/wmgraphviz.vim', {'for': ['dot', 'gv']}
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 Plug 'elzr/vim-json', {'for': 'json'}
 Plug 'tpope/vim-markdown', {'for': 'markdown'}
 Plug 'zah/nim.vim', {'for': 'nim'}
+"Plug 'msanders/cocoa.vim', {'for': 'objc'}
+"Plug 'ryotakato/unite-outline-objc', {'for': 'objc'}
+Plug 'davidhalter/jedi-vim', {'for': 'python'}
+Plug 'nvie/vim-flake8', {'for': 'python'}
 Plug 'Rykka/riv.vim' " crashes when loaded on-demand , {'for': 'rst'}
 Plug 'lervag/vimtex', {'for': 'tex'}
-Plug 'msanders/cocoa.vim', {'for': 'objc'}
-Plug 'ryotakato/unite-outline-objc', {'for': 'objc'}
 
 " fold, complete, buffers, search
 Plug 'ddrscott/vim-side-search'
@@ -73,7 +76,6 @@ Plug 'ervandew/supertab'
 
 " syntax check..
 Plug 'scrooloose/syntastic'
-Plug 'klen/python-mode', {'for': 'python'}
 
 " scheme: landscape
 Plug 'itchyny/landscape.vim'
@@ -417,30 +419,40 @@ let g:syntastic_ignore_files = ['\.py$']
 "-------------------------------------------------------------------------------
 " python-mode
 "-------------------------------------------------------------------------------
-let g:pymode_indent = 1
-let g:pymode_folding = 1
-let g:pymode_run = 0
-let g:pymode_run_bind = '<Leader>R'
-let g:pymode_breakpoint = 0
-let g:pymode_breakpoint_bind = '<Leader>B'
-let g:pymode_lint = 1
-let g:pymode_lint_on_write = 1
-let g:pymode_lint_unmodified = 1
-let g:pymode_lint_on_fly = 0
-let g:pymode_lint_message = 1
-let g:pymode_lint_cwindow = 1
-let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe', 'pylint']
-let g:pymode_lint_signs = 1
-let g:pymode_rope = 1
-let g:pymode_rope_lookup_project = 0
-let g:pymode_rope_completion = 1
-let g:pymode_rope_goto_definition_bind='<Leader>d'
-let g:pymode_rope_show_doc_bind='<Leader>D'
-let g:pymode_rope_rename_bind='<Leader>rr'
-let g:pymode_rope_organize_imports_bind='<Leader>ri'
-let g:pymode_syntax = 1
-let g:pymode_syntax_slow_sync = 1
-let g:pymode_syntax_print_as_function = 1
+" let g:pymode_indent = 1
+" let g:pymode_folding = 1
+" let g:pymode_run = 0
+" let g:pymode_run_bind = '<Leader>R'
+" let g:pymode_breakpoint = 0
+" let g:pymode_breakpoint_bind = '<Leader>B'
+" let g:pymode_lint = 1
+" let g:pymode_lint_on_write = 1
+" let g:pymode_lint_unmodified = 1
+" let g:pymode_lint_on_fly = 0
+" let g:pymode_lint_message = 1
+" let g:pymode_lint_cwindow = 1
+" let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe', 'pylint']
+" let g:pymode_lint_signs = 1
+" let g:pymode_rope = 1
+" let g:pymode_rope_lookup_project = 0
+" let g:pymode_rope_completion = 1
+" let g:pymode_rope_goto_definition_bind='<Leader>d'
+" let g:pymode_rope_show_doc_bind='<Leader>D'
+" let g:pymode_rope_rename_bind='<Leader>rr'
+" let g:pymode_rope_organize_imports_bind='<Leader>ri'
+" let g:pymode_syntax = 1
+" let g:pymode_syntax_slow_sync = 1
+" let g:pymode_syntax_print_as_function = 1
+"-------------------------------------------------------------------------------
+" jedi-vim
+"-------------------------------------------------------------------------------
+let g:jedi#show_call_signatures="2" " 1 - default (popup), 2 - commandline
+let g:jedi#usages_command="<Leader>u"
+"-------------------------------------------------------------------------------
+" vim-flak8
+"-------------------------------------------------------------------------------
+autocmd BufWritePost *.py call Flake8()
+let g:flake8_show_in_gutter=1
 "-------------------------------------------------------------------------------
 " Unite
 "-------------------------------------------------------------------------------

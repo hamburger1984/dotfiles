@@ -79,11 +79,11 @@ export HISTFILE=~/.bash4_history
 shopt -s histappend
 export PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"
 
-# tty font
 if [ $TERM = linux ]; then
+    # tty font
     setfont /lib/kbd/consolefonts/Lat2-Terminus16.psfu.gz
-else
-    # enable colors for neovim
+elif [ $TERM = xterm ]; then
+    # tell neovim about colors
     export TERM="xterm-256color"
 fi
 
