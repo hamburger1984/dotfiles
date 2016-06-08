@@ -91,10 +91,11 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'naddeoa/vim-visual-page-percent'
 
 call plug#end()
+
 "-------------------------------------------------------------------------------
 " Set encoding to utf-8
 "-------------------------------------------------------------------------------
-set encoding=utf-8
+"set encoding=utf-8
 "-------------------------------------------------------------------------------
 " Toggle paste - turns on/off autoindenting etc.
 "-------------------------------------------------------------------------------
@@ -285,6 +286,11 @@ set nobackup
 set nowritebackup
 set noswapfile
 "-------------------------------------------------------------------------------
+" Spelling
+"-------------------------------------------------------------------------------
+set spelllang=en,de
+set complete+=kspell
+"-------------------------------------------------------------------------------
 " Filetype mappings..
 "-------------------------------------------------------------------------------
 au BufNewFile,BufRead *.conf set filetype=config
@@ -316,6 +322,7 @@ au FileType tex,plaintex setl fen foldmethod=expr
     \ foldexpr=vimtex#fold#level(v:lnum)
     \ foldtext=vimtex#fold#text()
     \ fo+=t fo-=c
+    \ spell
 " fo+=a  " .. is useful but might interfere with non-text parts of tex
 " XML: syntax folding is slow for large files - use indent
 " .. might have to switch for unformatted files
