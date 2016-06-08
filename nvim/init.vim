@@ -421,33 +421,6 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_python_python_exec = '~/opt/bin/python3'
 let g:syntastic_ignore_files = ['\.py$']
 "-------------------------------------------------------------------------------
-" python-mode
-"-------------------------------------------------------------------------------
-" let g:pymode_indent = 1
-" let g:pymode_folding = 1
-" let g:pymode_run = 0
-" let g:pymode_run_bind = '<Leader>R'
-" let g:pymode_breakpoint = 0
-" let g:pymode_breakpoint_bind = '<Leader>B'
-" let g:pymode_lint = 1
-" let g:pymode_lint_on_write = 1
-" let g:pymode_lint_unmodified = 1
-" let g:pymode_lint_on_fly = 0
-" let g:pymode_lint_message = 1
-" let g:pymode_lint_cwindow = 1
-" let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe', 'pylint']
-" let g:pymode_lint_signs = 1
-" let g:pymode_rope = 1
-" let g:pymode_rope_lookup_project = 0
-" let g:pymode_rope_completion = 1
-" let g:pymode_rope_goto_definition_bind='<Leader>d'
-" let g:pymode_rope_show_doc_bind='<Leader>D'
-" let g:pymode_rope_rename_bind='<Leader>rr'
-" let g:pymode_rope_organize_imports_bind='<Leader>ri'
-" let g:pymode_syntax = 1
-" let g:pymode_syntax_slow_sync = 1
-" let g:pymode_syntax_print_as_function = 1
-"-------------------------------------------------------------------------------
 " jedi-vim
 "-------------------------------------------------------------------------------
 let g:jedi#show_call_signatures="2" " 1 - default (popup), 2 - commandline
