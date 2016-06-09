@@ -138,10 +138,26 @@ function parse_git_dirty {
     fi
 }
 
-export PS1="\t \[\e[33m\]\h\[\e[m\] \w \[\e[34m\]\`parse_git_branch\`\[\e[m\]\\$ "
+function print_tty {
+    local value=$(tty)
+    #tput cup $(tput lines) $(($(tput cols) - ${#value} - 2))
+    tput cup 0 $(($(tput cols) - ${#value} - 2))
+    printf ' %s' $value
+}
 
-if [ -n "$VIRTUAL_ENV" ]; then
-    export PS1="$PS1\[\033[0;34m\](${VIRTUAL_ENV##*/})\[\e[0m\] "
-fi
+function check_venv {
+    if [ -n "$VIRTUAL_ENV" ]; then
+        echo "${VIRTUAL_ENV##*/} "
+    fi
+}
+
+prompt='\t \[\e[33m\]\h\[\e[39m\] \w '
+callTTY='\[$(tput sc; print_tty; tput rc)\]'
+addGIT='\[\e[34m\]$(parse_git_branch)\[\e[39m\]'
+addVENV='\[\e[34m\]$(check_venv)\[\e[39m\]'
+PROMPT_COMMAND=update_prompt
+function update_prompt {
+    PS1="${callTTY}${prompt}${addGIT}${addVENV}\\$ "
+}
 
 export EDITOR="vim"
