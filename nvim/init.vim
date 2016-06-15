@@ -66,10 +66,8 @@ Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 Plug 'elzr/vim-json', {'for': 'json'}
 Plug 'tpope/vim-markdown', {'for': 'markdown'}
 Plug 'zah/nim.vim', {'for': 'nim'}
-"Plug 'msanders/cocoa.vim', {'for': 'objc'}
-"Plug 'ryotakato/unite-outline-objc', {'for': 'objc'}
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
-Plug 'nvie/vim-flake8', {'for': 'python'}
+"Plug 'nvie/vim-flake8', {'for': 'python'}
 Plug 'Rykka/riv.vim' " crashes when loaded on-demand , {'for': 'rst'}
 Plug 'lervag/vimtex', {'for': 'tex'}
 
@@ -346,7 +344,7 @@ let g:lightline = {
       \ 'component': {
       \   'fileformat': '%{&fileformat." ".WebDevIconsGetFileFormatSymbol()}',
       \   'filetype': '%{(strlen(&filetype)?&filetype." ".WebDevIconsGetFileTypeSymbol():"no ft")}',
-      \   'readonly': '%{&filetype=="help"?"":&readonly?"":""}',
+      \   'readonly': '%{&filetype=="help"?"":&readonly?"":""}',
       \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
       \   'fmtopts': '%{strlen(&fo)?&fo:"⌀"}',
       \   'visualpercent': '%{VisualPercent()}',
@@ -401,7 +399,7 @@ let g:bufferline_active_buffer_right=''  " ❩
 let g:bufferline_echo=1
 let g:bufferline_modified='+'
 let g:bufferline_rotate=0
-" let g:bufferline_show_bufnr=0
+let g:bufferline_show_bufnr=0
 let g:bufferline_solo_highlight=0
 "-------------------------------------------------------------------------------
 " running stuff ~> format/lint/make/..
@@ -410,7 +408,7 @@ au FileType html   map <buffer> <Leader>c :!tidy -q -mi --show-errors 0 --wrap 0
 au FileType json   map <buffer> <Leader>c :%!python -m json.tool<CR>
 au FileType nim    map <buffer> <Leader>c :!nim c %<CR>
 au FileType nim    map <buffer> <Leader>C :!nim c -r %<CR>
-au FileType python map <buffer> <Leader>c :call Flake8()<CR>
+"au FileType python map <buffer> <Leader>c :call Flake8()<CR>
 au FileType xml    map <buffer> <Leader>c :%!xmllint --format --recover -<CR>
 nnoremap <F5> :cd %:p:h<CR> :!make<CR>
 "-------------------------------------------------------------------------------
@@ -427,17 +425,17 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_python_exec = '~/opt/bin/python3'
-let g:syntastic_ignore_files = ['\.py$']
+"let g:syntastic_ignore_files = ['\.py$']
 "-------------------------------------------------------------------------------
 " jedi-vim
 "-------------------------------------------------------------------------------
 let g:jedi#show_call_signatures="2" " 1 - default (popup), 2 - commandline
 let g:jedi#usages_command="<Leader>u"
 "-------------------------------------------------------------------------------
-" vim-flak8
+" vim-flake8
 "-------------------------------------------------------------------------------
-autocmd BufWritePost *.py call Flake8()
-let g:flake8_show_in_gutter=1
+"autocmd BufWritePost *.py call Flake8()
+"let g:flake8_show_in_gutter=1
 "-------------------------------------------------------------------------------
 " Unite
 "-------------------------------------------------------------------------------
