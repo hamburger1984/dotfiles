@@ -62,16 +62,21 @@ Plug 'chrisbra/csv.vim' " delaying this causes an error , {'for': 'csv'}
 Plug 'jimenezrick/vimerl', {'for': 'erlang'}
 Plug 'fatih/vim-go', {'for': 'go'}
 Plug 'wannesm/wmgraphviz.vim', {'for': ['dot', 'gv']}
+Plug 'artur-shaik/vim-javacomplete2', {'for': 'java'}
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 Plug 'elzr/vim-json', {'for': 'json'}
 Plug 'tpope/vim-markdown', {'for': 'markdown'}
 Plug 'zah/nim.vim', {'for': 'nim'}
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
-"Plug 'nvie/vim-flake8', {'for': 'python'}
 Plug 'Rykka/riv.vim' " crashes when loaded on-demand , {'for': 'rst'}
 Plug 'lervag/vimtex', {'for': 'tex'}
+Plug 'jneen/ragel.vim', {'for': 'ragel'}
 
 " fold, complete, buffers, search
+function! DoRemote(arg)
+    UpdateRemotePlugins
+endfunction
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'ddrscott/vim-side-search'
 Plug 'tmhedberg/SimpylFold'
 Plug 'ervandew/supertab'
@@ -296,6 +301,8 @@ au BufNewFile,BufRead *.conf set filetype=config
 au BufNewFile,BufRead *.config set filetype=xml
 au BufNewFile,BufRead *.geojson set filetype=json
 au BufNewFile,BufRead *.md set filetype=markdown
+au BufNewFile,BufRead *.nim set filetype=nim
+au BufNewFile,BufRead *.rl set filetype=ragel
 au BufNewFile,BufRead *.xaml set filetype=xml
 "-------------------------------------------------------------------------------
 " Folding..
@@ -308,13 +315,16 @@ set foldlevelstart=1
 " Filetype specific settings..
 "-------------------------------------------------------------------------------
 " C_LIKE: fold by syntax, conceal
-au FileType c,cpp,java,javascript setl fen foldmethod=syntax
-    \ conceallevel=1
+au FileType java setl fen foldmethod=syntax conceallevel=1
+    \ omnifunc=javacomplete#Complete
+au FileType c,cpp,javascript setl fen foldmethod=syntax conceallevel=1
 au FileType json setl fen foldmethod=syntax conceallevel=0
 " OBJECTIVE_C: fold by syntax
 au FileType objc setl fen foldmethod=syntax noexpandtab
 " PYTHON: folding up to 3 levels
 au FileType python setl fen foldmethod=indent foldnestmax=3
+" RST: spell check
+au FileType rst setl fen foldmethod=syntax spell
 " TEX: folding + line wrapping
 au FileType tex,plaintex setl fen foldmethod=expr
     \ conceallevel=2
@@ -432,11 +442,6 @@ let g:syntastic_python_python_exec = '~/opt/bin/python3'
 let g:jedi#show_call_signatures="2" " 1 - default (popup), 2 - commandline
 let g:jedi#usages_command="<Leader>u"
 "-------------------------------------------------------------------------------
-" vim-flake8
-"-------------------------------------------------------------------------------
-"autocmd BufWritePost *.py call Flake8()
-"let g:flake8_show_in_gutter=1
-"-------------------------------------------------------------------------------
 " Unite
 "-------------------------------------------------------------------------------
 let g:unite_source_history_yank_enable = 1
@@ -447,7 +452,6 @@ if executable('ag')
     let g:unite_source_rec_async_command =
         \ ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
 endif
-" nnoremap <F8>      :Unite -buffer-name=outline outline<CR>
 nnoremap <Leader>t :Unite -buffer-name=outline outline<CR>
 nnoremap <Leader>b :Unite -buffer-name=buffers buffer<CR>
 nnoremap <Leader>e :Unite -start-insert -buffer-name=files file<CR>
@@ -480,3 +484,7 @@ let g:tex_conceal="adgms"
 " Neovim terminal mode \o/
 "-------------------------------------------------------------------------------
 tnoremap <Leader><Esc> <C-\><C-n>
+"-------------------------------------------------------------------------------
+" deoplete
+"-------------------------------------------------------------------------------
+let g:deoplete#enable_at_startup = 1

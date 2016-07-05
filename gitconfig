@@ -1,13 +1,8 @@
 [user]
     name = Andreas Krohn
-    email = Hamburger1984@gmail.com
-[color]
-    ui = true
-    diff = true
-[core]
-    editor = vim
+    email = hamburger1984@gmail.com
+
 [alias]
-    cp = cherry-pick
     d = diff
     dc = diff --cached
     lg = !"git lg1"
@@ -19,12 +14,22 @@
     rs = rebase --skip
     sl = stash list
     st = status
-[push]
-    default = simple
+[color]
+    ui = true
+    diff = true
+[core]
+    editor = nvim
+[diff]
+    compactionheuristic = true
+[interactive]
+	diffFilter = diff-highlight
 [gui]
 	fontdiff = -family \"ProFontWindows Nerd Font\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
 	fontui = -family \"Noto Sans\" -size 8 -weight normal -slant roman -underline 0 -overstrike 0
+[push]
+    default = simple
+
 [url "git://anongit.kde.org/"]
-	insteadOf = kde:
+    insteadOf = kde:
 [url "git@git.kde.org:"]
-	pushInsteadOf = kde:
+    pushInsteadOf = kde:
