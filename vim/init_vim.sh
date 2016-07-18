@@ -42,8 +42,8 @@ echo "linking extras to $destdir"
 ln -s "$srcdir/extras" "extras"
 
 if [ ! -d "autoload" ]; then
-    echo "creating autload folder in $destdir"
-    mkdir "autload"
+    echo "creating autoload folder in $destdir"
+    mkdir "autoload"
 fi
 
 read -p "Starting vim and :PlugInstall-ing stuff.." -n1 -s

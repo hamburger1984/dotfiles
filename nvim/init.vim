@@ -78,7 +78,8 @@ function! DoRemote(arg)
 endfunction
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'ddrscott/vim-side-search'
-Plug 'tmhedberg/SimpylFold'
+"Plug 'tmhedberg/SimpylFold'
+Plug 'Konfekt/FastFold'
 Plug 'ervandew/supertab'
 
 " syntax check..
@@ -455,7 +456,7 @@ endif
 nnoremap <Leader>t :Unite -buffer-name=outline outline<CR>
 nnoremap <Leader>b :Unite -buffer-name=buffers buffer<CR>
 nnoremap <Leader>e :Unite -start-insert -buffer-name=files file<CR>
-" nnoremap <Leader>E :Unite -start-insert -buffer-name=files file_rec/async<CR>
+nnoremap <Leader>E :Unite -start-insert -buffer-name=files file_rec/async<CR>
 "-------------------------------------------------------------------------------
 " SideSearch
 "-------------------------------------------------------------------------------
