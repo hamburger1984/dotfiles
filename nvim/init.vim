@@ -378,7 +378,7 @@ let g:lightline = {
 function! LightLineBranch()
     if exists("*gitbranch#name")
         let _ = gitbranch#name()
-        return strlen(_) ? ' '._ : ''
+        return strlen(_) ? ' '._ : ''
     endif
     return ''
 endfunction
