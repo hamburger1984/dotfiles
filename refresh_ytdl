@@ -12,7 +12,7 @@ do
     # youtube-dl -f bestaudio -t -i -c -w -x -a .ytdlsource
 
     # .. just the latest (given new-to-old order..)
-    youtube-dl --playlist-end 20 -f bestaudio -t -i -c -w -x -a .ytdlsource
+    youtube-dl --playlist-end 15 -f bestaudio -t -i -c -w -x -a .ytdlsource
 
     popd &> /dev/null
 done

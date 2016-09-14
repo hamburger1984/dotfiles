@@ -23,6 +23,9 @@ call plug#begin(plug_path)
 " sensible defaults
 Plug 'tpope/vim-sensible'
 
+" devicons have to be loaded quite early.
+Plug 'ryanoasis/vim-devicons'
+
 " some util plugins
 Plug 'xolox/vim-misc'      " needed for vim-shell
 Plug 'xolox/vim-shell'     " fullscreen, hide flashing cmd prompts in windows
@@ -88,10 +91,9 @@ Plug 'scrooloose/syntastic'
 " scheme: landscape
 Plug 'itchyny/landscape.vim'
 
-" bufferline, lightline, icons
+" bufferline, lightline, percent indicator
 Plug 'bling/vim-bufferline'
 Plug 'itchyny/lightline.vim'
-Plug 'ryanoasis/vim-devicons'
 Plug 'naddeoa/vim-visual-page-percent'
 
 call plug#end()

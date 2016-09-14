@@ -160,4 +160,4 @@ function update_prompt {
     PS1="${callTTY}${prompt}${addGIT}${addVENV}\\$ "
 }
 
-export EDITOR="vim"
+export EDITOR="nvim"
