@@ -1,0 +1,6 @@
+#!/bin/sh
+
+if [ "$2" = "vpn-up" ]; then
+    /usr/bin/logger -s "$2 for $1 -- setting mtu to 1356"
+    /sbin/ifconfig "$1" mtu 1356
+fi

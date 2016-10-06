@@ -6,8 +6,8 @@
     d = diff
     dc = diff --cached
     lg = !"git lg1"
-    lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-    lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+    lg1 = log --graph --abbrev-commit --decorate --date=relative --format='%C(yellow)%h %C(blue)%ar %Cgreen%an %Creset%s %C(yellow)%d%Creset' --all
+    lg2 = log --graph --abbrev-commit --decorate --format='%C(yellow)%h %C(blue)%aD %C(blue)%ar %C(yellow)%d%Creset%n    %s %Cgreen%an%Creset' --all
     lg3 = log --graph --decorate --all
     ra = rebase --abort
     rc = rebase --continue
