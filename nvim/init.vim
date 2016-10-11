@@ -68,6 +68,7 @@ Plug 'wannesm/wmgraphviz.vim', {'for': ['dot', 'gv']}
 Plug 'artur-shaik/vim-javacomplete2', {'for': 'java'}
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 Plug 'elzr/vim-json', {'for': 'json'}
+Plug 'xolox/vim-lua-ftplugin', {'for': 'lua'}
 Plug 'tpope/vim-markdown', {'for': 'markdown'}
 Plug 'zah/nim.vim', {'for': 'nim'}
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
@@ -298,8 +299,9 @@ set complete+=t
 set spelllang=de,en
 set complete+=kspell
 "-------------------------------------------------------------------------------
-" Filetype mappings..
+" Filetype mappings, formatting.
 "-------------------------------------------------------------------------------
+au BufNewFile,BufRead *.c set formatprg=astyle\ -A1
 au BufNewFile,BufRead *.conf set filetype=config
 au BufNewFile,BufRead *.config set filetype=xml
 au BufNewFile,BufRead *.geojson set filetype=json
@@ -417,6 +419,7 @@ let g:bufferline_solo_highlight=0
 "-------------------------------------------------------------------------------
 " running stuff ~> format/lint/make/..
 "-------------------------------------------------------------------------------
+au FileType c      map <buffer> <Leader>c gggqG
 au FileType html   map <buffer> <Leader>c :!tidy -q -mi --show-errors 0 --wrap 0 %<CR>
 au FileType json   map <buffer> <Leader>c :%!python -m json.tool<CR>
 au FileType nim    map <buffer> <Leader>c :!nim c %<CR>
