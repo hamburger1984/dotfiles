@@ -91,6 +91,8 @@ Plug 'scrooloose/syntastic'
 
 " scheme: landscape
 Plug 'itchyny/landscape.vim'
+Plug 'alessandroyorba/despacio'
+Plug 'kkpmw/moonshine-vim'
 
 " bufferline, lightline, percent indicator
 Plug 'bling/vim-bufferline'
@@ -245,7 +247,11 @@ if !has('gui_running')
     set t_Co=256
 endif
 set background=dark
-colorscheme landscape
+"colorscheme landscape
+colorscheme despacio
+"colorscheme moonshine
+"colorscheme moonshine_lowcontrast
+"colorscheme moonshine_minimal
 "-------------------------------------------------------------------------------
 " Enable syntax highlighting
 "-------------------------------------------------------------------------------
@@ -469,7 +475,7 @@ nnoremap <Leader>7 :SideSearch <C-r><C-w><CR> | wincmd p
 "-------------------------------------------------------------------------------
 " Magit
 "-------------------------------------------------------------------------------
-let g:magit_show_help=0
+let g:magit_show_help = 0
 "-------------------------------------------------------------------------------
 " vim-javascript
 "-------------------------------------------------------------------------------
