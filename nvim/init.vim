@@ -34,9 +34,6 @@ Plug 'Shougo/vimproc.vim'  " needed by unite (at least)
 " text writing
 Plug 'reedes/vim-wordy'
 
-" note taking
-Plug 'xolox/vim-notes'
-
 " start screen
 Plug 'mhinz/vim-startify'
 
@@ -44,9 +41,7 @@ Plug 'mhinz/vim-startify'
 Plug 'cohama/agit.vim'
 Plug 'jreybert/vimagit', { 'branch': 'next' }
 Plug 'itchyny/vim-gitbranch'
-
-" vcs agnostic gitgutter
-Plug 'mhinz/vim-signify'
+Plug 'airblade/vim-gitgutter'
 
 " distraction free
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
@@ -82,14 +77,13 @@ function! DoRemote(arg)
 endfunction
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'ddrscott/vim-side-search'
-"Plug 'tmhedberg/SimpylFold'
 Plug 'Konfekt/FastFold'
 Plug 'ervandew/supertab'
 
 " syntax check..
 Plug 'scrooloose/syntastic'
 
-" scheme: landscape
+" scheme: landscape, despacio, moonshine
 Plug 'itchyny/landscape.vim'
 Plug 'alessandroyorba/despacio'
 Plug 'kkpmw/moonshine-vim'
@@ -101,10 +95,6 @@ Plug 'naddeoa/vim-visual-page-percent'
 
 call plug#end()
 
-"-------------------------------------------------------------------------------
-" Set encoding to utf-8
-"-------------------------------------------------------------------------------
-"set encoding=utf-8
 "-------------------------------------------------------------------------------
 " Toggle paste - turns on/off autoindenting etc.
 "-------------------------------------------------------------------------------
@@ -124,15 +114,9 @@ else
     set clipboard=unnamedplus
 endif
 "-------------------------------------------------------------------------------
-" Mouse & Backspace
+" Mouse
 "-------------------------------------------------------------------------------
 set mouse=a
-set bs=2
-"-------------------------------------------------------------------------------
-" Brackets & scrolling
-"-------------------------------------------------------------------------------
-set sm " Shortly jump to matching bracket
-set so=4 " scrolloff (lines of context during scrolling)
 "-------------------------------------------------------------------------------
 " <Leader> key
 "-------------------------------------------------------------------------------
@@ -201,7 +185,6 @@ vnoremap > >gv
 " Make search case insensitive
 "-------------------------------------------------------------------------------
 set hlsearch
-set incsearch
 set ignorecase
 set smartcase
 "-------------------------------------------------------------------------------
@@ -211,10 +194,6 @@ nnoremap <M-/> \v
 vnoremap <M-/> /\v
 nnoremap <M-?> ?\v
 vnoremap <M-?> ?\v
-" nnoremap / /\v
-" vnoremap / /\v
-" nnoremap ? ?\v
-" vnoremap ? ?\v
 "-------------------------------------------------------------------------------
 " Keep search matches in the middle of the screen, and pulse the line when moving
 "-------------------------------------------------------------------------------
@@ -233,11 +212,11 @@ inoremap <silent> <C-n> <esc>:nohl<CR>
 "-------------------------------------------------------------------------------
 " Highlight multiple spaces and trailing whitespace
 "-------------------------------------------------------------------------------
-set listchars=tab:\|\ ,trail:·
 set list
 highlight Whitespace cterm=underline gui=underline ctermfg=94 guifg=#875f00
 au ColorScheme * highlight Whitespace cterm=underline gui=underline ctermfg=94 guifg=#875f00
-au BufWinEnter * call matchadd('Whitespace', '  \+\($\)\@!', -1)
+" highlight multiple spaces
+au BufWinEnter * call matchadd('Whitespace', '\s\s\+\($\)\@!', -1)
 " highlight trailing whitespace
 au BufWinEnter * call matchadd('ErrorMsg', '\s\+$', -1)
 "-------------------------------------------------------------------------------
@@ -252,12 +231,6 @@ colorscheme despacio
 "colorscheme moonshine
 "colorscheme moonshine_lowcontrast
 "colorscheme moonshine_minimal
-"-------------------------------------------------------------------------------
-" Enable syntax highlighting
-"-------------------------------------------------------------------------------
-filetype off
-filetype plugin indent on
-syntax on
 "-------------------------------------------------------------------------------
 " (relative) line numbers
 "-------------------------------------------------------------------------------
@@ -287,10 +260,6 @@ set softtabstop=4
 set shiftwidth=4
 set shiftround
 set expandtab
-"-------------------------------------------------------------------------------
-" Indent new lines
-"-------------------------------------------------------------------------------
-set autoindent
 "-------------------------------------------------------------------------------
 " Disable stupid backup and swap files - they trigger too many events
 " for file system watchers
@@ -382,7 +351,8 @@ let g:lightline = {
       \   'mode': 'LightLineMode',
       \ },
       \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '', 'right': '' }
+      \ 'subseparator': { 'left': '', 'right': '' },
+      \ 'colorscheme': 'seoul256'
       \ }
 
 function! LightLineBranch()
@@ -410,7 +380,6 @@ function! LightLineMode()
         \ _
 endfunction
 
-set laststatus=2
 set noshowmode
 "-------------------------------------------------------------------------------
 " bufferline
@@ -476,6 +445,10 @@ nnoremap <Leader>7 :SideSearch <C-r><C-w><CR> | wincmd p
 " Magit
 "-------------------------------------------------------------------------------
 let g:magit_show_help = 0
+"-------------------------------------------------------------------------------
+" GitGutter
+"-------------------------------------------------------------------------------
+let g:gitgutter_map_keys = 0
 "-------------------------------------------------------------------------------
 " vim-javascript
 "-------------------------------------------------------------------------------
