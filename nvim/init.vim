@@ -48,13 +48,17 @@ Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 
 " unite, unite-outline
 Plug 'Shougo/unite.vim'
+"Plug 'tsukkee/unite-tag'
 Plug 'Shougo/unite-outline'
+
+" automatically invoke ctags.
+"Plug 'craigemery/vim-autotag'
 
 " cursorword (underline all occurrences of the word under cursor)
 Plug 'itchyny/vim-cursorword'
 
 " fileencodings & language plugins
-Plug 's3rvac/AutoFenc'
+"Plug 's3rvac/AutoFenc'
 Plug 'NLKNguyen/c-syntax.vim', {'for': 'c'}
 Plug 'chrisbra/csv.vim' " delaying this causes an error , {'for': 'csv'}
 Plug 'jimenezrick/vimerl', {'for': 'erlang'}
@@ -62,6 +66,7 @@ Plug 'fatih/vim-go', {'for': 'go'}
 Plug 'wannesm/wmgraphviz.vim', {'for': ['dot', 'gv']}
 Plug 'artur-shaik/vim-javacomplete2', {'for': 'java'}
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
+Plug 'moll/vim-node', {'for': 'javascript'}
 Plug 'elzr/vim-json', {'for': 'json'}
 Plug 'xolox/vim-lua-ftplugin', {'for': 'lua'}
 Plug 'tpope/vim-markdown', {'for': 'markdown'}
@@ -321,6 +326,17 @@ au FileType xml setl fen foldmethod=indent sw=2
 " YAML: fold by indent (syntax would be nicer but not supported..)
 au FileType yaml setl fen foldmethod=indent sw=2
 "-------------------------------------------------------------------------------
+" running stuff ~> format/lint/make/..
+"-------------------------------------------------------------------------------
+au FileType c      map <buffer> <Leader>c gggqG
+au FileType html   map <buffer> <Leader>c :!tidy -q -mi --show-errors 0 --wrap 0 %<CR>
+au FileType json   map <buffer> <Leader>c :%!python -m json.tool<CR>
+au FileType nim    map <buffer> <Leader>c :!nim c %<CR>
+au FileType nim    map <buffer> <Leader>C :!nim c -r %<CR>
+"au FileType python map <buffer> <Leader>c :call Flake8()<CR>
+au FileType xml    map <buffer> <Leader>c :%!xmllint --format --recover -<CR>
+nnoremap <F5> :cd %:p:h<CR> :!make<CR>
+"-------------------------------------------------------------------------------
 " lightline
 "-------------------------------------------------------------------------------
 let g:lightline = {
@@ -392,17 +408,6 @@ let g:bufferline_rotate=0
 let g:bufferline_show_bufnr=0
 let g:bufferline_solo_highlight=0
 "-------------------------------------------------------------------------------
-" running stuff ~> format/lint/make/..
-"-------------------------------------------------------------------------------
-au FileType c      map <buffer> <Leader>c gggqG
-au FileType html   map <buffer> <Leader>c :!tidy -q -mi --show-errors 0 --wrap 0 %<CR>
-au FileType json   map <buffer> <Leader>c :%!python -m json.tool<CR>
-au FileType nim    map <buffer> <Leader>c :!nim c %<CR>
-au FileType nim    map <buffer> <Leader>C :!nim c -r %<CR>
-"au FileType python map <buffer> <Leader>c :call Flake8()<CR>
-au FileType xml    map <buffer> <Leader>c :%!xmllint --format --recover -<CR>
-nnoremap <F5> :cd %:p:h<CR> :!make<CR>
-"-------------------------------------------------------------------------------
 " goyo.vim
 "-------------------------------------------------------------------------------
 nnoremap <Leader><Space> :Goyo<CR>
@@ -434,6 +439,8 @@ if executable('ag')
         \ ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
 endif
 nnoremap <Leader>t :Unite -buffer-name=outline outline<CR>
+"nnoremap <Leader>t :Unite -buffer-name=tags tag:%<CR>
+"nnoremap <Leader>T :Unite -buffer-name=tags tag<CR>
 nnoremap <Leader>b :Unite -buffer-name=buffers buffer<CR>
 nnoremap <Leader>e :Unite -start-insert -buffer-name=files file<CR>
 nnoremap <Leader>E :Unite -start-insert -buffer-name=files file_rec/async<CR>
