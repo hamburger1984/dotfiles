@@ -54,6 +54,9 @@ Plug 'Shougo/unite-outline'
 " automatically invoke ctags.
 "Plug 'craigemery/vim-autotag'
 
+" lldb integration
+Plug 'critiqjo/lldb.nvim'
+
 " cursorword (underline all occurrences of the word under cursor)
 Plug 'itchyny/vim-cursorword'
 
@@ -88,10 +91,11 @@ Plug 'ervandew/supertab'
 " syntax check..
 Plug 'scrooloose/syntastic'
 
-" scheme: landscape, despacio, moonshine
+" scheme: landscape, despacio, moonshine, gruvbox
 Plug 'itchyny/landscape.vim'
 Plug 'alessandroyorba/despacio'
 Plug 'kkpmw/moonshine-vim'
+Plug 'morhetz/gruvbox'
 
 " bufferline, lightline, percent indicator
 Plug 'bling/vim-bufferline'
@@ -232,10 +236,12 @@ if !has('gui_running')
 endif
 set background=dark
 "colorscheme landscape
-colorscheme despacio
+"colorscheme despacio
 "colorscheme moonshine
 "colorscheme moonshine_lowcontrast
 "colorscheme moonshine_minimal
+colorscheme gruvbox
+
 "-------------------------------------------------------------------------------
 " (relative) line numbers
 "-------------------------------------------------------------------------------
