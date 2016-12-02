@@ -85,7 +85,8 @@ function! DoRemote(arg)
 endfunction
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'ddrscott/vim-side-search'
-Plug 'Konfekt/FastFold'
+"Plug 'Konfekt/FastFold'
+Plug 'pseewald/vim-anyfold'
 Plug 'ervandew/supertab'
 
 " syntax check..

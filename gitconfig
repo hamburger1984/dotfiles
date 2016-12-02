@@ -24,8 +24,9 @@
 [interactive]
     diffFilter = diff-highlight
 [gui]
-    fontdiff = -family \"ProFontWindows Nerd Font\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
-    fontui = -family \"Noto Sans\" -size 8 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family \"ProFontWindows Nerd Font\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
+	fontui = -family \"Noto Sans\" -size 8 -weight normal -slant roman -underline 0 -overstrike 0
+	spellingdictionary = en
 [mergetool]
     path = nvim
 [push]

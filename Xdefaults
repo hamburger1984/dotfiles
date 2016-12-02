@@ -1,0 +1,87 @@
+
+Xcursor.theme: breeze_cursors
+
+XTerm*faceName: Knack Nerd Font
+XTerm*faceSize: 9
+
+XTerm*loginShell: True
+
+XTerm*rightScrollBar : True
+XTerm*scrollBar      : True
+XTerm*scrollTtyOutput: False
+
+XTerm*vt100*geometry       : 160x60
+
+
+! gruvbox theme
+#define _dark0_hard  #1d2021
+#define _dark0       #282828
+#define _dark0_soft  #32302f
+#define _dark1       #3c3836
+#define _dark2       #504945
+#define _dark3       #665c54
+#define _dark4       #7c6f64
+#define _dark4_256   #7c6f64
+
+#define _gray_245    #928374
+#define _gray_244    #928374
+
+#define _light0_hard #f9f5d7
+#define _light0      #fbf1c7
+#define _light0_soft #f2e5bc
+#define _light1      #ebdbb2
+#define _light2      #d5c4a1
+#define _light3      #bdae93
+#define _light4      #a89984
+#define _light4_256  #a89984
+
+#define _bright_red     #fb4934
+#define _bright_green   #b8bb26
+#define _bright_yellow  #fabd2f
+#define _bright_blue    #83a598
+#define _bright_purple  #d3869b
+#define _bright_aqua    #8ec07c
+#define _bright_orange  #fe8019
+
+#define _neutral_red    #cc241d
+#define _neutral_green  #98971a
+#define _neutral_yellow #d79921
+#define _neutral_blue   #458588
+#define _neutral_purple #b16286
+#define _neutral_aqua   #689d6a
+#define _neutral_orange #d65d0e
+
+#define _faded_red      #9d0006
+#define _faded_green    #79740e
+#define _faded_yellow   #b57614
+#define _faded_blue     #076678
+#define _faded_purple   #8f3f71
+#define _faded_aqua     #427b58
+#define _faded_orange   #af3a03
+
+XTerm*background : _dark0
+XTerm*foreground : _light0
+! Black
+XTerm*color0     : _dark0
+XTerm*color8     : _dark1
+! Red
+XTerm*color1     : _neutral_red
+XTerm*color9     : _bright_red
+! Green
+XTerm*color2     : _neutral_green
+XTerm*color10    : _bright_green
+! Yellow
+XTerm*color3     : _neutral_yellow
+XTerm*color11    : _bright_yellow
+! Blue
+XTerm*color4     : _neutral_blue
+XTerm*color12    : _bright_blue
+! Magenta
+XTerm*color5     : _neutral_purple
+XTerm*color13    : _bright_purple
+! Cyan
+XTerm*color6     : _neutral_aqua
+XTerm*color14    : _bright_aqua
+! White
+XTerm*color7     : _gray_245
+XTerm*color15    : _light0
