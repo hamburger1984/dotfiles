@@ -72,8 +72,8 @@ done < <(find . -iname '*.jpg' -print0)
 }
 
 # history..
-export HISTCONTROL=ignoredups
-# export HISTCONTROL=ignoreboth:erasedups
+# export HISTCONTROL=ignoredups
+export HISTCONTROL=ignoreboth:erasedups
 export HISTSIZE=
 export HISTFILESIZE=
 export HISTFILE=~/.bash4_history
