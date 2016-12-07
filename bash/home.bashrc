@@ -152,13 +152,21 @@ function check_venv {
     fi
 }
 
+function hr {
+  local start=$'\e(0' end=$'\e(B' line='qqqqqqqqqqqqqqqq'
+  local cols=${COLUMNS:-$(tput cols)}
+  while ((${#line} < cols)); do line+="$line"; done
+  printf '%s%s%s\n' "$start" "${line:0:cols}" "$end"
+}
+callHr='\[$(tput setaf 240; hr; tput sgr0)\]'
+
 prompt='\t \[\e[33m\]\h\[\e[39m\] \w '
 callTTY='\[$(tput sc; print_tty; tput rc)\]'
 addGIT='\[\e[34m\]$(parse_git_branch)\[\e[39m\]'
 addVENV='\[\e[34m\]$(check_venv)\[\e[39m\]'
 PROMPT_COMMAND=update_prompt
 function update_prompt {
-    PS1="${callTTY}${prompt}${addGIT}${addVENV}\\$ "
+    PS1="${callHr}${callTTY}${prompt}${addGIT}${addVENV}\\$ "
 }
 
 export EDITOR="nvim"

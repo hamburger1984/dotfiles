@@ -51,9 +51,6 @@ Plug 'Shougo/unite.vim'
 "Plug 'tsukkee/unite-tag'
 Plug 'Shougo/unite-outline'
 
-" automatically invoke ctags.
-"Plug 'craigemery/vim-autotag'
-
 " lldb integration
 Plug 'critiqjo/lldb.nvim'
 
@@ -88,6 +85,7 @@ Plug 'ddrscott/vim-side-search'
 "Plug 'Konfekt/FastFold'
 Plug 'pseewald/vim-anyfold'
 Plug 'ervandew/supertab'
+Plug 'brooth/far.vim'
 
 " syntax check..
 Plug 'scrooloose/syntastic'
