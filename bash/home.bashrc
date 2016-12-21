@@ -48,7 +48,10 @@ alias histstat="history | awk '{a[\$2]++ } END{for(i in a){print a[i] \" \" i}}'
 
 alias simplehttp='python -m SimpleHTTPServer'
 
-alias svndiffview='svn diff --git > .temp.patch; vim .temp.patch; rm -f .temp.patch'
+# close once last tab is closed.
+alias term='tabbed -c -g 1140x880 -d xterm -into'
+# keep at least one instance open ('-f' ~ fill with new xterm instance).
+#alias term='tabbed -f -g 1140x880 -d xterm -into'
 
 function spindown(){
     if test "$#" -ne 1; then

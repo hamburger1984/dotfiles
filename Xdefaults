@@ -1,25 +1,28 @@
 
 Xcursor.theme: breeze_cursors
 
+!XTerm*font: Knack Nerd Font
 XTerm*faceName: Knack Nerd Font
 XTerm*faceNameDoubleSize: Knack Nerd Font
 XTerm*faceSize: 9
 
 XTerm*loginShell: True
 
-XTerm*rightScrollBar:  True
-XTerm*scrollBar:       True
+XTerm*rightScrollBar: True
+XTerm*scrollBar: True
 XTerm*scrollTtyOutput: False
+XTerm*scrollKey: True
 
 XTerm*vt100*geometry: 160x60
 
 XTerm*utf8: 2
+XTerm*locale: True
 
 ! word selection..
 XTerm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
 
 ! use light color instead of bold for bold chars.
-!XTerm*boldMode: false
+XTerm*boldMode: false
 
 ! gruvbox theme
 #define _dark0_hard  #1d2021
