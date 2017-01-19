@@ -1,5 +1,4 @@
 
-Xcursor.theme: breeze_cursors
 
 !XTerm*font: Knack Nerd Font
 XTerm*faceName: Knack Nerd Font
@@ -96,3 +95,5 @@ XTerm*color14: _bright_aqua
 ! White
 XTerm*color7:  _gray_245
 XTerm*color15: _light0
+
+Xcursor.theme: breeze_cursors

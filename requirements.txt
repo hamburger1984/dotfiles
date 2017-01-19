@@ -1,4 +1,5 @@
 ## The following requirements were added by pip freeze:
+beautifulsoup4==4.5.3
 blessings==1.6
 bpython==0.16
 curtsies==0.2.11
@@ -7,13 +8,15 @@ gitdb==0.6.4
 gitdb2==2.0.0
 GitPython==2.1.1
 greenlet==0.4.11
+html5lib==0.999999999
 httpie==0.9.9
 joe==0.0.7
 msgpack-python==0.4.8
 neovim==0.1.13
 Pygments==2.1.3
-requests==2.12.4
+requests==2.12.5
 six==1.10.0
 smmap==0.9.0
 smmap2==2.0.1
 wcwidth==0.1.7
+webencodings==0.5
