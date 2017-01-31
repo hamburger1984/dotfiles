@@ -7,28 +7,40 @@
     dc = diff --cached
     lg = !"git lg1"
     lg1 = log --graph --abbrev-commit --decorate --format='%C(yellow)%h %C(blue)%ar %Cgreen%an %Creset%s %C(yellow)%d%Creset' --date=relative --all
-    lg2 = log --graph --abbrev-commit --decorate --format='%C(yellow)%h %C(blue)%aD %ar %C(yellow)%d%Creset%n    %s %Cgreen%an%Creset' --all
+    lg2 = log --graph --abbrev-commit --decorate --format='%C(yellow)%h %C(blue)%aD %ar %C(yellow)%d%Creset%n  %s %Cgreen%an%Creset' --all
     lg3 = log --graph --decorate --all
     ra = rebase --abort
     rc = rebase --continue
     rs = rebase --skip
     sl = stash list
     st = status
+
 [color]
     ui = true
     diff = true
+
 [core]
     editor = nvim
+
 [diff]
     compactionheuristic = true
+
 [interactive]
     diffFilter = diff-highlight
+
 [gui]
-	fontdiff = -family \"ProFontWindows Nerd Font\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
-	fontui = -family \"Noto Sans\" -size 8 -weight normal -slant roman -underline 0 -overstrike 0
-	spellingdictionary = en
+    fontdiff = -family \"ProFontWindows Nerd Font\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
+    fontui = -family \"Noto Sans\" -size 8 -weight normal -slant roman -underline 0 -overstrike 0
+    spellingdictionary = en
+
+[merge]
+    tool = vimdiff
 [mergetool]
-    path = nvim
+    prompt = true
+[mergetool "vimdiff"]
+    cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+
+
 [push]
     default = simple
 
