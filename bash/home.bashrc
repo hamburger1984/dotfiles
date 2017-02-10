@@ -8,6 +8,12 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
+if [ -f ~/bin/sensible.bash ]; then
+    source ~/bin/sensible.bash
+fi
+# minor modification:
+export HISTIGNORE="&:[ ]*:exit:ls:l:bg:fg:history:clear"
+
 # User specific aliases and functions
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -73,15 +79,6 @@ DATE=$(exiftool -p '$CreateDate' "$PIC" | sed 's/[: ]//g')
 touch -t $(echo $DATE | sed 's/\(..$\)/\.\1/') "$PIC"
 done < <(find . -iname '*.jpg' -print0)
 }
-
-# history..
-# export HISTCONTROL=ignoredups
-export HISTCONTROL=ignoreboth:erasedups
-export HISTSIZE=
-export HISTFILESIZE=
-export HISTFILE=~/.bash4_history
-shopt -s histappend
-export PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"
 
 if [ $TERM = linux ]; then
     # tty font
