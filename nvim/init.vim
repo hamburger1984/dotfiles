@@ -75,6 +75,7 @@ Plug 'davidhalter/jedi-vim', {'for': 'python'}
 Plug 'Rykka/riv.vim' " crashes when loaded on-demand , {'for': 'rst'}
 Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'jneen/ragel.vim', {'for': 'ragel'}
+Plug 'WolfgangMehner/c-support', {'for': 'c'}
 
 " fold, complete, buffers, search
 function! DoRemote(arg)
@@ -287,6 +288,7 @@ set complete+=kspell
 " Filetype mappings, formatting.
 "-------------------------------------------------------------------------------
 au BufNewFile,BufRead *.c set formatprg=astyle\ -A1
+au BufNewFile,BufRead *.h set filetype=c formatprg=astyle\ -A1
 au BufNewFile,BufRead *.conf set filetype=config
 au BufNewFile,BufRead *.config set filetype=xml
 au BufNewFile,BufRead *.geojson set filetype=json
@@ -308,6 +310,8 @@ set foldlevelstart=1
 au FileType java setl fen foldmethod=syntax conceallevel=1
     \ omnifunc=javacomplete#Complete
 au FileType c,cpp,javascript setl fen foldmethod=syntax conceallevel=1
+" C: tabstops.. brrr..
+au FileType c setl tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 au FileType json setl fen foldmethod=syntax conceallevel=0
 " OBJECTIVE_C: fold by syntax
 au FileType objc setl fen foldmethod=syntax noexpandtab
