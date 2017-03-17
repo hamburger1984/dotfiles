@@ -30,7 +30,7 @@ echo "----- CONFIGURE"
     --with-tlib=ncurses \
     --prefix=$PREFIX &&
 echo "----- COMPILE, INSTALL" &&
-make -j -l 4 && make install &&
+make -j -l 3 && make install &&
 echo "----- VERSION" &&
 which vim &&
 vim --version
