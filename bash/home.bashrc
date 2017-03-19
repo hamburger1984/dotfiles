@@ -82,7 +82,11 @@ done < <(find . -iname '*.jpg' -print0)
 
 if [ $TERM = linux ]; then
     # tty font
-    setfont /lib/kbd/consolefonts/Lat2-Terminus16.psfu.gz
+    if [ -f /lib/kbd/consolefonts/Lat2-Terminus16.psfu.gz ]; then
+        setfont /lib/kbd/consolefonts/Lat2-Terminus16.psfu.gz
+    elif [ -f /usr/share/consolefonts/Lat2-Terminus12x6.psf.gz ]; then
+        setfont /usr/share/consolefonts/Lat2-Terminus12x6.psf.gz
+    fi
 elif [ $TERM = xterm ]; then
     # tell neovim about colors
     export TERM="xterm-256color"
