@@ -76,6 +76,7 @@ Plug 'Rykka/riv.vim' " crashes when loaded on-demand , {'for': 'rst'}
 Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'jneen/ragel.vim', {'for': 'ragel'}
 Plug 'WolfgangMehner/c-support', {'for': 'c'}
+Plug 'stevearc/vim-arduino', {'for': 'arduino'}
 
 " fold, complete, buffers, search
 function! DoRemote(arg)
@@ -296,6 +297,8 @@ au BufNewFile,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead *.nim set filetype=nim
 au BufNewFile,BufRead *.rl set filetype=ragel
 au BufNewFile,BufRead *.xaml set filetype=xml
+au BufNewFile,BufRead *.pde set filetype=arduino
+au BufNewFile,BufRead *.ino set filetype=arduino
 "-------------------------------------------------------------------------------
 " Folding..
 "-------------------------------------------------------------------------------
@@ -489,3 +492,13 @@ tnoremap <Leader><Esc> <C-\><C-n>
 " deoplete
 "-------------------------------------------------------------------------------
 let g:deoplete#enable_at_startup = 1
+"-------------------------------------------------------------------------------
+" csupport
+"-------------------------------------------------------------------------------
+let g:C_Ctrl_j = 'off'
+"-------------------------------------------------------------------------------
+" arduino
+"-------------------------------------------------------------------------------
+let g:arduino_dir='~/.tools/arduino-1.8.2'
+nnoremap <buffer> <Leader>Au :ArduinoUpload<CR>
+nnoremap <buffer> <Leader>As :ArduinoUploadAndSerial<CR>
