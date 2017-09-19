@@ -97,6 +97,7 @@ Plug 'itchyny/landscape.vim'
 Plug 'alessandroyorba/despacio'
 Plug 'kkpmw/moonshine-vim'
 Plug 'morhetz/gruvbox'
+Plug 'kristijanhusak/vim-hybrid-material'
 
 " bufferline, lightline, percent indicator
 Plug 'bling/vim-bufferline'
@@ -241,7 +242,8 @@ set background=dark
 "colorscheme moonshine
 "colorscheme moonshine_lowcontrast
 "colorscheme moonshine_minimal
-colorscheme gruvbox
+"colorscheme gruvbox
+colorscheme hybrid_material
 
 "-------------------------------------------------------------------------------
 " (relative) line numbers
@@ -380,8 +382,10 @@ let g:lightline = {
       \ },
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' },
-      \ 'colorscheme': 'seoul256'
+      \ 'colorscheme': 'wombat'
       \ }
+
+"      \ 'colorscheme': 'seoul256'
 
 function! LightLineBranch()
     if exists("*gitbranch#name")

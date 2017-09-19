@@ -24,21 +24,28 @@
 
 [diff]
     compactionheuristic = true
+    tool = vimdiff
+[difftool]
+    prompt = true
+[difftool "vimdiff"]
+    cmd = nvim -d "$LOCAL" "$REMOTE"
+
 
 [interactive]
     diffFilter = diff-highlight
 
 [gui]
-	fontdiff = -family \"ProFontWindows Nerd Font\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family \"Knack Nerd Font Mono\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
 	fontui = -family \"Noto Sans\" -size 8 -weight normal -slant roman -underline 0 -overstrike 0
     spellingdictionary = en
 
 [merge]
+    compactionheuristic = true
     tool = vimdiff
 [mergetool]
     prompt = true
 [mergetool "vimdiff"]
-    cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+    cmd = nvim -d "$BASE" "$LOCAL" "$REMOTE" "$MERGED" -c '$wincmd w' -c 'wincmd J'
 
 
 [push]
