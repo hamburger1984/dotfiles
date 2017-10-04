@@ -11,3 +11,4 @@ export PATH=$HOME/bin:$HOME/opt/bin:$HOME/.local/bin:$HOME/Android/Sdk/ndk-bundl
 if [ -n "$VIRTUAL_ENV" ]; then
     export PATH="$VIRTUAL_ENV:$PATH"
 fi
+export ANDROID_HOME=~/Android/Sdk

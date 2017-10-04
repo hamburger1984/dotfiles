@@ -5,10 +5,10 @@
 [alias]
     d = diff
     dc = diff --cached
-    lg = !"git lg1"
-    lg1 = log --graph --abbrev-commit --decorate --format='%C(yellow)%h %C(blue)%ar %Cgreen%an %Creset%s %C(yellow)%d%Creset' --date=relative --all
-    lg2 = log --graph --abbrev-commit --decorate --format='%C(yellow)%h %C(blue)%aD %ar %C(yellow)%d%Creset%n  %s %Cgreen%an%Creset' --all
-    lg3 = log --graph --decorate --all
+    lg = "!git lg1 $@"
+    lg1 = "!f() { git log --graph --abbrev-commit --decorate --format='%C(yellow)%h %C(blue)%ar %Cgreen%an %Creset%s %C(yellow)%d%Creset' --date=relative $@; }; f"
+    lg2 = "!f() { git log --graph --abbrev-commit --decorate --format='%C(yellow)%h %C(blue)%aD %ar %C(yellow)%d%Creset%n  %s %Cgreen%an%Creset' $@; }; f"
+    lg3 = "!f() { git log --graph --decorate $@; }; f"
     ra = rebase --abort
     rc = rebase --continue
     rs = rebase --skip
