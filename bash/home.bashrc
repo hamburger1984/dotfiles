@@ -8,8 +8,8 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
-if [ -f ~/bin/sensible.bash ]; then
-    source ~/bin/sensible.bash
+if [ -f ~/.bin/sensible.bash ]; then
+    source ~/.bin/sensible.bash
 fi
 # minor modification:
 export HISTIGNORE="&:[ ]*:exit:ls:l:bg:fg:history:clear"

@@ -2,7 +2,7 @@
 
 set -e
 
-# PREFIX="$HOME/opt"
+# PREFIX="$HOME/.opt"
 # ./autogen.sh && \
 #     ./configure --exec_prefix="$PREFIX" --prefix="$PREFIX" && \
 #     make -j -l 3 && \

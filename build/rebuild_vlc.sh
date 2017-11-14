@@ -10,7 +10,7 @@ fi
 # build artefact
 rm -f modules/stream_out/chromecast/cast_channel.pb.*
 
-./configure --prefix=$HOME/opt --exec-prefix=$HOME/opt \
+./configure --prefix=$HOME/.opt --exec-prefix=$HOME/.opt \
     --with-x --enable-wayland \
     --enable-xvideo --enable-sdl \
     --enable-mad --enable-a52 --enable-dca \

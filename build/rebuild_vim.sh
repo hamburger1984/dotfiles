@@ -11,7 +11,7 @@ set -e
 #     --enable-rubyinterp=yes \
 #     --with-tlib=ncurses \
 
-PREFIX="$HOME/opt"
+PREFIX="$HOME/.opt"
 
 echo "----- CONFIGURE"
 ./configure \
