@@ -35,7 +35,7 @@ alias km='cmake -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix` ..; make -j -l 6'
 # qmake & make
 alias qm='qmake ..; make -j -l 6'
 # pip
-alias pipup3.6='pip3.6 freeze --user --local | grep -v "^\-e" | cut -d= -f1 | xargs pip3.6 install --user -U'
+alias pipup3='pip3 freeze --user --local | grep -v "^\-e" | cut -d= -f1 | xargs pip3 install --user -U'
 
 # git
 alias rpull='find . -type d -name .git -exec sh -c "cd \"{}\"/../ && echo -n \"----- \" && echo \"{}\" | rev | cut -d\"/\" -f2 | rev && git pull" \;'
