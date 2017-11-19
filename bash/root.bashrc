@@ -18,6 +18,10 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+if [ -f ~/.bin/sensible.bash ]; then
+    source ~/.bin/sensible.bash
+fi
+
 # history..
 export HISTCONTROL=ignoredups
 export HISTSIZE=

@@ -147,7 +147,7 @@ function print_tty {
     local value=$(tty)
     #tput cup $(tput lines) $(($(tput cols) - ${#value} - 2))
     tput cup 0 $(($(tput cols) - ${#value} - 2))
-    printf ' %s' $value
+    printf ' %s ' $value
 }
 
 function check_venv {

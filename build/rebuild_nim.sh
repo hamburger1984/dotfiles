@@ -13,10 +13,10 @@ pushd csources > /dev/null && \
     popd > /dev/null
 
 echo "-- compiling koch --"
-nim c koch
+./bin/nim c koch
 ./koch boot
 ./koch boot -d:release
 
 echo "-- installing nimble --"
 ./koch nimble
-nimble update
+./bin/nimble update
