@@ -7,7 +7,7 @@ PREFIX='/run/media/andreas/'
 
 if [ -d "${PREFIX}2017-11" ]; then
     BASE="${PREFIX}2017-11"
-    TARGET=$BASE/daily
+    TARGET=$BASE/Backups
     RSYNC=$(which /usr/bin/rsync)
 
     echo "Will backup to ${TARGET}/${DATE} using ${RSYNC}"
@@ -24,7 +24,16 @@ if [ -d "${PREFIX}2017-11" ]; then
         exit 1
     fi
 
-    $RSYNC -av --exclude $TARGET --exclude-from=$HOME/.rsync.exclude --link-dest=$TARGET/latest/ $HOME/ $TARGET/$DATE/
+    # -a  group all this options -rlptgoD recursive, links, perms,
+    #     times, group, owner, devices
+    # -H  preserve hard links
+    # -A  preserve ACLs
+    # -X  preserve extended attributes
+    # -S  handle sparse files efficiently
+    $RSYNC -aHAXS --info=progress2 \
+        --exclude $TARGET \
+        --exclude-from=$HOME/.rsync.exclude \
+        --link-dest=$TARGET/latest/ $HOME/ $TARGET/$DATE/
     touch $TARGET/$DATE/
     rm $TARGET/latest
     ln -s $TARGET/$DATE $TARGET/latest
