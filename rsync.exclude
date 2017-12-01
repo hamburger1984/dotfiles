@@ -1,3 +1,4 @@
+__MACOSX
 .Xauthority
 .android
 .bash_logout
@@ -5,8 +6,10 @@
 .bashhistory
 .bashrc
 .bin
+.build
 .cache
 .ccache
+.config/nvim/
 .crashlytics
 .dropbox*
 .esdauth
@@ -20,6 +23,7 @@
 .java
 .kde/cache*
 .lesshst
+.local/share/Steam
 .local/share/Trash
 .nimble
 .qemu
@@ -32,8 +36,10 @@ Android/Images/
 Android/Sdk/
 Downloads
 Dropbox
+Videos
 baloo
 build
 cache
 lost+found
+nimcache
 tmp

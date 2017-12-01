@@ -29,8 +29,10 @@ if [ -d "${PREFIX}2017-11" ]; then
     # -H  preserve hard links
     # -A  preserve ACLs
     # -X  preserve extended attributes
+    # -x  don't include other mounted filesystems
     # -S  handle sparse files efficiently
-    $RSYNC -aHAXS --info=progress2 \
+    $RSYNC -aHAXxS --info=progress2 \
+        --delete-delay --delete-excluded \
         --exclude $TARGET \
         --exclude-from=$HOME/.rsync.exclude \
         --link-dest=$TARGET/latest/ $HOME/ $TARGET/$DATE/

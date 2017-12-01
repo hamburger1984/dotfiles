@@ -345,8 +345,8 @@ au FileType yaml setl fen foldmethod=indent sw=2
 au FileType c      map <buffer> <Leader>c gggqG
 au FileType html   map <buffer> <Leader>c :!tidy -q -mi --show-errors 0 --wrap 0 %<CR>
 au FileType json   map <buffer> <Leader>c :%!python -m json.tool<CR>
-au FileType nim    map <buffer> <Leader>c :!nim c %<CR>
-au FileType nim    map <buffer> <Leader>C :!nim c -r %<CR>
+au FileType nim    map <buffer> <Leader>c :!nim c -d:ssl %<CR>
+au FileType nim    map <buffer> <Leader>C :!nim c -d:ssl -r %<CR>
 "au FileType python map <buffer> <Leader>c :call Flake8()<CR>
 au FileType xml    map <buffer> <Leader>c :%!xmllint --format --recover -<CR>
 nnoremap <F5> :cd %:p:h<CR> :!make<CR>
@@ -436,13 +436,13 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_python_python_exec = '~/opt/bin/python3'
+let g:syntastic_python_python_exec = '/usr/bin/python3'
 "let g:syntastic_ignore_files = ['\.py$']
 "-------------------------------------------------------------------------------
 " jedi-vim
 "-------------------------------------------------------------------------------
-let g:jedi#show_call_signatures="2" " 1 - default (popup), 2 - commandline
-let g:jedi#usages_command="<Leader>u"
+let g:jedi#show_call_signatures='2' " 1 - default (popup), 2 - commandline
+let g:jedi#usages_command='<Leader>u'
 "-------------------------------------------------------------------------------
 " Unite
 "-------------------------------------------------------------------------------
@@ -506,3 +506,7 @@ let g:C_Ctrl_j = 'off'
 let g:arduino_dir='~/.tools/arduino-1.8.2'
 nnoremap <buffer> <Leader>Au :ArduinoUpload<CR>
 nnoremap <buffer> <Leader>As :ArduinoUploadAndSerial<CR>
+"-------------------------------------------------------------------------------
+" buggy qterminal? buggy neovim?
+"-------------------------------------------------------------------------------
+set guicursor=
