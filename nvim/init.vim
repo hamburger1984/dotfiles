@@ -359,10 +359,10 @@ let g:lightline = {
       \             [ 'branch', 'filename', 'readonly', 'modified' ],
       \             [ 'fmtopts' ] ],
       \   'right': [ [ 'syntastic', 'lineinfo' ], [ 'visualpercent' ],
-      \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \              [ 'fileinfo', 'filetype' ] ]
       \ },
       \ 'component': {
-      \   'fileformat': '%{&fileformat." ".WebDevIconsGetFileFormatSymbol()}',
+      \   'fileinfo': '%{&fileencoding." ".WebDevIconsGetFileFormatSymbol()}',
       \   'filetype': '%{(strlen(&filetype)?&filetype." ".WebDevIconsGetFileTypeSymbol():"no ft")}',
       \   'readonly': '%{&filetype=="help"?"":&readonly?"":""}',
       \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
@@ -382,9 +382,10 @@ let g:lightline = {
       \ },
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' },
-      \ 'colorscheme': 'wombat'
+      \ 'colorscheme': 'material'
       \ }
 
+"      \ 'colorscheme': 'wombat'
 "      \ 'colorscheme': 'seoul256'
 
 function! LightLineBranch()
@@ -412,6 +413,7 @@ function! LightLineMode()
         \ _
 endfunction
 
+" no -- INSERT -- etc.. (will be displayed by lightline)
 set noshowmode
 "-------------------------------------------------------------------------------
 " bufferline

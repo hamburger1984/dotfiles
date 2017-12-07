@@ -26,6 +26,7 @@ __MACOSX
 .local/share/Steam
 .local/share/Trash
 .nimble
+*.o
 .qemu
 .rnd
 .rsync.exclude
