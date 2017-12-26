@@ -66,8 +66,9 @@ Plug 'fatih/vim-go', {'for': 'go'}
 Plug 'wannesm/wmgraphviz.vim', {'for': ['dot', 'gv']}
 Plug 'artur-shaik/vim-javacomplete2', {'for': 'java'}
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
-Plug 'moll/vim-node', {'for': 'javascript'}
-Plug 'elzr/vim-json', {'for': 'json'}
+Plug 'moll/vim-node', {'for': ['javascript', 'node', 'nodejs']}
+Plug 'jelera/vim-javascript-syntax', {'for': ['javascript', 'node', 'nodejs']}
+"Plug 'elzr/vim-json', {'for': 'json'}
 Plug 'xolox/vim-lua-ftplugin', {'for': 'lua'}
 Plug 'tpope/vim-markdown', {'for': 'markdown'}
 Plug 'zah/nim.vim', {'for': 'nim'}
@@ -88,6 +89,7 @@ Plug 'ddrscott/vim-side-search'
 Plug 'pseewald/vim-anyfold'
 Plug 'ervandew/supertab'
 Plug 'brooth/far.vim'
+Plug 'tpope/vim-commentary'
 
 " syntax check..
 Plug 'scrooloose/syntastic'
@@ -106,6 +108,14 @@ Plug 'naddeoa/vim-visual-page-percent'
 
 call plug#end()
 
+"-------------------------------------------------------------------------------
+" recursive find
+"-------------------------------------------------------------------------------
+set path+=**
+"-------------------------------------------------------------------------------
+" no square brackets on QUERTZ
+"-------------------------------------------------------------------------------
+set langmap=ß[,´]
 "-------------------------------------------------------------------------------
 " Toggle paste - turns on/off autoindenting etc.
 "-------------------------------------------------------------------------------
@@ -282,11 +292,11 @@ set nobackup
 set nowritebackup
 set noswapfile
 "-------------------------------------------------------------------------------
-" Spelling
+" Autocomplete, Spelling
 "-------------------------------------------------------------------------------
-set complete+=t
 set spelllang=de,en
-set complete+=kspell
+set complete=".,w,b,u,t,i,kspell" " default + included files + spelling
+set completeopt=menuone,noinsert
 "-------------------------------------------------------------------------------
 " Filetype mappings, formatting.
 "-------------------------------------------------------------------------------
@@ -462,6 +472,15 @@ nnoremap <Leader>t :Unite -buffer-name=outline outline<CR>
 nnoremap <Leader>b :Unite -buffer-name=buffers buffer<CR>
 nnoremap <Leader>e :Unite -start-insert -buffer-name=files file<CR>
 nnoremap <Leader>E :Unite -start-insert -buffer-name=files file_rec/async<CR>
+"-------------------------------------------------------------------------------
+" File browsing - included plugin netrw
+"-------------------------------------------------------------------------------
+let g:netrw_banner=0
+let g:netrw_browse_split=4
+let g:netrw_altv=1
+let g:netrw_liststyle=3
+let g:netrw_list_hide=netrw_gitignore#Hide()
+let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 "-------------------------------------------------------------------------------
 " SideSearch
 "-------------------------------------------------------------------------------
