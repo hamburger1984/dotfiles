@@ -27,6 +27,7 @@ alias ls='ls ${LS_OPTS}'
 alias l='ls -loah'
 alias lt='ls -loaht'
 alias lss='ls -loahS'
+alias vim='nvim'
 
 # cmake & make
 alias cm='cmake ..; make -j -l 6'
