@@ -30,6 +30,10 @@ if [ -d $HOME/.nimble/bin/ ]; then
     PATH=$HOME/.nimble/bin:$PATH
 fi
 
+if [ -d $HOME/.local/node_modules_global/bin/ ]; then
+    PATH=$HOME/.local/node_modules_global/bin:$PATH
+fi
+
 if [ -n "$VIRTUAL_ENV" ]; then
     PATH="$VIRTUAL_ENV:$PATH"
 fi

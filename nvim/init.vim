@@ -352,13 +352,19 @@ au FileType yaml setl fen foldmethod=indent sw=2
 "-------------------------------------------------------------------------------
 " running stuff ~> format/lint/make/..
 "-------------------------------------------------------------------------------
-au FileType c      map <buffer> <Leader>c gggqG
-au FileType html   map <buffer> <Leader>c :!tidy -q -mi --show-errors 0 --wrap 0 %<CR>
-au FileType json   map <buffer> <Leader>c :%!python -m json.tool<CR>
-au FileType nim    map <buffer> <Leader>c :!nim c -d:ssl %<CR>
-au FileType nim    map <buffer> <Leader>C :!nim c -d:ssl -r %<CR>
-"au FileType python map <buffer> <Leader>c :call Flake8()<CR>
-au FileType xml    map <buffer> <Leader>c :%!xmllint --format --recover -<CR>
+au FileType c               map <buffer> <Leader>c gggqG
+au FileType html            map <buffer> <Leader>c :!tidy -q -mi --show-errors 0 --wrap 0 %<CR>
+au FileType json            map <buffer> <Leader>c :%!python -m json.tool<CR>
+" if executable('eslint')
+"     au FileType javascript  map <buffer> <Leader>c :%!eslint --env es6 --fix-dry-run --stdin --no-eslintrc<CR>
+" endif
+if executable('js-beautify')
+    au FileType javascript  map <buffer> <Leader>c :%!js-beautify --stdin<CR>
+endif
+au FileType nim             map <buffer> <Leader>c :!nim c -d:ssl %<CR>
+au FileType nim             map <buffer> <Leader>C :!nim c -d:ssl -r %<CR>
+"au FileType python        map <buffer> <Leader>c :call Flake8()<CR>
+au FileType xml             map <buffer> <Leader>c :%!xmllint --format --recover -<CR>
 nnoremap <F5> :cd %:p:h<CR> :!make<CR>
 "-------------------------------------------------------------------------------
 " lightline
