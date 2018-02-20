@@ -38,6 +38,6 @@ if [ -n "$VIRTUAL_ENV" ]; then
     PATH="$VIRTUAL_ENV:$PATH"
 fi
 
-export $PATH
+export PATH
 
 export ANDROID_HOME=~/Android/Sdk
