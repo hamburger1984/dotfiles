@@ -16,7 +16,6 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 if empty(glob("$HOME/.config/nvim/autoload/plug.vim"))
     execute "!curl -fLo $HOME/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 endif
-
 let plug_path='$HOME/.config/nvim/plugged'
 
 call plug#begin(plug_path)
@@ -32,14 +31,14 @@ Plug 'xolox/vim-shell'     " fullscreen, hide flashing cmd prompts in windows
 Plug 'Shougo/vimproc.vim'  " needed by unite (at least)
 
 " text writing
-Plug 'reedes/vim-wordy'
+"Plug 'reedes/vim-wordy'
 
 " start screen
 Plug 'mhinz/vim-startify'
 
 " git
-Plug 'cohama/agit.vim'
-Plug 'jreybert/vimagit', { 'branch': 'next' }
+"Plug 'cohama/agit.vim'
+"Plug 'jreybert/vimagit', { 'branch': 'next' }
 Plug 'itchyny/vim-gitbranch'
 Plug 'airblade/vim-gitgutter'
 
@@ -48,11 +47,11 @@ Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 
 " unite, unite-outline
 Plug 'Shougo/unite.vim'
-"Plug 'tsukkee/unite-tag'
+Plug 'tsukkee/unite-tag'
 Plug 'Shougo/unite-outline'
 
 " lldb integration
-Plug 'critiqjo/lldb.nvim'
+"Plug 'critiqjo/lldb.nvim'
 
 " cursorword (underline all occurrences of the word under cursor)
 Plug 'itchyny/vim-cursorword'
@@ -60,9 +59,9 @@ Plug 'itchyny/vim-cursorword'
 " fileencodings & language plugins
 "Plug 's3rvac/AutoFenc'
 Plug 'NLKNguyen/c-syntax.vim', {'for': 'c'}
-Plug 'chrisbra/csv.vim' " delaying this causes an error , {'for': 'csv'}
-Plug 'jimenezrick/vimerl', {'for': 'erlang'}
-Plug 'fatih/vim-go', {'for': 'go'}
+"Plug 'chrisbra/csv.vim' " delaying this causes an error , {'for': 'csv'}
+"Plug 'jimenezrick/vimerl', {'for': 'erlang'}
+"Plug 'fatih/vim-go', {'for': 'go'}
 Plug 'wannesm/wmgraphviz.vim', {'for': ['dot', 'gv']}
 Plug 'artur-shaik/vim-javacomplete2', {'for': 'java'}
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
@@ -73,33 +72,46 @@ Plug 'xolox/vim-lua-ftplugin', {'for': 'lua'}
 Plug 'tpope/vim-markdown', {'for': 'markdown'}
 Plug 'zah/nim.vim', {'for': 'nim'}
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
-Plug 'Rykka/riv.vim' " crashes when loaded on-demand , {'for': 'rst'}
-Plug 'lervag/vimtex', {'for': 'tex'}
-Plug 'jneen/ragel.vim', {'for': 'ragel'}
+"Plug 'Rykka/riv.vim' " crashes when loaded on-demand , {'for': 'rst'}
+Plug 'lervag/vimtex' ", {'for': 'tex'}
+"Plug 'jneen/ragel.vim', {'for': 'ragel'}
 Plug 'WolfgangMehner/c-support', {'for': 'c'}
 Plug 'stevearc/vim-arduino', {'for': 'arduino'}
 
 " fold, complete, buffers, search
-function! DoRemote(arg)
-    UpdateRemotePlugins
-endfunction
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-Plug 'ddrscott/vim-side-search'
+Plug 'roxma/nvim-completion-manager'
+Plug 'roxma/ncm-clang'
+Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+Plug 'Shougo/neco-vim'
+Plug 'Shougo/neco-syntax'
+Plug 'Shougo/neoinclude.vim'
+Plug 'sassanh/nvim-cm-eclim'
+Plug 'fgrsnau/ncm-otherbuf'
+Plug 'calebeby/ncm-css'
+"Plug 'OmniSharp/omnisharp-vim'
+
+"function! DoRemote(arg)
+"    UpdateRemotePlugins
+"endfunction
+"Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+"Plug 'ddrscott/vim-side-search'
 "Plug 'Konfekt/FastFold'
-Plug 'pseewald/vim-anyfold'
-Plug 'ervandew/supertab'
-Plug 'brooth/far.vim'
-Plug 'tpope/vim-commentary'
+"Plug 'pseewald/vim-anyfold'
+"Plug 'ervandew/supertab'
+"Plug 'brooth/far.vim'
+"Plug 'tpope/vim-commentary'
 
 " syntax check..
 Plug 'scrooloose/syntastic'
 
-" scheme: landscape, despacio, moonshine, gruvbox
-Plug 'itchyny/landscape.vim'
-Plug 'alessandroyorba/despacio'
-Plug 'kkpmw/moonshine-vim'
-Plug 'morhetz/gruvbox'
-Plug 'kristijanhusak/vim-hybrid-material'
+" color schemes
+"Plug 'itchyny/landscape.vim'
+"Plug 'alessandroyorba/despacio'
+"Plug 'kkpmw/moonshine-vim'
+"Plug 'morhetz/gruvbox'
+"Plug 'kristijanhusak/vim-hybrid-material'
+"Plug 'rakr/vim-one'
+Plug 'AlessandroYorba/Alduin'
 
 " bufferline, lightline, percent indicator
 Plug 'bling/vim-bufferline'
@@ -153,6 +165,11 @@ nnoremap <Up> :echoe "Use k"<CR>
 vnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 vnoremap <Down> :echoe "Use j"<CR>
+"-------------------------------------------------------------------------------
+" Jump to (help-)subject and back
+"-------------------------------------------------------------------------------
+nnoremap ü <C-]>
+nnoremap Ü <C-t>
 "-------------------------------------------------------------------------------
 " faster split resize
 "-------------------------------------------------------------------------------
@@ -253,7 +270,12 @@ set background=dark
 "colorscheme moonshine_lowcontrast
 "colorscheme moonshine_minimal
 "colorscheme gruvbox
-colorscheme hybrid_material
+"colorscheme hybrid_material
+"
+"let g:one_allow_italics = 1 " I love italic for comments
+"colorscheme one
+let g:alduin_Shout_Dragon_Aspect = 1 " almost black
+colorscheme alduin
 
 "-------------------------------------------------------------------------------
 " (relative) line numbers
@@ -364,6 +386,7 @@ endif
 au FileType nim             map <buffer> <Leader>c :!nim c -d:ssl %<CR>
 au FileType nim             map <buffer> <Leader>C :!nim c -d:ssl -r %<CR>
 "au FileType python        map <buffer> <Leader>c :call Flake8()<CR>
+au FileType tex             map <buffer> <Leader>c :VimtexCompile<CR>
 au FileType xml             map <buffer> <Leader>c :%!xmllint --format --recover -<CR>
 nnoremap <F5> :cd %:p:h<CR> :!make<CR>
 "-------------------------------------------------------------------------------
@@ -396,8 +419,8 @@ let g:lightline = {
       \   'filename': 'LightLineFilename',
       \   'mode': 'LightLineMode',
       \ },
-      \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '', 'right': '' },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '\uE0B5', 'right': '\uE0B7' },
       \ 'colorscheme': 'material'
       \ }
 
@@ -514,7 +537,9 @@ let g:javascript_conceal_undefined  = "¿"
 "-------------------------------------------------------------------------------
 " Latex
 "-------------------------------------------------------------------------------
-let g:tex_conceal="adgms"
+let g:vimtex_mappings_enabled=0
+let g:vimtex_fold_enabled=1
+let g:vimtex_format_enabled=1
 "-------------------------------------------------------------------------------
 " Neovim terminal mode \o/
 "-------------------------------------------------------------------------------
