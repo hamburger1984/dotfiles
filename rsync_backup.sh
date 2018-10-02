@@ -5,7 +5,7 @@ set -e
 DATE=$(/bin/date +%Y-%m-%d-%H:%M:%S)
 PREFIX='/run/media/andreas/'
 
-for medium in "2017-11" "bay" ; do
+for medium in "2018-02" "2017-11" "bay" ; do
     BASE="${PREFIX}${medium}"
 
     if [ -d $BASE ]; then

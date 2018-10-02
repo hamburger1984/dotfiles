@@ -50,6 +50,10 @@ Plug 'Shougo/unite.vim'
 Plug 'tsukkee/unite-tag'
 Plug 'Shougo/unite-outline'
 
+" usage hints
+"Plug 'urbainvaes/vim-remembrall'
+Plug 'liuchengxu/vim-which-key'
+
 " lldb integration
 "Plug 'critiqjo/lldb.nvim'
 
@@ -77,6 +81,7 @@ Plug 'lervag/vimtex' ", {'for': 'tex'}
 "Plug 'jneen/ragel.vim', {'for': 'ragel'}
 Plug 'WolfgangMehner/c-support', {'for': 'c'}
 Plug 'stevearc/vim-arduino', {'for': 'arduino'}
+Plug 'keith/swift.vim', {'for': 'swift'}
 
 " fold, complete, buffers, search
 Plug 'roxma/nvim-completion-manager'
@@ -94,7 +99,7 @@ Plug 'calebeby/ncm-css'
 "    UpdateRemotePlugins
 "endfunction
 "Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-"Plug 'ddrscott/vim-side-search'
+Plug 'ddrscott/vim-side-search'
 "Plug 'Konfekt/FastFold'
 "Plug 'pseewald/vim-anyfold'
 "Plug 'ervandew/supertab'
@@ -457,8 +462,8 @@ set noshowmode
 "-------------------------------------------------------------------------------
 " bufferline
 "-------------------------------------------------------------------------------
-let g:bufferline_active_buffer_left=''  " ❨
-let g:bufferline_active_buffer_right=''  " ❩
+let g:bufferline_active_buffer_left=''  " ''  " ❨
+let g:bufferline_active_buffer_right=''  " ''  " ❩
 let g:bufferline_echo=1
 let g:bufferline_modified='+'
 let g:bufferline_rotate=0
@@ -500,7 +505,8 @@ nnoremap <Leader>t :Unite -buffer-name=outline outline<CR>
 "nnoremap <Leader>T :Unite -buffer-name=tags tag<CR>
 nnoremap <Leader>b :Unite -buffer-name=buffers buffer<CR>
 nnoremap <Leader>e :Unite -start-insert -buffer-name=files file<CR>
-nnoremap <Leader>E :Unite -start-insert -buffer-name=files file_rec/async<CR>
+"nnoremap <Leader>E :Unite -start-insert -buffer-name=files file_rec/async<CR>
+nnoremap <Leader>E :Unite -start-insert -buffer-name=files file_rec/git<CR>
 "-------------------------------------------------------------------------------
 " File browsing - included plugin netrw
 "-------------------------------------------------------------------------------
@@ -562,3 +568,7 @@ nnoremap <buffer> <Leader>As :ArduinoUploadAndSerial<CR>
 " buggy qterminal? buggy neovim?
 "-------------------------------------------------------------------------------
 set guicursor=
+"-------------------------------------------------------------------------------
+" WhichKey
+"-------------------------------------------------------------------------------
+nnoremap <Leader> :<c-u>WhichKey ','<CR>

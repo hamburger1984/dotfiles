@@ -8,7 +8,8 @@ figlet falkon
 mkdir -p ./build/
 pushd ./build/ > /dev/null
 git pull;
-cmake -DCMAKE_INSTALL_PREFIX="$PREFIX" ..
+#cmake -DCMAKE_INSTALL_PREFIX="$PREFIX" ..
+cmake ..
 make -j -l 5
-make install
+sudo make install
 popd > /dev/null
