@@ -1,11 +1,4 @@
 "-------------------------------------------------------------------------------
-" Automatic reloading of init.vim
-"-------------------------------------------------------------------------------
-augroup reload_vimrc
-    au!
-    au bufwritepost $MYVIMRC nested source $MYVIMRC
-augroup END
-"-------------------------------------------------------------------------------
 " enable colors..
 "-------------------------------------------------------------------------------
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -45,10 +38,8 @@ Plug 'airblade/vim-gitgutter'
 " distraction free
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 
-" unite, unite-outline
-Plug 'Shougo/unite.vim'
-Plug 'tsukkee/unite-tag'
-Plug 'Shougo/unite-outline'
+" unite replacement: denite
+Plug 'Shougo/denite.nvim'
 
 " usage hints
 "Plug 'urbainvaes/vim-remembrall'
@@ -84,21 +75,8 @@ Plug 'stevearc/vim-arduino', {'for': 'arduino'}
 Plug 'keith/swift.vim', {'for': 'swift'}
 
 " fold, complete, buffers, search
-Plug 'roxma/nvim-completion-manager'
-Plug 'roxma/ncm-clang'
-Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
-Plug 'Shougo/neco-vim'
-Plug 'Shougo/neco-syntax'
-Plug 'Shougo/neoinclude.vim'
-Plug 'sassanh/nvim-cm-eclim'
-Plug 'fgrsnau/ncm-otherbuf'
-Plug 'calebeby/ncm-css'
-"Plug 'OmniSharp/omnisharp-vim'
-
-"function! DoRemote(arg)
-"    UpdateRemotePlugins
-"endfunction
-"Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+Plug 'OmniSharp/omnisharp-vim'
 Plug 'ddrscott/vim-side-search'
 "Plug 'Konfekt/FastFold'
 "Plug 'pseewald/vim-anyfold'
@@ -492,21 +470,14 @@ let g:jedi#usages_command='<Leader>u'
 "-------------------------------------------------------------------------------
 " Unite
 "-------------------------------------------------------------------------------
-let g:unite_source_history_yank_enable = 1
-let g:unite_enable_start_insert = 0
-let g:unite_force_overwrite_statusline = 0
 if executable('ag')
-    let g:unite_source_grep_command = 'ag'
-    let g:unite_source_rec_async_command =
-        \ ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
+    call denite#custom#option('default', {'prompt': '❭'})
+    call denite#custom#var('file_rec', 'command',
+                \ ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '--ignore', '.git', '-g', ''])
 endif
-nnoremap <Leader>t :Unite -buffer-name=outline outline<CR>
-"nnoremap <Leader>t :Unite -buffer-name=tags tag:%<CR>
-"nnoremap <Leader>T :Unite -buffer-name=tags tag<CR>
-nnoremap <Leader>b :Unite -buffer-name=buffers buffer<CR>
-nnoremap <Leader>e :Unite -start-insert -buffer-name=files file<CR>
-"nnoremap <Leader>E :Unite -start-insert -buffer-name=files file_rec/async<CR>
-nnoremap <Leader>E :Unite -start-insert -buffer-name=files file_rec/git<CR>
+nnoremap <Leader>b :<C-u>Denite buffer<CR>
+nnoremap <Leader>e :<C-u>DeniteBufferDir file_rec<CR>
+nnoremap <Leader>E :<C-u>Denite file_rec<CR>
 "-------------------------------------------------------------------------------
 " File browsing - included plugin netrw
 "-------------------------------------------------------------------------------
