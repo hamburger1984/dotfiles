@@ -19,9 +19,9 @@ Plug 'tpope/vim-sensible'
 Plug 'ryanoasis/vim-devicons'
 
 " some util plugins
-Plug 'xolox/vim-misc'      " needed for vim-shell
-Plug 'xolox/vim-shell'     " fullscreen, hide flashing cmd prompts in windows
-Plug 'Shougo/vimproc.vim'  " needed by unite (at least)
+"Plug 'xolox/vim-misc'      " needed for vim-shell
+"Plug 'xolox/vim-shell'     " fullscreen, hide flashing cmd prompts in windows
+"Plug 'Shougo/vimproc.vim'  " needed by unite (at least)
 
 " text writing
 "Plug 'reedes/vim-wordy'
