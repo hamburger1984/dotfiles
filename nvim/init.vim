@@ -73,6 +73,7 @@ Plug 'lervag/vimtex' ", {'for': 'tex'}
 Plug 'WolfgangMehner/c-support', {'for': 'c'}
 Plug 'stevearc/vim-arduino', {'for': 'arduino'}
 Plug 'keith/swift.vim', {'for': 'swift'}
+Plug 'udalov/kotlin-vim'
 
 " fold, complete, buffers, search
 Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
