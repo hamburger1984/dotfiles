@@ -1,0 +1,47 @@
+{
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 13,
+    "editor.renderWhitespace": "boundary",
+    "editor.lineNumbers": "relative",
+
+    "workbench.settings.editor": "json",
+    "workbench.startupEditor": "welcomePageInEmptyWorkbench",
+    "workbench.statusBar.feedback.visible": false,
+    "window.menuBarVisibility": "toggle",
+
+    "files.autoSave": "afterDelay",
+    "files.trimTrailingWhitespace": true,
+    "files.useExperimentalFileWatcher": true,
+
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+
+    "python.linting.pep8Enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.venvFolders": [
+        ".venv",
+        "envs",
+        ".pyenv",
+        ".direnv"
+    ],
+
+    "vim.easymotion": true,
+    "vim.easymotionMarkerFontFamily": "Fira Code",
+    "vim.easymotionMarkerFontSize": "13",
+    "vim.history": 500,
+    "vim.hlsearch": true,
+    "vim.leader": ",",
+    "vim.statusBarColorControl": true,
+    "vim.statusBarColors.normal": "#475057",
+    "vim.visualstar": true,
+
+    "omnisharp.path": "latest",
+
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#475057",
+        "statusBar.noFolderBackground": "#475057",
+        "statusBar.debuggingBackground": "#475057"
+    },
+    "workbench.iconTheme": "material-icon-theme"
+}
