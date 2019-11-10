@@ -7,7 +7,7 @@ gitdb==0.6.4
 gitdb2==2.0.3
 GitPython==2.1.10
 greenlet==0.4.13
-httpie==0.9.9
+httpie==1.0.3
 idna==2.6
 jedi==0.12.0
 joe==0.0.7
