@@ -43,5 +43,6 @@
         "statusBar.noFolderBackground": "#475057",
         "statusBar.debuggingBackground": "#475057"
     },
-    "workbench.iconTheme": "material-icon-theme"
+    "workbench.iconTheme": "vscode-icons",
+    "vsicons.dontShowNewVersionMessage": true
 }

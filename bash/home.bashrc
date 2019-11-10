@@ -14,6 +14,7 @@ fi
 # minor modification:
 export HISTIGNORE="&:[ ]*:exit:ls:l:bg:fg:history:clear"
 
+
 # User specific aliases and functions
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -22,11 +23,18 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias less='less --RAW-CONTROL-CHARS'
-export LS_OPTS='--color=auto'
-alias ls='ls ${LS_OPTS}'
-alias l='ls -loah'
-alias lt='ls -loaht'
-alias lss='ls -loahS'
+if command -v "lsd" >/dev/null 2>&1; then
+    # use lsd if available
+    LS='lsd'
+else
+    export LS_OPTS='--color=auto'
+    LS='ls ${LS_OPTS}'
+fi
+#alias ls='ls ${LS_OPTS}'
+alias ls='${LS}'
+alias l='ls -lah'
+alias lt='ls -laht'
+alias lss='ls -lahS'
 alias vim='nvim'
 
 # cmake & make
@@ -53,13 +61,14 @@ alias flowb='ssh 212.45.111.157'
 # other..
 alias histstat="history | awk '{a[\$2]++ } END{for(i in a){print a[i] \" \" i}}'|sort -rn|head -n 25"
 
-alias simplehttp='python -m SimpleHTTPServer'
+#alias simplehttp='python -m SimpleHTTPServer'
 
 # close once last tab is closed.
 alias tterm='tabbed -p -1 -c -d xterm -into'
 # keep at least one instance open ('-f' ~ fill with new xterm instance).
 #alias term='tabbed -f -g 1140x880 -d xterm -into'
 
+# spin down mechanical disks before unplugging (seldom needed these days)
 function spindown(){
     if test "$#" -ne 1; then
         echo "Usage: spindown drivename"
