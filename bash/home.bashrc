@@ -26,6 +26,7 @@ alias less='less --RAW-CONTROL-CHARS'
 if command -v "lsd" >/dev/null 2>&1; then
     # use lsd if available
     LS='lsd'
+    alias ltr='ls --tree'
 else
     export LS_OPTS='--color=auto'
     LS='ls ${LS_OPTS}'
