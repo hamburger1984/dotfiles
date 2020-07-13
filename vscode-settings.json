@@ -4,20 +4,15 @@
     "editor.fontSize": 13,
     "editor.renderWhitespace": "boundary",
     "editor.lineNumbers": "relative",
-
+    "keyboard.dispatch": "keyCode",
     "workbench.settings.editor": "json",
     "workbench.startupEditor": "welcomePageInEmptyWorkbench",
-    "workbench.statusBar.feedback.visible": false,
     "window.menuBarVisibility": "toggle",
-
     "files.autoSave": "afterDelay",
     "files.trimTrailingWhitespace": true,
-    "files.useExperimentalFileWatcher": true,
-
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
-
-    "python.linting.pep8Enabled": true,
+    "python.linting.pycodestyleEnabled": true,
     "python.linting.pylintEnabled": true,
     "python.venvFolders": [
         ".venv",
@@ -25,8 +20,44 @@
         ".pyenv",
         ".direnv"
     ],
-
-    "vim.easymotion": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "d"
+            ],
+            "after": [
+                "d",
+                "d"
+            ]
+        },
+        {
+            "before": [
+                "<C-n>"
+            ],
+            "commands": [
+                ":nohl"
+            ]
+        }
+    ],
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false
+    },
     "vim.easymotionMarkerFontFamily": "Fira Code",
     "vim.easymotionMarkerFontSize": "13",
     "vim.history": 500,
@@ -35,14 +66,18 @@
     "vim.statusBarColorControl": true,
     "vim.statusBarColors.normal": "#475057",
     "vim.visualstar": true,
-
     "omnisharp.path": "latest",
-
     "workbench.colorCustomizations": {
         "statusBar.background": "#475057",
         "statusBar.noFolderBackground": "#475057",
         "statusBar.debuggingBackground": "#475057"
     },
     "workbench.iconTheme": "vscode-icons",
-    "vsicons.dontShowNewVersionMessage": true
+    "vsicons.dontShowNewVersionMessage": true,
+    "git.autofetch": false,
+    "vim.cursorStylePerMode.normal": "block",
+    "vim.cursorStylePerMode.replace": "block",
+    "vim.cursorStylePerMode.visual": "block",
+    "vim.cursorStylePerMode.visualblock": "block",
+    "vim.cursorStylePerMode.visualline": "block"
 }

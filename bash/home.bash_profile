@@ -34,6 +34,11 @@ if [ -d $HOME/.local/node_modules_global/bin/ ]; then
     PATH=$HOME/.local/node_modules_global/bin:$PATH
 fi
 
+if [ -d $HOME/.dotnet/ ]; then
+    PATH=$HOME/.dotnet:$PATH
+    export DOTNET_CLI_TELEMETRY_OPTOUT=1
+fi
+
 if [ -n "$VIRTUAL_ENV" ]; then
     PATH="$VIRTUAL_ENV:$PATH"
 fi

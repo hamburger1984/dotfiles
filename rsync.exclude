@@ -36,6 +36,7 @@
 .kde/cache*
 .lesshst
 .lldb
+.local/share/JetBrains
 .local/share/Steam
 .local/share/Trash
 .mplayer
@@ -56,11 +57,9 @@
 .thumbnails
 .tools
 .xsession-errors
-Android/Android-Studio/
-Android/Images/
-Android/Sdk/
 Downloads
 Dropbox
+Tracks/Maps/
 Videos
 __MACOSX
 baloo
